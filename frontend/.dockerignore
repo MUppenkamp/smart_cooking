@@ -1,0 +1,6 @@
+Dockerfile
+.dockerignore
+.gitignore
+.gitlab-ci.yml
+node_modules
+image
