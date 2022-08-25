@@ -11,10 +11,10 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: smart_cooking
+      POSTGRES_DB: smart_cocking
       PGDATA: /data/postgres
-    volumes:
-       - postgres:/data/postgres
+  #  volumes:
+  #     - postgres:/data/postgres
     ports:
       - "5432:5432"
     restart: unless-stopped
@@ -29,6 +29,8 @@ services:
   backend:
     container_name: backend_container
     build: ./backend
+    depends_on:
+      - postgres
     ports:
       - 3001:3000
     restart: unless-stopped

@@ -5,7 +5,7 @@ const createPool = () => {
         user: 'postgres',
         password: 'postgres',
         host: 'localhost',
-        database: 'smart_cooking',
+        database: 'smart_cocking',
         port: 5432
     });
 }
