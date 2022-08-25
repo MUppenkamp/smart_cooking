@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react';
+import React, { FC } from 'react';
 
-const App = () => {
+const App: FC<Record<string, never>> = () => {
     return (
         <>
             <p>Hello World</p>
