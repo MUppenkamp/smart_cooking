@@ -1,8 +1,6 @@
 // @ts-ignore
-declare function require(name: string);
-// This must be there because of Typescript
-
-const express = require('express')
+const express = require('express');
+// @ts-ignore
 const cors = require('cors');
 const app = express();
 
