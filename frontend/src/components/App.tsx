@@ -1,17 +1,12 @@
 import React, { FC } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import './app.scss';
+import { Container } from 'react-bootstrap';
 
 const App: FC<Record<string, never>> = () => {
     return (
-        <>
-            <p>Hello World</p>
-            <Button
-
-            >
-                Bye
-            </Button>
-        </>
+        <Container>
+        </Container>
 )};
 
 export default App;
