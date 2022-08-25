@@ -3,7 +3,9 @@ import './navigation.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faUtensils, faHeart, faCalendar, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-const Navigation: React.FunctionComponent = () => {
+type NavigationProps = {};
+
+const Navigation: React.FunctionComponent<NavigationProps> = () => {
     return (
         <div className="navigation">
             <div className="navigation__item">
