@@ -1,10 +1,17 @@
 // @ts-ignore
 const express = require('express');
 const cors = require('cors');
-const pg = require('./helper/pgQuery.ts');
 const app = express();
+const pg = require('./helper/pgQuery.ts');
+const recipe = require('./router/recipe.ts');
 
 app.use(cors());
+
+app.use('/recipe', recipe);
+
+app.get('/', (req: any, res: any) => {
+    res.send('Hello world')
+})
 
 // region CreateDatabaseTable
 
@@ -44,6 +51,6 @@ try {
     console.log("index", e);
 }
 
-app.listen(3000, () => {
+app.listen(3002, () => {
     console.log("Server running on port 3000");
 });
