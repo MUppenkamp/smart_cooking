@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
-import { Container } from 'react-bootstrap';
+import Navigation from "./mainFrames/navigation/Navigation";
 
 const App: FC<Record<string, never>> = () => {
     return (
-        <Container>
-        </Container>
+        <>
+            <Navigation />
+        </>
 )};
 
 export default App;
