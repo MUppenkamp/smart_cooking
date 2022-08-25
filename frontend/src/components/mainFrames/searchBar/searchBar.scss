@@ -1,0 +1,19 @@
+@import "../../../variables";
+
+.search-bar {
+  .form-control {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+
+  .input-group-text {
+    border-bottom-left-radius: $border-radius !important;
+    border-top-left-radius: $border-radius !important;
+    background-color: $smart-cooking-color-light;
+  }
+
+  &__icon {
+    font-size: calc(1.5rem + .9vw);
+    color: $basic-text-color;
+  }
+}
