@@ -1,0 +1,54 @@
+@import "variables";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+
+p {
+  color: $basic-text-color;
+}
+
+h1 {
+  color: $smart-cooking-color;
+  font-weight: bold;
+}
+
+h2 {
+  color: $smart-cooking-color;
+  font-weight: bold;
+}
+
+// like h2 but other color
+h3 {
+  color: $basic-text-color;
+  font-size: calc(1.325rem + .9vw);
+  font-weight: bold;
+}
+
+h4 {
+  color: $basic-text-color;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.site-header {
+  color: $smart-cooking-color;
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: $border-radius !important;
+}
