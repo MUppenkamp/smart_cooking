@@ -1,9 +1,10 @@
 // @ts-ignore
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 const app = express();
-const pg = require('./helper/pgQuery.ts');
-const recipe = require('./router/recipe.ts');
+
+import { pgQuery, disconnectPool, createPool } from './helper/pgQuery';
+import recipe from './router/recipe';
 
 app.use(cors());
 
@@ -27,22 +28,19 @@ const createRecipeWeekDayShoppingList = "CREATE TABLE IF NOT EXISTS recipe_week_
 
 // endregion
 
-
-
-
 const createInitData = async () => {
-    const pool = pg.createPool();
-    await pg.pgQuery(pool, createUserTable);
-    await pg.pgQuery(pool, createRecipeWeekTable);
-    await pg.pgQuery(pool, createDifficultyTable);
-    await pg.pgQuery(pool, createRecipeTable);
-    await pg.pgQuery(pool, createUser2RecipeTable);
-    await pg.pgQuery(pool, createRecipeWeekDayTable);
-    await pg.pgQuery(pool, createQuantityUnitTable);
-    await pg.pgQuery(pool, createRecipeIngredientTable);
-    await pg.pgQuery(pool, createRecipeWeekDayShoppingList);
+    const pool = createPool();
+    await pgQuery(pool, createUserTable);
+    await pgQuery(pool, createRecipeWeekTable);
+    await pgQuery(pool, createDifficultyTable);
+    await pgQuery(pool, createRecipeTable);
+    await pgQuery(pool, createUser2RecipeTable);
+    await pgQuery(pool, createRecipeWeekDayTable);
+    await pgQuery(pool, createQuantityUnitTable);
+    await pgQuery(pool, createRecipeIngredientTable);
+    await pgQuery(pool, createRecipeWeekDayShoppingList);
 
-    await pg.disconnectPool(pool);
+    await disconnectPool(pool);
 }
 
 try {
@@ -52,5 +50,5 @@ try {
 }
 
 app.listen(3002, () => {
-    console.log("Server running on port 3000");
+    console.log("Server running on port 3002");
 });

@@ -1,9 +1,8 @@
 
 // @ts-ignore
 import { TRecipeDTO } from '../types/DTO/Recipe';
+import express from 'express'
 
-const express = require('express');
-// const { TRecipeDTO } = require('../types/DTO/Recipe');
 const router = express.Router();
 
 router.get('/', (req: any, res: any) => {
@@ -14,4 +13,4 @@ router.get('/', (req: any, res: any) => {
     })
 })
 
-module.exports = router;
+export default router;

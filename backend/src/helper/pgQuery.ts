@@ -1,6 +1,6 @@
-const {Pool} = require('pg');
+import { Pool, QueryResult } from 'pg'
 
-const createPool = () => {
+export const createPool = (): Pool => {
     return new Pool({
         user: 'postgres',
         password: 'postgres',
@@ -10,21 +10,15 @@ const createPool = () => {
     });
 }
 
-const disconnectPool = async (pool: typeof Pool) => {
+export const disconnectPool = async (pool: Pool) => {
     await pool.end();
 }
 
-const pgQuery = async (pool: typeof Pool, query: string, param?: any[]) => {
+export const pgQuery = async <T>(pool: Pool, query: string, param?: any[]): Promise<QueryResult<T> | null> => {
     try {
-        return await pool.query(query, param);
+        return pool.query<T>(query, param);
     } catch (ex) {
         console.log("pgQuery ex", ex);
+        return null;
     }
-}
-
-
-module.exports = {
-    createPool,
-    pgQuery,
-    disconnectPool
 }
