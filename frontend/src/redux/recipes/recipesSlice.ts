@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 // import {} from './actions';
 
-const recipesAdapter = createEntityAdapter<RecipeState>();
+const recipesAdapter = createEntityAdapter<TRecipeState>();
 
 const recipesSlice = createSlice({
     name: 'recipesSlice',

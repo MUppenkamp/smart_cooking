@@ -1,6 +1,6 @@
-type TPatchShoppingListParams = {};
+type TPatchShoppingListItemsParams = {};
 
-type TPatchShoppingListReturns = {
+type TPatchShoppingListItemsReturns = {
     status: number;
     data: TRecipe;
 };
