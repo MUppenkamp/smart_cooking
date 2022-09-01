@@ -27,8 +27,8 @@ export type TRecipe = {
 };
 
 export type TRecipeWeekDay = {
-    date: Date;
+    date: string;
     recipe: TRecipe;
-}
+};
 
 export type TRecipeWeek = Array<TRecipeWeekDay>;

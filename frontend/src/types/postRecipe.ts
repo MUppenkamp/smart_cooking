@@ -1,4 +1,4 @@
-import { TRecipe } from "./recipe";
+import { TRecipe, TRecipeWeek } from "./recipe";
 
 export type TPostFavouriteRecipeParams = { id: number, isFavourite: boolean };
 
@@ -13,5 +13,5 @@ export type TPostCalendarRecipeParams = {};
 
 export type TPostCalendarRecipeReturns = {
     status: number;
-    data: Array<TRecipe>;
+    data: TRecipeWeek;
 };

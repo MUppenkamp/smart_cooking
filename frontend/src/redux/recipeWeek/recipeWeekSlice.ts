@@ -1,17 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import FetchState from "../../constants/fetchState";
 import {
     fetchCalendarRecipes,
     randomizeCalendarRecipes
-} from "./recipeActions";
+} from "./recipeWeekActions";
+import { TRecipeWeekDay } from "../../types/recipe";
+
+const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
+    selectId: (model) => model.date
+});
 
 const initialState = {
-    data: {},
-    fetchState: FetchState.INITIAL
+    fetchState: FetchState.INITIAL,
+    data: recipeWeekAdapter.getInitialState()
 };
 
-const recipeSlice = createSlice({
-    name: 'recipeSlice',
+const recipeWeekSlice = createSlice({
+    name: 'recipeWeekSlice',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -22,12 +27,11 @@ const recipeSlice = createSlice({
             };
         });
         builder.addCase(fetchCalendarRecipes.fulfilled, (state, { payload }) => {
+            recipeWeekAdapter.addMany(state.data, payload);
+
             return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...state.data,
-                    payload
-                }
+                ...state,
+                fetchState: FetchState.FETCHED
             };
         });
 
@@ -38,15 +42,14 @@ const recipeSlice = createSlice({
             };
         });
         builder.addCase(randomizeCalendarRecipes.fulfilled, (state, { payload }) => {
+            recipeWeekAdapter.setAll(state.data, payload);
+
             return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...state.data,
-                    payload
-                }
+                ...state,
+                fetchState: FetchState.FETCHED
             };
         });
     }
 });
 
-export default recipeSlice.reducer;
+export default recipeWeekSlice.reducer;
