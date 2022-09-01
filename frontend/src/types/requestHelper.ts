@@ -6,5 +6,5 @@ export type THelper<T> = {
 export type THelperParams = {
     requestUrl: string;
     method: string;
-    options: object;
+    options?: object;
 };

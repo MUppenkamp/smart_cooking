@@ -1,3 +1,5 @@
+import { THelper, THelperParams } from "../types/requestHelper";
+
 const requestHelper = async <T>(param: THelperParams): Promise<THelper<T>> => {
     const options = {}
 

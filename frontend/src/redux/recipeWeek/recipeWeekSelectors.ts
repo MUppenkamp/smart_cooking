@@ -1,5 +1,4 @@
 import type { RootState } from "../store";
-import { TRecipe, TRecipeWeek, TRecipeWeekDay } from "../../types/recipe";
 
 export const selectRecipeWeekFetchState = (state: RootState) => state.recipesWeek.fetchState;
 

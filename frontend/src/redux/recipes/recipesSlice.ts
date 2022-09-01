@@ -39,6 +39,8 @@ const recipesSlice = createSlice({
             };
         });
         builder.addCase(createRecipe.fulfilled, (state, { payload }) => {
+            if (!payload) return;
+
             recipesAdapter.addOne(state.data, payload);
 
             return {
