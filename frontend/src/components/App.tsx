@@ -6,6 +6,7 @@ import {Container} from "react-bootstrap";
 import SearchBar from "./mainFrames/searchBar/SearchBar";
 import NoContent from "./mainFrames/noContent/NoContent";
 import SiteName from "./mainFrames/siteName/SiteName";
+import Header from "./mainFrames/header/Header";
 
 const App: FC<Record<string, never>> = () => {
     const [selectedNav, setSelectedNav] = useState(1);
@@ -13,6 +14,7 @@ const App: FC<Record<string, never>> = () => {
     return (
         <>
             <Container>
+                <Header />
                 <SiteName selectedNav={selectedNav} />
                 <SearchBar />
                 <Container>
