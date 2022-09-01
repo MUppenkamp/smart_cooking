@@ -114,7 +114,8 @@ router.get('/:userid/favorite', async (req, res) => {
         from recipe as r
         LEFT JOIN difficulty as d ON d.id = r.difficulty_id
         LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id AND u2c.user_id = $1
-        WHERE u2c.user_id IS NOT NULL AND u2c.is_favorite IS true`;
+        WHERE u2c.user_id IS NOT NULL AND (u2c.is_favorite IS true OR u2c.is_own IS true)`;
+
     const connection = createPool();
     const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
@@ -175,11 +176,11 @@ router.get('/:userid/favorite', async (req, res) => {
 })
 
 router.post('/:userid/favorite', async (req, res) => {
-    const query = "UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2";
+    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2';
 
     console.log(req.body);
 
-    if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null ) {
+    if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null) {
         res.status(400).json({});
         return;
     }
