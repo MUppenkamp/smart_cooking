@@ -1,3 +1,5 @@
+import { TGetRecipesReturns } from "../../types/getRecipes";
+
 export const getAllRecipes = async (): Promise<TGetRecipesReturns | null> => {
     // ToDo: Return Dummy Data
     return null;

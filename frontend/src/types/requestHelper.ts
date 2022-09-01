@@ -1,9 +1,9 @@
-type THelper<T> = {
+export type THelper<T> = {
     status: number;
     data: T | null;
 };
 
-type THelperParams = {
+export type THelperParams = {
     requestUrl: string;
     method: string;
     options: object;

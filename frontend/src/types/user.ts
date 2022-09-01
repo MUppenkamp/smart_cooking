@@ -1,4 +1,4 @@
-type TUser = {
+export type TUser = {
     id: number;
     firstName: string;
     lastName: string;
@@ -8,12 +8,12 @@ type TUser = {
 };
 
 
-type TLoginData = {
+export type TLoginData = {
     mail: string;
     password: string;
 };
 
-type TRegisterData = {
+export type TRegisterData = {
     firstName: string;
     lastName: string;
     password: string;

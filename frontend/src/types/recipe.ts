@@ -1,4 +1,6 @@
-type TIngredient = {
+import FetchState from "../constants/fetchState";
+
+export type TIngredient = {
     id: number;
     name: string;
     quantity: number;
@@ -8,14 +10,13 @@ type TIngredient = {
     }
 };
 
-type TRecipe = {
+export type TRecipe = {
     id: number;
     name: string;
     picture: string;
     duration: number;
-    difficulty: {
-        name: string;
-    },
+    difficultyId: number;
+    difficultyName: string;
     description: string;
     calorificValue: number;
     protein: number;
@@ -27,13 +28,14 @@ type TRecipe = {
     ingredients: Array<TIngredient>;
 };
 
-type TRecipeState = {
+export type TRecipeState = {
+    fetchState: FetchState;
     data: Array<TRecipe>
 };
 
-type TRecipeWeekDay = {
+export type TRecipeWeekDay = {
     date: Date;
     recipe: TRecipe;
 }
 
-type TRecipeWeek = Array<TRecipeWeekDay>;
+export type TRecipeWeek = Array<TRecipeWeekDay>;
