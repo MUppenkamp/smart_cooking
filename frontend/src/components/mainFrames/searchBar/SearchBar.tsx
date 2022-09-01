@@ -19,6 +19,7 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = () => {
                     />
                 </InputGroup.Text>
                 <Form.Control
+                    disabled
                 />
             </InputGroup>
         </div>
