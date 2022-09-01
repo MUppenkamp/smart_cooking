@@ -6,7 +6,15 @@ import { GetAllRecipeDBO, TIngredientsDBO, TRecipeDBO } from '../types/DBO/Recip
 const router = express.Router();
 
 
-router.get('/', async (req: any, res: any) => {
+router.get('/:userid', async (req, res) => {
+    console.log("userid", req.params);
+    if (!req.params.userid) {
+        res.status(404).json({});
+        return;
+    } {
+
+    }
+
     // Get recipe
     const getRecipe = `SELECT r.id, 
         r.name, 
@@ -17,16 +25,21 @@ router.get('/', async (req: any, res: any) => {
         r.fat, 
         r.carbohydrates, 
         r.portion,
+        r.picture,
         d.name as difficulty_name,
         d.id as difficulty_id,
         u2c.is_favorite,
-        u2c.is_own
+        u2c.is_own,
+        u2c.user_id
         from recipe as r
         LEFT JOIN difficulty as d ON d.id = r.difficulty_id
-        LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id`;
+        LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id AND u2c.user_id = $1
+        WHERE user_id IS NULL
+        `;
     const connection = createPool();
-    const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe);
+    const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
+    console.log(result?.rows);
 
     if (!result?.rowCount || result?.rowCount <= 0) {
         res.status(404).json({});

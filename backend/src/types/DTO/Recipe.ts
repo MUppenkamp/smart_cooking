@@ -11,7 +11,7 @@ export type TRecipeDTO = {
     carbohydrates?: number;
     portion?: number;
     isFavorite?: boolean;
-    isOwn?: boolean
+    isOwn?: boolean;
     ingredients?: TIngredients[]
 }
 
