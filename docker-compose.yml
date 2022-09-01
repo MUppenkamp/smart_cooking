@@ -11,23 +11,32 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smart_cocking
       PGDATA: /data/postgres
-    volumes:
-       - postgres:/data/postgres
+  #  volumes:
+  #     - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - 5432:5432
     restart: unless-stopped
 
   web:
     container_name: web_container
     build: ./frontend
     ports:
-      - 8080:8080
+      - 8081:8080
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   backend:
     container_name: backend_container
     build: ./backend
+    depends_on:
+      - web
     ports:
-      - 3000:3000
+      - 3001:3000
+    links:
+      - postgres:database
     restart: unless-stopped
+    environment:
+      POSTGRES_URL: 'database'
