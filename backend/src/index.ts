@@ -8,6 +8,8 @@ import recipe from './router/recipe';
 
 app.use(cors());
 
+app.use(express.json())
+
 app.use('/recipe', recipe);
 
 // region CreateDatabaseTable
