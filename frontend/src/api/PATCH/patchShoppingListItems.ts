@@ -1,7 +1,7 @@
-import requestHelper from "../../utils/requestHelper";
-import { SMART_COOKING_URL } from "../../constants/url";
-import { TRecipe } from "../../types/recipe";
-import { TPatchShoppingListItemsParams } from "../../types/patchShoppingList";
+import requestHelper from '../../utils/requestHelper';
+import { SMART_COOKING_URL } from '../../constants/url';
+import { TRecipe } from '../../types/recipe';
+import { TPatchShoppingListItemsParams } from '../../types/patchShoppingList';
 
 // ToDo: Update parameter and options
 export const patchShoppingListItems = async (params: TPatchShoppingListItemsParams) => {

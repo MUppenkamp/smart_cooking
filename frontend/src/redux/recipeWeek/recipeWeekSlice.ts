@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import FetchState from "../../constants/fetchState";
+import FetchState from '../../constants/fetchState';
 import {
     fetchCalendarRecipes,
     randomizeCalendarRecipes
-} from "./recipeWeekActions";
-import { TRecipeWeekDay } from "../../types/recipe";
+} from './recipeWeekActions';
+import { TRecipeWeekDay } from '../../types/recipe';
 
 const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
     selectId: (model) => model.date
