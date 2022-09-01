@@ -1,4 +1,4 @@
-import { THelper, THelperParams } from "../types/requestHelper";
+import { THelper, THelperParams } from '../types/requestHelper';
 
 const requestHelper = async <T>({ requestUrl, options }: THelperParams): Promise<THelper<T>> => {
     const response = await fetch(requestUrl, options);
@@ -9,7 +9,6 @@ const requestHelper = async <T>({ requestUrl, options }: THelperParams): Promise
             data: null
         };
     }
-
 
     const result = await response.json() as T;
 
