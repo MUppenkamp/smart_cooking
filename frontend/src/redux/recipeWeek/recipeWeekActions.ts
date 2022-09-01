@@ -5,11 +5,11 @@ import { getCalendarRecipes } from "../../api/GET/getRecipes";
 export const fetchCalendarRecipes = createAsyncThunk(
     'fetchCalendarRecipes',
     async (
-        {  },
+        userId: number,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getCalendarRecipes();
+            const retval = await getCalendarRecipes(userId);
             if (retval && retval.status === 200) {
                 return retval.data;
             }

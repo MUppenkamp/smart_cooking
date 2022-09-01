@@ -45,6 +45,8 @@ const favouriteRecipesSlice = createSlice({
             };
         });
         builder.addCase(updateFavourite.fulfilled, (state, { payload }) => {
+            if (!payload) return;
+
             recipesAdapter.updateOne(state.data, {
                 id: payload.id,
                 changes: payload
@@ -57,6 +59,5 @@ const favouriteRecipesSlice = createSlice({
         });
     }
 });
-
 
 export default favouriteRecipesSlice.reducer;

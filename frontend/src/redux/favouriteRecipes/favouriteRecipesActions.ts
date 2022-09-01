@@ -6,11 +6,11 @@ import { TPostFavouriteRecipeParams } from "../../types/postRecipe";
 export const fetchFavouriteRecipes = createAsyncThunk(
     'fetchFavouriteRecipes',
     async (
-        {},
+        userId: number,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getFavouriteRecipes();
+            const retval = await getFavouriteRecipes(userId);
             if (retval && retval.data) {
                 return retval.data;
             }

@@ -27,6 +27,8 @@ const recipeWeekSlice = createSlice({
             };
         });
         builder.addCase(fetchCalendarRecipes.fulfilled, (state, { payload }) => {
+            if (!payload) return;
+
             recipeWeekAdapter.addMany(state.data, payload);
 
             return {
@@ -42,6 +44,8 @@ const recipeWeekSlice = createSlice({
             };
         });
         builder.addCase(randomizeCalendarRecipes.fulfilled, (state, { payload }) => {
+            if (!payload) return;
+
             recipeWeekAdapter.setAll(state.data, payload);
 
             return {
