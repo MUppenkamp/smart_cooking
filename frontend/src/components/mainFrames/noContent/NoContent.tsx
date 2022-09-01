@@ -1,6 +1,6 @@
 import React from 'react';
 import './noContent.scss';
-import { faFaceFrown } from '@fortawesome/free-solid-svg-icons'
+import {faFaceFrown} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 type NoContentProps = {};
