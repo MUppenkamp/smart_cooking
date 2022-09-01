@@ -1,0 +1,16 @@
+@import "../../../constants/variables";
+
+.no-content {
+  position: absolute;
+  top: 38%;
+
+  &__center {
+    text-align: center;
+
+    &__icon {
+      margin-top: 10px;
+      height: 80px;
+      color: $smart-cooking-color;
+    }
+  }
+}

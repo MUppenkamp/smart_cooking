@@ -1,16 +1,31 @@
-import React, { FC } from 'react';
+import React, {FC, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import './app.scss';
+import Navigation from "./mainFrames/navigation/Navigation";
+import {Container} from "react-bootstrap";
+import SearchBar from "./mainFrames/searchBar/SearchBar";
+import NoContent from "./mainFrames/noContent/NoContent";
+import SiteName from "./mainFrames/siteName/SiteName";
+import Header from "./mainFrames/header/Header";
 
 const App: FC<Record<string, never>> = () => {
+    const [selectedNav, setSelectedNav] = useState(1);
+
     return (
         <>
-            <p>Hello World</p>
-            <Button
-
-            >
-                Bye
-            </Button>
+            <Container>
+                <Header />
+                <SiteName selectedNav={selectedNav} />
+                <SearchBar />
+                <Container>
+                    {/* TODO Add render of sites here */}
+                    <NoContent />
+                </Container>
+            </Container>
+            <Navigation
+                selectedNav={selectedNav}
+                setSelectedNav={setSelectedNav}
+            />
         </>
 )};
 

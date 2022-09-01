@@ -1,0 +1,43 @@
+@import "../../../constants/variables";
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  will-change: transform;
+  transform: translateZ(0);
+
+  display: flex;
+  height: 60px;
+  background-color: $smart-cooking-color-light;
+
+  &__item {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 25%;
+
+    &__icon {
+      color: $smart-cooking-color;
+      font-size: calc(1.8rem + .9vw);
+    }
+
+    &__icon--active {
+      color: $navigation-bar-icon-color;
+    }
+
+    &__text {
+      font-size: calc(0.6rem + .4vw);
+      margin: 0 !important;
+    }
+
+    &__text--active {
+      font-weight: bold;
+    }
+  }
+}
