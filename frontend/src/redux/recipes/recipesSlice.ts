@@ -3,7 +3,9 @@ import { createRecipe, fetchRecipes, updateRecipe } from './recipesActions';
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 
-const recipesAdapter = createEntityAdapter<TRecipe>();
+const recipesAdapter = createEntityAdapter<TRecipe>({
+    selectId: (model) => model.id
+});
 
 const initialState = {
     fetchState: FetchState.INITIAL,

@@ -4,7 +4,7 @@ export type TUser = {
     lastName: string;
     password: string;
     mail: string;
-    picture: string;
+    picture?: string;
 };
 
 export type TLoginData = {

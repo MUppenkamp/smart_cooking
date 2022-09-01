@@ -26,7 +26,6 @@ export const fetchUser = createAsyncThunk(
     }
 );
 
-
 export const updateUser = createAsyncThunk(
     'updateUser',
     async (

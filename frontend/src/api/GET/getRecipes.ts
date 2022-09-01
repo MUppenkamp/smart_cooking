@@ -5,7 +5,7 @@ import { TRecipe, TRecipeWeek } from '../../types/recipe';
 // ToDo: Update options
 export const getAllRecipes = async (userId: number) => {
     return requestHelper<Array<TRecipe>>({
-        requestUrl: `${SMART_COOKING_URL}/`,
+        requestUrl: `${SMART_COOKING_URL}/recipe/${userId}`,
         options: {
             method: 'GET'
         }
@@ -14,7 +14,7 @@ export const getAllRecipes = async (userId: number) => {
 
 export const getFavouriteRecipes = async (userId: number) => {
     return requestHelper<Array<TRecipe>>({
-        requestUrl: `${SMART_COOKING_URL}/`,
+        requestUrl: `${SMART_COOKING_URL}/recipe/${userId}/favorite`,
         options: {
             method: 'GET'
         }

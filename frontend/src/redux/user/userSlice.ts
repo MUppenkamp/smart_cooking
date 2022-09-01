@@ -13,12 +13,14 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchUser.pending, (state) => {
+            console.log('fetchUser PENDING');
             return {
                 ...state,
                 fetchState: FetchState.PENDING,
             };
         });
         builder.addCase(fetchUser.fulfilled, (state, { payload }) => {
+            console.log('fetchUser FETCHED', payload);
             return {
                 fetchState: FetchState.FETCHED,
                 data: {
