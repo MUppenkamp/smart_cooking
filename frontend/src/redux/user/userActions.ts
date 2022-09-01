@@ -3,7 +3,8 @@ import { postUser } from "../../api/POST/postUser";
 import { patchUser } from "../../api/PATCH/patchUser";
 import {
     TLoginData,
-    TRegisterData
+    TRegisterData,
+    TUser
 } from "../../types/user";
 
 export const fetchUser = createAsyncThunk(
@@ -29,11 +30,11 @@ export const fetchUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
     'updateUser',
     async (
-        data: any,
+        user: TUser,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await patchUser(data);
+            const retval = await patchUser(user);
             if (retval && retval.status === 200) {
                 return retval.data;
             }

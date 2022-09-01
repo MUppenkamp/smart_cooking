@@ -3,27 +3,35 @@ import { SMART_COOKING_URL } from "../../constants/url";
 import {
     TPostCalendarRecipeParams,
     TPostFavouriteRecipeParams,
-    TPostRecipeParams,
 } from "../../types/postRecipe";
-import { TRecipe, TRecipeWeek } from "../../types/recipe";
+import {
+    TRecipe,
+    TRecipeWeek
+} from "../../types/recipe";
 
 export const postFavouriteRecipe = async (params: TPostFavouriteRecipeParams) => {
     return requestHelper<TRecipe>({
-        method: 'POST',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'POST'
+        }
     });
 };
 
-export const postRecipe = async (params: TPostRecipeParams) => {
+export const postRecipe = async (recipe: TRecipe) => {
     return requestHelper<TRecipe>({
-        method: 'POST',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'POST'
+        }
     });
 };
 
 export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => {
     return requestHelper<TRecipeWeek>({
-        method: 'POST',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'POST'
+        }
     });
 };

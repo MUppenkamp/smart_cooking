@@ -1,10 +1,7 @@
 import { THelper, THelperParams } from "../types/requestHelper";
 
-const requestHelper = async <T>(param: THelperParams): Promise<THelper<T>> => {
-    const options = {}
-
-
-    const response = await fetch(param.requestUrl, options);
+const requestHelper = async <T>({ requestUrl, options }: THelperParams): Promise<THelper<T>> => {
+    const response = await fetch(requestUrl, options);
 
     if (response.status !== 200) {
         return {

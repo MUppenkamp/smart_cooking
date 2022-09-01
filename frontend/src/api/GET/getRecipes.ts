@@ -1,25 +1,30 @@
 import requestHelper from "../../utils/requestHelper";
 import { SMART_COOKING_URL } from "../../constants/url";
 import { TRecipe, TRecipeWeek } from "../../types/recipe";
-import { TGetRecipesParams } from "../../types/getRecipes";
 
-export const getAllRecipes = async (params: TGetRecipesParams) => {
+export const getAllRecipes = async (userId: number) => {
     return requestHelper<Array<TRecipe>>({
-        method: 'GET',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'GET'
+        }
     });
 };
 
-export const getFavouriteRecipes = async (params: TGetRecipesParams) => {
+export const getFavouriteRecipes = async (userId: number) => {
     return requestHelper<Array<TRecipe>>({
-        method: 'GET',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'GET'
+        }
     });
 };
 
-export const getCalendarRecipes = async (params: TGetRecipesParams) => {
+export const getCalendarRecipes = async (userId: number) => {
     return requestHelper<TRecipeWeek>({
-        method: 'GET',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'GET'
+        }
     });
 };

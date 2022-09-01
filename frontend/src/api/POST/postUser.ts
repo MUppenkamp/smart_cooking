@@ -8,7 +8,9 @@ import {
 
 export const postUser = async (data: TLoginData | TRegisterData) => {
     return requestHelper<TUser>({
-        method: 'POST',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'POST'
+        }
     });
 };

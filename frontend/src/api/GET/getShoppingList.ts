@@ -5,7 +5,9 @@ import { TRecipe } from "../../types/recipe";
 
 export const getShoppingList = async (params: TGetShoppingListParams) => {
     return requestHelper<TRecipe>({
-        method: 'GET',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'GET'
+        }
     });
 };

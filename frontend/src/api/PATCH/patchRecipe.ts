@@ -1,11 +1,12 @@
 import requestHelper from "../../utils/requestHelper";
 import { SMART_COOKING_URL } from "../../constants/url";
 import { TRecipe } from "../../types/recipe";
-import { TPatchRecipeParams } from "../../types/patchRecipe";
 
-export const patchRecipe = async (params: TPatchRecipeParams) => {
+export const patchRecipe = async (recipe: TRecipe) => {
     return requestHelper<TRecipe>({
-        method: 'PATCH',
-        requestUrl: `${SMART_COOKING_URL}/`
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'PATCH'
+        }
     });
 };
