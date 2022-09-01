@@ -1,0 +1,21 @@
+@import "../../../constants/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &__border {
+    border: $smart-cooking-color solid 4px;
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+
+    &__icon {
+      padding: 5px 4px 5px 4px;
+      color: $smart-cooking-color;
+      font-size: 28px;
+    }
+  }
+}
