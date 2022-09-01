@@ -1,5 +1,3 @@
-import FetchState from "../constants/fetchState";
-
 export type TIngredient = {
     id: number;
     name: string;

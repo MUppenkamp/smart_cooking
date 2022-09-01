@@ -5,11 +5,11 @@ import { patchShoppingListItems } from "../../api/PATCH/patchShoppingListItems";
 export const fetchShoppingList = createAsyncThunk(
     'fetchShoppingList',
     async (
-        {},
+        userId: number,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getShoppingList({});
+            const retval = await getShoppingList(userId);
             if (retval && retval.status === 200) {
                 return retval.data;
             }
