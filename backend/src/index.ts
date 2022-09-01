@@ -16,7 +16,7 @@ const createUserTable = "CREATE TABLE IF NOT EXISTS app_user(id serial primary k
 const createRecipeWeekTable = "CREATE TABLE IF NOT EXISTS recipe_week (id serial primary key, user_id integer references app_user(id), state_data date, end_data date)";
 const createDifficultyTable = "CREATE TABLE IF NOT EXISTS difficulty (id serial primary key, name varchar, icon varchar)";
 
-const createRecipeTable = "CREATE TABLE IF NOT EXISTS recipe (id serial primary key, name varchar, duration integer, difficulty_id integer references difficulty(id), description varchar, calorific_value integer, protein integer, fat integer, carbohydrates integer, portion integer)";
+const createRecipeTable = "CREATE TABLE IF NOT EXISTS recipe (id serial primary key, name varchar, duration integer, difficulty_id integer references difficulty(id), description varchar, calorific_value integer, protein integer, fat integer, carbohydrates integer, portion integer, picture varchar)";
 const createUser2RecipeTable = "CREATE TABLE IF NOT EXISTS user_2_recipe (user_id integer references app_user(id), recipe_id integer references recipe(id), is_favorite boolean, is_own boolean)";
 const createRecipeWeekDayTable = "CREATE TABLE IF NOT EXISTS recipe_week_day (id serial primary key, recipe_week_id integer references recipe_week(id), day_date date, recipe_id integer references recipe(id))";
 const createQuantityUnitTable = "CREATE TABLE IF NOT EXISTS quantity_unit (id serial primary key, name varchar)";
@@ -30,8 +30,11 @@ const createRecipeWeekDayShoppingList = "CREATE TABLE IF NOT EXISTS recipe_week_
 
 const createUser = "INSERT INTO app_user(first_name, last_name, password, mail) VALUES ($1, $2, $3, $4)";
 const createDifficulty = "INSERT INTO difficulty(name) values ($1)";
-const createReceipt = "INSERT INTO recipe(name, duration, difficulty_id, description, calorific_value, protein, fat, carbohydrates, portion) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+const createReceipt = "INSERT INTO recipe(name, duration, difficulty_id, description, calorific_value, protein, fat, carbohydrates, portion, picture) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)"
 const createUser2Receipt = "INSERT INTO user_2_recipe (user_id, recipe_id, is_favorite, is_own) VALUES ($1, $2, $3, $4)";
+const createQuantityUnit = "INSERT INTO quantity_unit(name) VALUES ($1)";
+const createQuantityIngredient = "INSERT INTO recipe_ingredient (recipe_id, name, quantity, quantity_unit_id) VALUES ($1, $2, $3, $4)";
+
 
 // endregion
 
@@ -60,9 +63,10 @@ const createInitData = async () => {
         await pgQuery(pool2, createDifficulty, ['Einfach']);
         await pgQuery(pool2, createDifficulty, ['Normal']);
         await pgQuery(pool2, createDifficulty, ['Schwer']);
-        await pgQuery(pool2, createReceipt, ['Nudeln', 20, 1, 'Nudeln mit Nudeln', 10, 10, 10, 10, 10]);
+        await pgQuery(pool2, createReceipt, ['Nudeln', 20, 1, 'Nudeln mit Nudeln', 10, 10, 10, 10, 10, 'https://www.gutekueche.at/storage/media/recipe/113180/conv/nudeln-in-tomatensauce-default.jpg']);
         await pgQuery(pool2, createUser2Receipt, [1, 1, true, true]);
-
+        await pgQuery(pool2, createQuantityUnit, ['Gramm']);
+        await pgQuery(pool2, createQuantityIngredient, [1, 'Nudeln', 500, 1]);
         await disconnectPool(pool2);
     }, 1000);
 
@@ -76,6 +80,6 @@ try {
     console.log("index", e);
 }
 
-app.listen(3003, () => {
-    console.log("Server running on port 3003");
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
 });
