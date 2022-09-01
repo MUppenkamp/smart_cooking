@@ -1,10 +1,9 @@
 import express from 'express'
 import { createPool, disconnectPool, pgQuery } from '../helper/pgQuery';
-import { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
-import { GetAllRecipeDBO, TIngredientsDBO, TRecipeDBO } from '../types/DBO/Recipe';
+import type { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
+import type { GetAllRecipeDBO, TIngredientsDBO } from '../types/DBO/Recipe';
 
 const router = express.Router();
-
 
 router.get('/:userid', async (req, res) => {
     if (!req.params.userid) {

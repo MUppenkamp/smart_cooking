@@ -15,7 +15,7 @@ app.use('/recipe', recipe);
 // region CreateDatabaseTable
 
 const createUserTable = "CREATE TABLE IF NOT EXISTS app_user(id serial primary key, first_name varchar, last_name varchar, password varchar, mail varchar, picture varchar)";
-const createRecipeWeekTable = "CREATE TABLE IF NOT EXISTS recipe_week (id serial primary key, user_id integer references app_user(id), state_data date, end_data date)";
+const createRecipeWeekTable = "CREATE TABLE IF NOT EXISTS recipe_week (id serial primary key, user_id integer references app_user(id), start_date date, end_date date)";
 const createDifficultyTable = "CREATE TABLE IF NOT EXISTS difficulty (id serial primary key, name varchar, icon varchar)";
 
 const createRecipeTable = "CREATE TABLE IF NOT EXISTS recipe (id serial primary key, name varchar, duration integer, difficulty_id integer references difficulty(id), description varchar, calorific_value integer, protein integer, fat integer, carbohydrates integer, portion integer, picture varchar)";
