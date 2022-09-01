@@ -1,5 +1,5 @@
 import express from 'express'
-import { createPool, pgQuery } from '../helper/pgQuery';
+import { createPool, disconnectPool, pgQuery } from '../helper/pgQuery';
 import { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
 import { GetAllRecipeDBO, TIngredientsDBO, TRecipeDBO } from '../types/DBO/Recipe';
 
@@ -83,6 +83,8 @@ router.get('/:userid', async (req, res) => {
 
     await Promise.all(promises);
 
+    await disconnectPool(connection);
+
     res.status(200).json({
         data: dataArray
     })
@@ -164,10 +166,29 @@ router.get('/:userid/favorite', async (req, res) => {
 
     await Promise.all(promises);
 
+    await disconnectPool(connection);
+
     res.status(200).json({
         data: dataArray
     })
 
 })
+
+router.post('/:userid/favorite', async (req, res) => {
+    const query = "UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2";
+
+    console.log(req.body);
+
+    if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null ) {
+        res.status(400).json({});
+        return;
+    }
+
+    const connection = await createPool();
+    await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
+    await disconnectPool(connection);
+
+    res.status(204).json({});
+});
 
 export default router;
