@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import FetchState from "../../constants/fetchState";
+import FetchState from '../../constants/fetchState';
 import {
     checkShoppingListItems,
     fetchShoppingList
-} from "./shoppingListActions";
+} from './shoppingListActions';
 
 const initialState = {
     data: {},

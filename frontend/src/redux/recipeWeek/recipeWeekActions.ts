@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { postCalendarRecipes } from "../../api/POST/postRecipe";
-import { getCalendarRecipes } from "../../api/GET/getRecipes";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { postCalendarRecipes } from '../../api/POST/postRecipe';
+import { getCalendarRecipes } from '../../api/GET/getRecipes';
 
 export const fetchCalendarRecipes = createAsyncThunk(
     'fetchCalendarRecipes',

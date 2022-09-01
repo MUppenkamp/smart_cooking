@@ -9,25 +9,25 @@ const SiteName: React.FunctionComponent<SiteNameProps> = ({selectedNav}) => {
     let siteName: string;
     switch (selectedNav) {
         case 1:
-            siteName = "Rezepte";
+            siteName = 'Rezepte';
             break;
         case 2:
-            siteName = "Favoriten";
+            siteName = 'Favoriten';
             break;
         case 3:
-            siteName = "Wochenplan";
+            siteName = 'Wochenplan';
             break;
         case 4:
-            siteName = "Einkaufsliste";
+            siteName = 'Einkaufsliste';
             break;
         default:
-            siteName = "";
+            siteName = '';
             break;
     }
 
     return (
         <>
-            <h4 className="site-name">{siteName}</h4>
+            <h4 className='site-name'>{siteName}</h4>
         </>
     );
 };

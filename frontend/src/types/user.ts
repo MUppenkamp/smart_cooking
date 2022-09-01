@@ -7,7 +7,6 @@ export type TUser = {
     picture: string;
 };
 
-
 export type TLoginData = {
     mail: string;
     password: string;

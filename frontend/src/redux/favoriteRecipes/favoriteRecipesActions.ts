@@ -1,7 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getFavouriteRecipes } from "../../api/GET/getRecipes";
-import { postFavouriteRecipe } from "../../api/POST/postRecipe";
-import { TPostFavouriteRecipeParams } from "../../types/postRecipe";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getFavouriteRecipes } from '../../api/GET/getRecipes';
+import { postFavouriteRecipe } from '../../api/POST/postRecipe';
+import { TPostFavouriteRecipeParams } from '../../types/postRecipe';
 
 export const fetchFavouriteRecipes = createAsyncThunk(
     'fetchFavouriteRecipes',

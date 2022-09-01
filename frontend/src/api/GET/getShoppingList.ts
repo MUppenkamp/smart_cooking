@@ -1,6 +1,6 @@
-import requestHelper from "../../utils/requestHelper";
-import { SMART_COOKING_URL } from "../../constants/url";
-import { TRecipe } from "../../types/recipe";
+import requestHelper from '../../utils/requestHelper';
+import { SMART_COOKING_URL } from '../../constants/url';
+import { TRecipe } from '../../types/recipe';
 
 // ToDo: Update options
 export const getShoppingList = async (userId: number) => {

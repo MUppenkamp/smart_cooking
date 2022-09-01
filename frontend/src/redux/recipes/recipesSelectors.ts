@@ -1,4 +1,4 @@
-import type { RootState } from "../store";
+import type { RootState } from '../store';
 
 export const selectRecipesFetchState = (state: RootState) => state.recipes.fetchState;
 
