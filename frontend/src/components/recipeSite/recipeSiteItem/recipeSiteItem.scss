@@ -1,0 +1,14 @@
+@import '../../../constants/variables';
+
+
+.recipe-site-item {
+  width: 33%;
+  margin-bottom: 15px;
+
+  &__image {
+    border-radius: $border-radius !important;
+    object-fit: cover;
+    width: 90%;
+    height: 40vw;
+  }
+}
