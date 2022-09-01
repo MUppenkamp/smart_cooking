@@ -1,12 +1,9 @@
-
 export type TRecipeDTO = {
     id: number;
     name?: string;
     picture?: string;
     duration?: number;
-    difficulty?: {
-        name?: string;
-    };
+    difficultyName?: string;
     description?: string;
     calorificValue?: number;
     protein?: number;
@@ -22,8 +19,6 @@ export type TIngredients = {
     id: number;
     name?: string;
     quantity?: number;
-    quantityUnit?: {
-        id?: number;
-        name?: string
-    };
+    quantityUnitId?: number;
+    quantityUnitName?: string
 }

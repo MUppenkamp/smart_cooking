@@ -4,7 +4,7 @@ export const createPool = (): Pool => {
     return new Pool({
         user: 'postgres',
         password: 'postgres',
-        host: 'localhost',
+        host: process.env?.POSTGRES_URL || 'localhost',
         database: 'smart_cocking',
         port: 5432
     });
