@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { createRecipe, fetchRecipes } from "./recipesActions";
+import { createRecipe, fetchRecipes, updateRecipe } from "./recipesActions";
 import { TRecipe } from "../../types/recipe";
 import FetchState from "../../constants/fetchState";
 
@@ -47,6 +47,26 @@ const recipesSlice = createSlice({
                 ...state,
                 fetchState: FetchState.FETCHED
             };
+        });
+
+        builder.addCase(updateRecipe.pending, (state) => {
+            return {
+                ...state,
+                fetchState: FetchState.PENDING
+            };
+        });
+        builder.addCase(updateRecipe.fulfilled, (state, {payload }) => {
+            if (!payload) return;
+
+            recipesAdapter.updateOne(state.data, {
+                id: payload.id,
+                changes: payload
+            });
+
+            return {
+                ...state,
+                fetchState: FetchState.FETCHED
+            }
         });
     }
 });

@@ -37,3 +37,20 @@ export const createRecipe = createAsyncThunk(
         return rejectWithValue(null);
     }
 );
+
+export const updateRecipe = createAsyncThunk(
+    'updateRecipe',
+    async (
+        recipe: TRecipe,
+        { rejectWithValue }
+    ) => {
+        try {
+            const retval = await patchRecipe(recipe);
+            if (retval && retval.status === 200) {
+                return retval.data;
+            }
+        } catch (e) {}
+
+        return rejectWithValue(null);
+    }
+);
