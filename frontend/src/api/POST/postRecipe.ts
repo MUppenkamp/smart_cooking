@@ -9,6 +9,7 @@ import {
     TRecipeWeek
 } from "../../types/recipe";
 
+// ToDo: Update options
 export const postFavouriteRecipe = async (params: TPostFavouriteRecipeParams) => {
     return requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/`,

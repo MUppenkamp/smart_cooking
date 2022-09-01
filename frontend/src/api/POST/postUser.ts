@@ -6,6 +6,7 @@ import {
     TUser
 } from "../../types/user";
 
+// ToDo: Update options
 export const postUser = async (data: TLoginData | TRegisterData) => {
     return requestHelper<TUser>({
         requestUrl: `${SMART_COOKING_URL}/`,

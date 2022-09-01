@@ -2,6 +2,7 @@ import requestHelper from "../../utils/requestHelper";
 import { SMART_COOKING_URL } from "../../constants/url";
 import { TRecipe, TRecipeWeek } from "../../types/recipe";
 
+// ToDo: Update options
 export const getAllRecipes = async (userId: number) => {
     return requestHelper<Array<TRecipe>>({
         requestUrl: `${SMART_COOKING_URL}/`,
