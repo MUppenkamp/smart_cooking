@@ -1,6 +1,6 @@
-type ShoppingListItem = {
+type TShoppingListItem = {
     date: Date;
-    recipe: Recipe;
+    recipe: TRecipe;
 };
 
-type ShoppingList = Array<ShoppingListItem>;
+type TShoppingList = Array<TShoppingListItem>;

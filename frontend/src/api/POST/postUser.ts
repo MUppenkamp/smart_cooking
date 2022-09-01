@@ -1,6 +1,4 @@
-type PostUserReturns = { data: User, status: number };
-
-export const postUser = async (data: LoginData | RegisterData): Promise<PostUserReturns | null> => {
+export const postUser = async (data: TLoginData | TRegisterData): Promise<TPostUserReturns | null> => {
     // ToDo: Return Dummy Data
     return null;
 };

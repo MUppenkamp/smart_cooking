@@ -1,4 +1,4 @@
-type User = {
+type TUser = {
     id: number;
     firstName: string;
     lastName: string;
@@ -8,12 +8,12 @@ type User = {
 };
 
 
-type LoginData = {
+type TLoginData = {
     mail: string;
     password: string;
 };
 
-type RegisterData = {
+type TRegisterData = {
     firstName: string;
     lastName: string;
     password: string;

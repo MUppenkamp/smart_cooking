@@ -1,4 +1,4 @@
-type Ingredient = {
+type TIngredient = {
     id: number;
     name: string;
     quantity: number;
@@ -8,7 +8,7 @@ type Ingredient = {
     }
 };
 
-type Recipe = {
+type TRecipe = {
     id: number;
     name: string;
     picture: string;
@@ -24,16 +24,16 @@ type Recipe = {
     portion: number;
     isFavourite: boolean;
     isOwn: boolean;
-    ingredients: Array<Ingredient>;
+    ingredients: Array<TIngredient>;
 };
 
-type RecipeState = {
-    data: Array<Recipe>
+type TRecipeState = {
+    data: Array<TRecipe>
 };
 
-type RecipeWeekDay = {
+type TRecipeWeekDay = {
     date: Date;
-    recipe: Recipe;
+    recipe: TRecipe;
 }
 
-type RecipeWeek = Array<RecipeWeekDay>;
+type TRecipeWeek = Array<TRecipeWeekDay>;

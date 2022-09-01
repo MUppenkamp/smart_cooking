@@ -1,10 +1,13 @@
-type GetAllRecipesReturns = {
-    status: number;
-    data: RecipeState
-}
-
-const getAllRecipes = async (): Promise<GetAllRecipesReturns | null> => {
+export const getAllRecipes = async (): Promise<TGetRecipesReturns | null> => {
     // ToDo: Return Dummy Data
     return null;
 };
 
+export const getFavouriteRecipes = async (): Promise<TGetRecipesReturns | null> => {
+
+    return null;
+};
+
+export const getCalendarRecipes = async (): Promise<TGetRecipesReturns | null> => {
+    return null;
+};
