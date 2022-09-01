@@ -1,4 +1,4 @@
-import { TRecipeState } from "./recipe";
+import { TRecipe } from "./recipe";
 
 export type TGetRecipesParams = {
 
@@ -6,5 +6,5 @@ export type TGetRecipesParams = {
 
 export type TGetRecipesReturns = {
     status: number;
-    data: TRecipeState
+    data: Array<TRecipe>
 };

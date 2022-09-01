@@ -1,11 +1,12 @@
 import {
     TPostCalendarRecipeParams,
     TPostCalendarRecipeReturns,
+    TPostFavouriteRecipeParams,
     TPostRecipeParams,
     TPostRecipeReturns
 } from "../../types/postRecipe";
 
-export const postFavouriteRecipe = async (params: TPostRecipeParams): Promise<TPostRecipeReturns | null> => {
+export const postFavouriteRecipe = async (params: TPostFavouriteRecipeParams): Promise<TPostRecipeReturns | null> => {
     return null;
 };
 

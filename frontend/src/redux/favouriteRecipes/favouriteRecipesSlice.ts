@@ -1,7 +1,13 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { createRecipe, fetchRecipes } from "./recipesActions";
+import {
+    createEntityAdapter,
+    createSlice
+} from '@reduxjs/toolkit';
 import { TRecipe } from "../../types/recipe";
 import FetchState from "../../constants/fetchState";
+import {
+    fetchFavouriteRecipes,
+    updateFavourite
+} from "./favouriteRecipesActions";
 
 const recipesAdapter = createEntityAdapter<TRecipe>();
 
@@ -10,18 +16,18 @@ const initialState = {
     data: recipesAdapter.getInitialState(),
 };
 
-const recipesSlice = createSlice({
-    name: 'recipesSlice',
+const favouriteRecipesSlice = createSlice({
+    name: 'favouriteRecipesSlice',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchRecipes.pending, (state) => {
+        builder.addCase(fetchFavouriteRecipes.pending, (state) => {
             return {
                 ...state,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(fetchRecipes.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchFavouriteRecipes.fulfilled, (state, { payload }) => {
             if (!payload) return;
 
             recipesAdapter.addMany(state.data, payload);
@@ -32,21 +38,25 @@ const recipesSlice = createSlice({
             };
         });
 
-        builder.addCase(createRecipe.pending, (state) => {
+        builder.addCase(updateFavourite.pending, (state) => {
             return {
                 ...state,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(createRecipe.fulfilled, (state, { payload }) => {
-            recipesAdapter.addOne(state.data, payload);
+        builder.addCase(updateFavourite.fulfilled, (state, { payload }) => {
+            recipesAdapter.updateOne(state.data, {
+                id: payload.id,
+                changes: payload
+            });
 
             return {
                 ...state,
                 fetchState: FetchState.FETCHED
-            };
+            }
         });
     }
 });
 
-export default recipesSlice.reducer;
+
+export default favouriteRecipesSlice.reducer;

@@ -4,10 +4,8 @@ export type TIngredient = {
     id: number;
     name: string;
     quantity: number;
-    quantityUnit: {
-        id: number;
-        name: string;
-    }
+    quantityUnitId: number;
+    quantityUnitName: string;
 };
 
 export type TRecipe = {
@@ -26,11 +24,6 @@ export type TRecipe = {
     isFavourite: boolean;
     isOwn: boolean;
     ingredients: Array<TIngredient>;
-};
-
-export type TRecipeState = {
-    fetchState: FetchState;
-    data: Array<TRecipe>
 };
 
 export type TRecipeWeekDay = {

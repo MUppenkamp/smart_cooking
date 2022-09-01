@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { postUser } from "../../api/POST/postUser";
 import { patchUser } from "../../api/PATCH/patchUser";
+import {
+    TLoginData,
+    TRegisterData
+} from "../../types/user";
 
 export const fetchUser = createAsyncThunk(
     'fetchUser',

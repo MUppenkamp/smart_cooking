@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUser } from "./userActions";
+import { fetchUser, updateUser } from "./userActions";
 import FetchState from "../../constants/fetchState";
 
 const initialState = {
@@ -12,17 +12,38 @@ const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+        builder.addCase(fetchUser.pending, (state) => {
+            return {
+                ...state,
+                fetchState: FetchState.PENDING,
+            };
+        });
         builder.addCase(fetchUser.fulfilled, (state, { payload }) => {
             return {
                 fetchState: FetchState.FETCHED,
                 data: {
-                    ...state.data
+                    ...state.data,
+                    payload
                 }
-            }
+            };
         });
+
+        builder.addCase(updateUser.pending, (state) => {
+            return {
+                ...state,
+                fetchState: FetchState.PENDING,
+            };
+        });
+        builder.addCase(updateUser.fulfilled, (state, { payload }) => {
+            return {
+                fetchState: FetchState.FETCHED,
+                data: {
+                    ...state.data,
+                    payload
+                }
+            };
+        })
     }
 });
-
-export const {} = userSlice.actions;
 
 export default userSlice.reducer;

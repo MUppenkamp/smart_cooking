@@ -1,22 +1,52 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import {} from './actions';
+import FetchState from "../../constants/fetchState";
+import {
+    checkShoppingListItems,
+    fetchShoppingList
+} from "./shoppingListActions";
 
 const initialState = {
-    // ToDo: Add dummy data
-
+    data: {},
+    fetchState: FetchState.INITIAL
 };
 
 const shoppingListSlice = createSlice({
     name: 'shoppingListSlice',
     initialState,
-    reducers: {
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchShoppingList.pending, (state) => {
+            return {
+                ...state,
+                fetchState: FetchState.PENDING
+            };
+        });
+        builder.addCase(fetchShoppingList.fulfilled, (state, { payload }) => {
+            return {
+                fetchState: FetchState.FETCHED,
+                data: {
+                    ...state.data,
+                    payload
+                }
+            };
+        });
 
-    },
-    extraReducers: {
-
+        builder.addCase(checkShoppingListItems.pending, (state) => {
+            return {
+                ...state,
+                fetchState: FetchState.PENDING
+            };
+        });
+        builder.addCase(checkShoppingListItems.fulfilled, (state, { payload }) => {
+            return {
+                fetchState: FetchState.FETCHED,
+                data: {
+                    ...state.data,
+                    payload
+                }
+            };
+        });
     }
 });
-
-// export const {} = shoppingListSlice.actions;
 
 export default shoppingListSlice.reducer;
