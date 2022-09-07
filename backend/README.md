@@ -22,6 +22,15 @@ POST recipe/{userId}/favorite
 Body:
 
     {
-        "Id": number,
+        "id": number,
         "isFavorite": boolean
+    }
+
+POST recipe/{userid}/shopping/list
+
+Body:
+
+    {
+        "id": number,
+        "isChecked": boolean
     }
