@@ -29,13 +29,13 @@ router.get('/:userid', async (req, res) => {
         from recipe as r
         LEFT JOIN difficulty as d ON d.id = r.difficulty_id
         LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id AND u2c.user_id = $1
-        WHERE u2c.user_id IS NULL
+        WHERE u2c.is_own IS NULL OR u2c.is_own IS FALSE
         `;
     const connection = createPool();
     const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
     if (!result?.rowCount || result?.rowCount <= 0) {
-        res.status(404).json({});
+        res.status(204).json({});
         return;
     }
 
@@ -119,7 +119,7 @@ router.get('/:userid/favorite', async (req, res) => {
     const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
     if (!result?.rowCount || result?.rowCount <= 0) {
-        res.status(404).json({});
+        res.status(204).json({});
         return;
     }
 
