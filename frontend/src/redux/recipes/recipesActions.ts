@@ -11,9 +11,9 @@ export const fetchRecipes = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getAllRecipes(userId);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await getAllRecipes(userId);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 
@@ -28,9 +28,9 @@ export const createRecipe = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await postRecipe(recipe);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await postRecipe(recipe);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 
@@ -45,9 +45,9 @@ export const updateRecipe = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await patchRecipe(recipe);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await patchRecipe(recipe);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 
