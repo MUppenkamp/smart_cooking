@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser, updateUser } from './userActions';
 import FetchState from '../../constants/fetchState';
+import { TUser } from "../../types/user";
 
-const initialState = {
-    data: {},
+type TInitialState = {
+    data: TUser | null;
+    fetchState: FetchState;
+};
+
+const initialState: TInitialState = {
+    data: null,
     fetchState: FetchState.INITIAL
 };
 
@@ -16,11 +22,10 @@ const userSlice = createSlice({
             draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchUser.fulfilled, (draft, { payload }) => {
+            if (!payload) return;
+
             draft.fetchState = FetchState.FETCHED;
-            draft.data = {
-                ...draft.data,
-                ...payload
-            };
+            draft.data = payload;
         });
 
         builder.addCase(updateUser.pending, (draft) => {
@@ -28,11 +33,8 @@ const userSlice = createSlice({
         });
         builder.addCase(updateUser.fulfilled, (draft, { payload }) => {
             draft.fetchState = FetchState.FETCHED;
-            draft.data = {
-                ...draft.data,
-                ...payload
-            };
-        });
+            draft.data = payload;
+        })
     }
 });
 

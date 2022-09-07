@@ -8,16 +8,21 @@ import NoContent from './mainFrames/noContent/NoContent';
 import SiteName from './mainFrames/siteName/SiteName';
 import Header from './mainFrames/header/Header';
 import RecipeSite from './recipeSite/RecipeSite';
-import { TRecipe } from '../types/recipe';
 import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
-import { useAppDispatch } from '../hook';
 import { SelectedSite } from '../constants/selectedSite';
 import LoginSite from './loginSite/LoginSite';
+import { useAppDispatch, useAppSelector } from '../hook';
+import { fetchUser } from '../redux/user/userActions';
+import FavoriteSite from './favoriteSite/FavoriteSite';
+import { TRecipe } from '../types/recipe';
+import { fetchFavoriteRecipes } from '../redux/favoriteRecipes/favoriteRecipesActions';
+import { selectUser } from '../redux/user/userSelectors';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
     const [selectedRecipe, setSelectedRecipe] = useState(null as TRecipe | null);
     const dispatch = useAppDispatch();
+    const user = useAppSelector(selectUser);
 
     useEffect(() => {
         if (selectedRecipe !== null) setSelectedSite(SelectedSite.NOTHING);
@@ -27,55 +32,20 @@ const App: FC<Record<string, never>> = () => {
         if (selectedSite && selectedSite > 0) setSelectedRecipe(null);
     }, [selectedSite]);
 
-    // useEffect(() => {
-    //     // Favorites
-    //     dispatch(fetchFavoriteRecipes(2));
-    //     dispatch(updateFavorite({
-    //         id: 1,
-    //         isFavorite: true
-    //     }));
-    //
-    //     // Recipes
-    //     dispatch(fetchRecipes(2));
-    //     dispatch(createRecipe({
-    //         name: 'Test',
-    //         picture: '',
-    //         duration: 30,
-    //         difficultyId: 2,
-    //         description: 'Create Test',
-    //         calorificValue: 30,
-    //         protein: 26,
-    //         fat: 87,
-    //         carbohydrates: 44,
-    //         portion: 42,
-    //         isFavorite: true,
-    //         isOwn: true,
-    //         ingredients: [{
-    //             name: 'Test Ingredient',
-    //             quantity: 10,
-    //             quantityUnitId: 1
-    //         }]
-    //     }));
-    //
-    //     // RecipeWeek
-    //     dispatch(fetchCalendarRecipes(2));
-    //     dispatch(randomizeCalendarRecipes());
-    //
-    //     // ShoppingList
-    //
-    //     // User
-    //     dispatch(fetchUser({
-    //         firstName: 'Jana',
-    //         lastName: 'Walfort',
-    //         mail: 'jana.walort@gmail.com',
-    //         password: '1234'
-    //     }));
-    //     dispatch(updateUser({
-    //         id: 2,
-    //         firstName: 'Test'
-    //     }));
-    // }, []);
+    useEffect(() => {
+        dispatch(fetchUser({
+            firstName: 'Jana',
+            lastName: 'Walfort',
+            mail: 'jana.walort@gmail.com',
+            password: '1234'
+        }));
+    }, []);
 
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchFavoriteRecipes(user.id));
+        }
+    }, [user]);
 
     return (
         <>
@@ -83,7 +53,7 @@ const App: FC<Record<string, never>> = () => {
                 <Header setSelectedSite={setSelectedSite}/>
                 <SiteName selectedSite={selectedSite}/>
                 <SearchBar/>
-                <Container className="inner-container">
+                <Container className='inner-container'>
                     {
                         selectedSite === SelectedSite.ERROR && (
                             <NoContent/>
@@ -99,6 +69,9 @@ const App: FC<Record<string, never>> = () => {
                     {
                         selectedSite === SelectedSite.FAVORITE_SITE && (
                             <>
+                                <FavoriteSite
+                                    setSelectedRecipe={setSelectedRecipe}
+                                />
                             </>
                         )
                     }

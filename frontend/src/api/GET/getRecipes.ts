@@ -50,16 +50,34 @@ export const getFavoriteRecipes = async (userId: number) => {
         }
     });
 
-    if (response.status === 200) {
-        return response;
-    }
-
     return {
         status: 200,
         data: [{
             id: 1,
-            name: 'Pizza',
+            name: 'Nudeln',
             picture: 'https://www.gutekueche.at/storage/media/recipe/113180/conv/nudeln-in-tomatensauce-default.jpg',
+            duration: 20,
+            difficultyId: 1,
+            difficultyName: 'Einfach',
+            description: 'Nudeln',
+            calorificValue: 1,
+            protein: 1,
+            fat: 1,
+            carbohydrates: 1,
+            portion: 1,
+            isFavorite: true,
+            isOwn: true,
+            ingredients: [{
+                id: 1,
+                name: 'Nudeln',
+                quantity: 500,
+                quantityUnitId: 1,
+                quantityUnitName: 'Gramm'
+            }]
+        }, {
+            id: 2,
+            name: 'Pizza',
+            picture: 'https://www.gutekueche.at/storage/media/recipe-category/7592/resp/pizza___webp_940_470.webp',
             duration: 20,
             difficultyId: 1,
             difficultyName: 'Einfach',
@@ -70,7 +88,95 @@ export const getFavoriteRecipes = async (userId: number) => {
             carbohydrates: 1,
             portion: 1,
             isFavorite: true,
+            isOwn: true,
+            ingredients: [{
+                id: 1,
+                name: 'Salami',
+                quantity: 500,
+                quantityUnitId: 1,
+                quantityUnitName: 'Gramm'
+            }]
+        }, {
+            id: 3,
+            name: 'Pizza',
+            picture: 'https://www.gutekueche.at/storage/media/recipe-category/7592/resp/pizza___webp_940_470.webp',
+            duration: 20,
+            difficultyId: 1,
+            difficultyName: 'Einfach',
+            description: 'Pizza Salami',
+            calorificValue: 1,
+            protein: 1,
+            fat: 1,
+            carbohydrates: 1,
+            portion: 1,
+            isFavorite: true,
+            isOwn: true,
+            ingredients: [{
+                id: 1,
+                name: 'Salami',
+                quantity: 500,
+                quantityUnitId: 1,
+                quantityUnitName: 'Gramm'
+            }]
+        }, {
+            id: 4,
+            name: 'Pizza',
+            picture: 'https://www.gutekueche.at/storage/media/recipe-category/7592/resp/pizza___webp_940_470.webp',
+            duration: 20,
+            difficultyId: 1,
+            difficultyName: 'Einfach',
+            description: 'Pizza Salami',
+            calorificValue: 1,
+            protein: 1,
+            fat: 1,
+            carbohydrates: 1,
+            portion: 1,
+            isFavorite: true,
+            isOwn: true,
+            ingredients: [{
+                id: 1,
+                name: 'Salami',
+                quantity: 500,
+                quantityUnitId: 1,
+                quantityUnitName: 'Gramm'
+            }]
+        }, {
+            id: 5,
+            name: 'Salat',
+            picture: 'https://www.gutekueche.at/storage/media/recipe/21192/resp/klassischer-gurkensalat___webp_620_412.webp',
+            duration: 20,
+            difficultyId: 1,
+            difficultyName: 'Einfach',
+            description: 'Einfacher Gurkensalat',
+            calorificValue: 1,
+            protein: 1,
+            fat: 1,
+            carbohydrates: 1,
+            portion: 1,
+            isFavorite: true,
             isOwn: false,
+            ingredients: [{
+                id: 1,
+                name: 'Gurken',
+                quantity: 500,
+                quantityUnitId: 1,
+                quantityUnitName: 'Gramm'
+            }]
+        }, {
+            id: 6,
+            name: 'Pizza',
+            picture: 'https://www.gutekueche.at/storage/media/recipe-category/7592/resp/pizza___webp_940_470.webp',
+            duration: 20,
+            difficultyId: 1,
+            difficultyName: 'Einfach',
+            description: 'Pizza Salami',
+            calorificValue: 1,
+            protein: 1,
+            fat: 1,
+            carbohydrates: 1,
+            portion: 1,
+            isFavorite: true,
+            isOwn: true,
             ingredients: [{
                 id: 1,
                 name: 'Salami',

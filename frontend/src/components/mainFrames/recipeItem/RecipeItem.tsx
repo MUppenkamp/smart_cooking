@@ -1,20 +1,19 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import './recipeSiteItem.scss';
+import './recipeItem.scss';
 import { TRecipe } from '../../../types/recipe';
 import { Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faGear } from '@fortawesome/free-solid-svg-icons';
 
 type RecipeSiteItemProps = {
     recipe: TRecipe,
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
 };
 
-const RecipeSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
-                                                                          recipe,
-                                                                          setSelectedRecipe
-                                                                      }) => {
-
+const RecipeItem: React.FunctionComponent<RecipeSiteItemProps> = ({
+                                                                      recipe,
+                                                                      setSelectedRecipe
+                                                                  }) => {
     return (
         <div
             className="recipe-site-item__recipe"
@@ -23,8 +22,10 @@ const RecipeSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
             <div className="recipe-site-item">
                 <div className="recipe-site-item__icon">
                     <FontAwesomeIcon
-                        icon={faHeart}
-                        className={recipe.isFavorite ? 'recipe-site-item__icon__favorite' : 'recipe-site-item__icon__not-favorite'}
+                        icon={recipe.isOwn ? faGear : faHeart}
+                        className={recipe.isOwn
+                            ? 'recipe-site-item__icon__own'
+                            : (recipe.isFavorite ? 'recipe-site-item__icon__favorite' : 'recipe-site-item__icon__not-favorite')}
                     />
                 </div>
             </div>
@@ -39,4 +40,4 @@ const RecipeSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
     );
 };
 
-export default RecipeSiteItem;
+export default RecipeItem;
