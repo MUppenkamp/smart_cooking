@@ -22,7 +22,8 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = () => {
     }, {
         id: 1,
         name: 'Pizza Salami',
-        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU'
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU',
+        isFavorite: true
     }, {
         id: 1,
         name: 'Pizza Salami',
@@ -33,12 +34,14 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = () => {
         picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU'
     }, {
         id: 1,
-        name: 'Pizza Salami',
-        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU'
+        name: 'Pizza Salami mit Ananas',
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU',
+        isFavorite: true
     }, {
         id: 1,
         name: 'Pizza Salami',
-        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU'
+        picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsABh2XiBHmNb2Q5aShyTXi8Ip6ZqorSdhNA&usqp=CAU',
+        isFavorite: true
     },] as Array<TRecipe>);
 
     const date = new Date;
