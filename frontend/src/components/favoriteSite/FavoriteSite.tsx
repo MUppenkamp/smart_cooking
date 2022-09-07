@@ -1,11 +1,12 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './favoriteSite.scss';
-import { useAppDispatch, useAppSelector } from '../../hook';
+import { useAppSelector } from '../../hook';
 import { selectUser } from '../../redux/user/userSelectors';
 import { selectFavoriteRecipes } from '../../redux/favoriteRecipes/favoriteRecipesSelectors';
-import { fetchFavoriteRecipes } from '../../redux/favoriteRecipes/favoriteRecipesActions';
 import RecipeItem from '../mainFrames/recipeItem/RecipeItem';
 import { TRecipe } from '../../types/recipe';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 type FavoriteSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -35,6 +36,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
                                 key={recipe.id}
                                 recipe={recipe}
                                 setSelectedRecipe={setSelectedRecipe}
+                                showGear={true}
                             />
                         );
                     })
