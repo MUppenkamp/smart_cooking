@@ -28,7 +28,7 @@ export const recipeRandomise = async (userid: number) => {
         const createdRecipeWeek = await pgQuery<RecipeWeekDBO>(connection, createRecipeWeek, [userid, nowDate, futureDate]);
 
         if (createdRecipeWeek?.rowCount && createdRecipeWeek.rowCount > 0) {
-            await createRecipe(connection, userid, createdRecipeWeek.rows[0].id, differenceInDays(nowDate, futureDate), nowDate);
+            await createRecipe(connection, userid, createdRecipeWeek.rows[0].id, differenceInDays(futureDate, nowDate), nowDate);
         }
     }
 
