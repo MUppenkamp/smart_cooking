@@ -40,7 +40,11 @@ h4 {
   color: $basic-text-color;
 }
 
-body {
+html {
+  background-color: $background-color;
+}
+
+.container {
   background-color: $background-color;
 }
 
