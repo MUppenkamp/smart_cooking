@@ -2,6 +2,7 @@ import express from 'express'
 import { createPool, disconnectPool, pgQuery } from '../helper/pgQuery';
 import type { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
 import type { GetAllRecipeDBO, TIngredientsDBO } from '../types/DBO/Recipe';
+import { recipeRandomise } from '../helper/recipeRandomise';
 
 const router = express.Router();
 
@@ -10,6 +11,8 @@ router.get('/:userid', async (req, res) => {
         res.status(400).json({});
         return;
     }
+
+    const recipePromise = recipeRandomise(Number(req.params.userid));
 
     // Get recipe
     const getRecipe = `SELECT r.id, 
@@ -80,7 +83,7 @@ router.get('/:userid', async (req, res) => {
         })
     });
 
-    await Promise.all(promises);
+    await Promise.all([...promises, recipePromise]);
 
     await disconnectPool(connection);
 
@@ -94,6 +97,8 @@ router.get('/:userid/favorite', async (req, res) => {
         res.status(400).json({});
         return;
     }
+
+    const recipePromise = recipeRandomise(Number(req.params.userid));
 
     // Get recipe
     const getRecipe = `SELECT r.id, 
@@ -164,7 +169,7 @@ router.get('/:userid/favorite', async (req, res) => {
         })
     });
 
-    await Promise.all(promises);
+    await Promise.all([...promises, recipePromise]);
 
     await disconnectPool(connection);
 
@@ -183,6 +188,8 @@ router.post('/:userid/favorite', async (req, res) => {
         res.status(400).json({});
         return;
     }
+
+    await recipeRandomise(Number(req.params.userid));
 
     const connection = await createPool();
     await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
