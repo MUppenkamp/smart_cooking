@@ -1,16 +1,18 @@
 import express from 'express'
 import { createPool, disconnectPool, pgQuery } from '../helper/pgQuery';
-import { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
-import { GetAllRecipeDBO, TIngredientsDBO, TRecipeDBO } from '../types/DBO/Recipe';
+import type { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
+import type { GetAllRecipeDBO, TIngredientsDBO } from '../types/DBO/Recipe';
+import { recipeRandomise } from '../helper/recipeRandomise';
 
 const router = express.Router();
-
 
 router.get('/:userid', async (req, res) => {
     if (!req.params.userid) {
         res.status(400).json({});
         return;
     }
+
+    const recipePromise = recipeRandomise(Number(req.params.userid));
 
     // Get recipe
     const getRecipe = `SELECT r.id, 
@@ -30,13 +32,13 @@ router.get('/:userid', async (req, res) => {
         from recipe as r
         LEFT JOIN difficulty as d ON d.id = r.difficulty_id
         LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id AND u2c.user_id = $1
-        WHERE u2c.user_id IS NULL
+        WHERE u2c.is_own IS NULL OR u2c.is_own IS FALSE
         `;
     const connection = createPool();
     const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
     if (!result?.rowCount || result?.rowCount <= 0) {
-        res.status(404).json({});
+        res.status(204).json({});
         return;
     }
 
@@ -81,7 +83,7 @@ router.get('/:userid', async (req, res) => {
         })
     });
 
-    await Promise.all(promises);
+    await Promise.all([...promises, recipePromise]);
 
     await disconnectPool(connection);
 
@@ -95,6 +97,8 @@ router.get('/:userid/favorite', async (req, res) => {
         res.status(400).json({});
         return;
     }
+
+    const recipePromise = recipeRandomise(Number(req.params.userid));
 
     // Get recipe
     const getRecipe = `SELECT r.id, 
@@ -120,7 +124,7 @@ router.get('/:userid/favorite', async (req, res) => {
     const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [req.params.userid]);
 
     if (!result?.rowCount || result?.rowCount <= 0) {
-        res.status(404).json({});
+        res.status(204).json({});
         return;
     }
 
@@ -165,7 +169,7 @@ router.get('/:userid/favorite', async (req, res) => {
         })
     });
 
-    await Promise.all(promises);
+    await Promise.all([...promises, recipePromise]);
 
     await disconnectPool(connection);
 
@@ -184,6 +188,8 @@ router.post('/:userid/favorite', async (req, res) => {
         res.status(400).json({});
         return;
     }
+
+    await recipeRandomise(Number(req.params.userid));
 
     const connection = await createPool();
     await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
