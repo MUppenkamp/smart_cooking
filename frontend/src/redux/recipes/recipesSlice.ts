@@ -3,9 +3,7 @@ import { createRecipe, fetchRecipes, updateRecipe } from './recipesActions';
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 
-const recipesAdapter = createEntityAdapter<TRecipe>({
-    selectId: (model) => model.id
-});
+const recipesAdapter = createEntityAdapter<TRecipe>();
 
 const initialState = {
     fetchState: FetchState.INITIAL,
@@ -18,10 +16,7 @@ const recipesSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchRecipes.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchRecipes.fulfilled, (draft, { payload }) => {
             console.log('fetchRecipes', payload);
@@ -32,10 +27,7 @@ const recipesSlice = createSlice({
         });
 
         builder.addCase(createRecipe.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(createRecipe.fulfilled, (draft, { payload }) => {
             if (!payload) return;
@@ -45,10 +37,7 @@ const recipesSlice = createSlice({
         });
 
         builder.addCase(updateRecipe.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(updateRecipe.fulfilled, (draft, {payload }) => {
             if (!payload) return;

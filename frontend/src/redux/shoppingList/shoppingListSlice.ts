@@ -16,35 +16,25 @@ const shoppingListSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchShoppingList.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchShoppingList.fulfilled, (draft, { payload }) => {
-            return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...draft.data,
-                    payload
-                }
+            draft.data = {
+                ...draft.data,
+                payload
             };
+            draft.fetchState = FetchState.FETCHED;
         });
 
         builder.addCase(checkShoppingListItems.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(checkShoppingListItems.fulfilled, (draft, { payload }) => {
-            return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...draft.data,
-                    payload
-                }
+            draft.data = {
+                ...draft.data,
+                payload
             };
+            draft.fetchState = FetchState.FETCHED;
         });
     }
 });

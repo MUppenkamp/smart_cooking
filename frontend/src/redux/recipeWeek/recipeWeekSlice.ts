@@ -21,10 +21,7 @@ const recipeWeekSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchCalendarRecipes.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchCalendarRecipes.fulfilled, (draft, { payload }) => {
             console.log('fetchCalendarRecipes', payload)
@@ -35,10 +32,7 @@ const recipeWeekSlice = createSlice({
         });
 
         builder.addCase(randomizeCalendarRecipes.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(randomizeCalendarRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;

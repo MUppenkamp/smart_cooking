@@ -22,10 +22,7 @@ const favoriteRecipesSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchFavouriteRecipes.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchFavouriteRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
@@ -35,10 +32,7 @@ const favoriteRecipesSlice = createSlice({
         });
 
         builder.addCase(updateFavourite.pending, (draft) => {
-            return {
-                ...draft,
-                fetchState: FetchState.PENDING
-            };
+            draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(updateFavourite.fulfilled, (draft, { payload }) => {
             if (!payload) return;
