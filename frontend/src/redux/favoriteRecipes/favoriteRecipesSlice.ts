@@ -1,13 +1,7 @@
-import {
-    createEntityAdapter,
-    createSlice
-} from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
-import {
-    fetchFavoriteRecipes,
-    updateFavorite
-} from './favoriteRecipesActions';
+import { fetchFavoriteRecipes, updateFavorite } from './favoriteRecipesActions';
 
 const recipesAdapter = createEntityAdapter<TRecipe>();
 

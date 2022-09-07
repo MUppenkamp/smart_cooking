@@ -14,7 +14,8 @@ export const fetchFavoriteRecipes = createAsyncThunk(
             if (retVal && retVal.data) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }
@@ -31,7 +32,8 @@ export const updateFavorite = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }

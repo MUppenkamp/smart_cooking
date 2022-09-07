@@ -1,23 +1,23 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 import Navigation from './mainFrames/navigation/Navigation';
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import SearchBar from './mainFrames/searchBar/SearchBar';
 import NoContent from './mainFrames/noContent/NoContent';
 import SiteName from './mainFrames/siteName/SiteName';
 import Header from './mainFrames/header/Header';
 import RecipeSite from './recipeSite/RecipeSite';
-import {TRecipe} from "../types/recipe";
-import RecipeDetailsSite from "./recipeDetailsSite/RecipeDetailsSite";
-import { createRecipe, fetchRecipes } from "../redux/recipes/recipesActions";
-import { fetchUser, updateUser } from "../redux/user/userActions";
-import { useAppDispatch } from "../hook";
-import { fetchFavoriteRecipes, updateFavorite } from "../redux/favoriteRecipes/favoriteRecipesActions";
-import { fetchCalendarRecipes, randomizeCalendarRecipes } from "../redux/recipeWeek/recipeWeekActions";
+import { TRecipe } from '../types/recipe';
+import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
+import { createRecipe, fetchRecipes } from '../redux/recipes/recipesActions';
+import { useAppDispatch } from '../hook';
+import { fetchUser, updateUser } from '../redux/user/userActions';
+import { fetchFavoriteRecipes, updateFavorite } from '../redux/favoriteRecipes/favoriteRecipesActions';
+import { fetchCalendarRecipes, randomizeCalendarRecipes } from '../redux/recipeWeek/recipeWeekActions';
 
 const App: FC<Record<string, never>> = () => {
-    const [selectedNav, setSelectedNav] = useState(1 as number|null);
+    const [selectedNav, setSelectedNav] = useState(1 as number | null);
     const [selectedRecipe, setSelectedRecipe] = useState(null as TRecipe | null);
     const dispatch = useAppDispatch();
 
@@ -81,10 +81,10 @@ const App: FC<Record<string, never>> = () => {
     return (
         <>
             <Container>
-                <Header />
-                <SiteName selectedNav={selectedNav} />
-                <SearchBar />
-                <Container className='inner-container'>
+                <Header/>
+                <SiteName selectedNav={selectedNav}/>
+                <SearchBar/>
+                <Container className="inner-container">
                     {
                         selectedNav === 1 && (
                             <RecipeSite
@@ -112,7 +112,7 @@ const App: FC<Record<string, never>> = () => {
                     }
                     {
                         selectedNav === 0 && (
-                            <NoContent />
+                            <NoContent/>
                         )
                     }
                     {
@@ -129,6 +129,7 @@ const App: FC<Record<string, never>> = () => {
                 setSelectedNav={setSelectedNav}
             />
         </>
-)};
+    );
+};
 
 export default App;

@@ -32,7 +32,7 @@ const userSlice = createSlice({
                 ...draft.data,
                 ...payload
             };
-        })
+        });
     }
 });
 
