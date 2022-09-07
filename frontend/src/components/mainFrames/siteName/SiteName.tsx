@@ -2,12 +2,12 @@ import React from 'react';
 import './siteName.scss';
 
 type SiteNameProps = {
-    selectedNav: number | null
+    selectedSite: number | null
 };
 
-const SiteName: React.FunctionComponent<SiteNameProps> = ({ selectedNav }) => {
+const SiteName: React.FunctionComponent<SiteNameProps> = ({ selectedSite }) => {
     let siteName: string;
-    switch (selectedNav) {
+    switch (selectedSite) {
         case 1:
             siteName = 'Rezepte';
             break;
