@@ -1,9 +1,9 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './recipeSiteItem.scss';
-import {TRecipe} from "../../../types/recipe";
-import {Image} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import { TRecipe } from '../../../types/recipe';
+import { Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 type RecipeSiteItemProps = {
     recipe: TRecipe,
@@ -17,11 +17,11 @@ const RecipeSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
 
     return (
         <div
-            className='recipe-site-item__recipe'
+            className="recipe-site-item__recipe"
             onClick={() => setSelectedRecipe(recipe)}
         >
-            <div className='recipe-site-item'>
-                <div className='recipe-site-item__icon'>
+            <div className="recipe-site-item">
+                <div className="recipe-site-item__icon">
                     <FontAwesomeIcon
                         icon={faHeart}
                         className={recipe.isFavorite ? 'recipe-site-item__icon__favorite' : 'recipe-site-item__icon__not-favorite'}
@@ -32,9 +32,9 @@ const RecipeSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
                 src={recipe.picture}
                 alt={recipe.name}
                 rounded
-                className='recipe-site-item__recipe__image'
+                className="recipe-site-item__recipe__image"
             />
-            <p className='recipe-site-item__recipe__text'>{recipe.name}</p>
+            <p className="recipe-site-item__recipe__text">{recipe.name}</p>
         </div>
     );
 };

@@ -13,7 +13,8 @@ export const fetchShoppingList = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }
@@ -30,7 +31,8 @@ export const checkShoppingListItems = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }

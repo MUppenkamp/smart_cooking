@@ -1,9 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import FetchState from '../../constants/fetchState';
-import {
-    fetchCalendarRecipes,
-    randomizeCalendarRecipes
-} from './recipeWeekActions';
+import { fetchCalendarRecipes, randomizeCalendarRecipes } from './recipeWeekActions';
 import { TRecipeWeekDay } from '../../types/recipe';
 
 const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
@@ -24,7 +21,7 @@ const recipeWeekSlice = createSlice({
             draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchCalendarRecipes.fulfilled, (draft, { payload }) => {
-            console.log('fetchCalendarRecipes', payload)
+            console.log('fetchCalendarRecipes', payload);
             if (!payload) return;
 
             recipeWeekAdapter.addMany(draft.data, payload);
