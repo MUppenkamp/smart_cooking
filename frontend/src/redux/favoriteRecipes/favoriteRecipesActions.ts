@@ -10,9 +10,9 @@ export const fetchFavoriteRecipes = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getFavoriteRecipes(userId);
-            if (retval && retval.data) {
-                return retval.data;
+            const retVal = await getFavoriteRecipes(userId);
+            if (retVal && retVal.data) {
+                return retVal.data;
             }
         } catch (e) {}
 
@@ -27,9 +27,9 @@ export const updateFavorite = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await postFavoriteRecipe(params);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await postFavoriteRecipe(params);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 

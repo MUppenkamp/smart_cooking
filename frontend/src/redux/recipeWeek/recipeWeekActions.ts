@@ -9,9 +9,9 @@ export const fetchCalendarRecipes = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getCalendarRecipes(userId);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await getCalendarRecipes(userId);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 
@@ -26,9 +26,9 @@ export const randomizeCalendarRecipes = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await postCalendarRecipes({});
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await postCalendarRecipes({});
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {}
 
