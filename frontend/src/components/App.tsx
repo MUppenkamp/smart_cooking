@@ -9,20 +9,24 @@ import SiteName from './mainFrames/siteName/SiteName';
 import Header from './mainFrames/header/Header';
 import { fetchRecipes } from "../redux/recipes/recipesActions";
 import { useAppDispatch } from "../hook";
-import { fetchUser } from "../redux/user/userActions";
+import { fetchUser, updateUser } from "../redux/user/userActions";
 
 const App: FC<Record<string, never>> = () => {
     const dispatch = useAppDispatch();
     const [selectedNav, setSelectedNav] = useState(1);
 
     useEffect(() => {
+        // User
         dispatch(fetchUser({
             firstName: 'Jana',
             lastName: 'Walfort',
             mail: 'jana.walort@gmail.com',
             password: '1234'
         }));
-        dispatch(fetchRecipes(2));
+        dispatch(updateUser({
+            id: 2,
+            firstName: 'Test'
+        }));
     }, []);
 
     return (

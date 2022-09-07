@@ -8,7 +8,17 @@ import {
 
 // ToDo: Update options
 export const postUser = async (data: TLoginData | TRegisterData) => {
-    console.log('post User');
+    const response = await requestHelper<TUser>({
+        requestUrl: `${SMART_COOKING_URL}/`,
+        options: {
+            method: 'POST'
+        }
+    });
+
+    if (response.status === 200) {
+        return response;
+    }
+
     return {
         status: 200,
         data: {
@@ -20,11 +30,4 @@ export const postUser = async (data: TLoginData | TRegisterData) => {
             picture: ''
         }
     };
-
-    // return requestHelper<TUser>({
-    //     requestUrl: `${SMART_COOKING_URL}/`,
-    //     options: {
-    //         method: 'POST'
-    //     }
-    // });
 };

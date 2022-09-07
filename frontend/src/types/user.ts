@@ -1,3 +1,12 @@
+export type TUpdateUser = {
+    id: number;
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+    mail?: string;
+    picture?: string;
+};
+
 export type TUser = {
     id: number;
     firstName: string;
