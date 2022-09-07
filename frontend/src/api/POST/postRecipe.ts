@@ -1,14 +1,7 @@
 import requestHelper from '../../utils/requestHelper';
 import { SMART_COOKING_URL } from '../../constants/url';
-import {
-    TPostCalendarRecipeParams,
-    TPostFavoriteRecipeParams,
-} from '../../types/postRecipe';
-import {
-    TCreateRecipe,
-    TRecipe,
-    TRecipeWeek
-} from '../../types/recipe';
+import { TPostCalendarRecipeParams, TPostFavoriteRecipeParams, } from '../../types/postRecipe';
+import { TCreateRecipe, TRecipe, TRecipeWeek } from '../../types/recipe';
 
 // ToDo: Update options
 export const postFavoriteRecipe = async (params: TPostFavoriteRecipeParams) => {

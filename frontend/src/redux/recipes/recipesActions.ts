@@ -15,7 +15,8 @@ export const fetchRecipes = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }
@@ -32,7 +33,8 @@ export const createRecipe = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }
@@ -49,7 +51,8 @@ export const updateRecipe = createAsyncThunk(
             if (retVal && retVal.status === 200) {
                 return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }

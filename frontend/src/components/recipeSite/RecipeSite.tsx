@@ -1,8 +1,8 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import './recipeSite.scss';
-import {TUser} from '../../types/user';
-import {TRecipe} from "../../types/recipe";
-import RecipeSiteItem from "./recipeSiteItem/RecipeSiteItem";
+import { TUser } from '../../types/user';
+import { TRecipe } from '../../types/recipe';
+import RecipeSiteItem from './recipeSiteItem/RecipeSiteItem';
 
 type RecipeSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -120,7 +120,7 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
     return (
         <>
             <h1>{greeting}{user.firstName.length > 0 ? `, ${user.firstName}` : ''}!</h1>
-            <div className='recipe-site'>
+            <div className="recipe-site">
                 {
                     recipes.map(recipe => {
                         return (
@@ -129,7 +129,7 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
                                 recipe={recipe}
                                 setSelectedRecipe={setSelectedRecipe}
                             />
-                        )
+                        );
                     })
                 }
             </div>

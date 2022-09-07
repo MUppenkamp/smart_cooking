@@ -1,11 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { postUser } from '../../api/POST/postUser';
 import { patchUser } from '../../api/PATCH/patchUser';
-import {
-    TLoginData,
-    TRegisterData,
-    TUpdateUser
-} from '../../types/user';
+import { TLoginData, TRegisterData, TUpdateUser } from '../../types/user';
 
 export const fetchUser = createAsyncThunk(
     'fetchUser',
