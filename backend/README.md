@@ -13,6 +13,10 @@ GET recipe/{userId}
 
 GET recipe/{userId}/favorite
 
+GET recipe/{userid}/calendar
+
+GET recipe/{userid}/shopping/list
+
 POST recipe/{userId}/favorite
 
 Body:
@@ -21,4 +25,3 @@ Body:
         "Id": number,
         "isFavorite": boolean
     }
-
