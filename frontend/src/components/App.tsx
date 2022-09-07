@@ -7,6 +7,7 @@ import SearchBar from './mainFrames/searchBar/SearchBar';
 import NoContent from './mainFrames/noContent/NoContent';
 import SiteName from './mainFrames/siteName/SiteName';
 import Header from './mainFrames/header/Header';
+import RecipeSite from './recipeSite/RecipeSite';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedNav, setSelectedNav] = useState(1);
@@ -17,12 +18,11 @@ const App: FC<Record<string, never>> = () => {
                 <Header />
                 <SiteName selectedNav={selectedNav} />
                 <SearchBar />
-                <Container>
+                <Container className='inner-container'>
                     {/* TODO Add render of sites here */}
                     {
                         selectedNav === 1 && (
-                            <>
-                            </>
+                            <RecipeSite />
                         )
                     }
                     {
@@ -43,7 +43,11 @@ const App: FC<Record<string, never>> = () => {
                             </>
                         )
                     }
-                    <NoContent />
+                    {
+                        selectedNav === 0 && (
+                            <NoContent />
+                        )
+                    }
                 </Container>
             </Container>
             <Navigation

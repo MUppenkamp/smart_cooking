@@ -19,7 +19,7 @@ export type TRecipe = {
     fat: number;
     carbohydrates: number;
     portion: number;
-    isFavourite: boolean;
+    isFavorite: boolean;
     isOwn: boolean;
     ingredients: Array<TIngredient>;
 };
