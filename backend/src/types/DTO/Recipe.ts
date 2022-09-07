@@ -22,3 +22,11 @@ export type TIngredients = {
     quantityUnitId?: number;
     quantityUnitName?: string
 }
+
+export type TShoppingListRecipeDTO = {
+    ingredients?: TShoppingListIngredients[]
+} & TRecipeDTO
+
+export type TShoppingListIngredients = {
+    isChecked: boolean;
+} & TIngredients
