@@ -1,3 +1,10 @@
 .container {
-  margin-top: 20px;
+  margin-top: 15px;
+  min-width: 300px;
+}
+
+.inner-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-top: 25px;
 }
