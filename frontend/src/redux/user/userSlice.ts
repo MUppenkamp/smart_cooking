@@ -19,7 +19,7 @@ const userSlice = createSlice({
             draft.fetchState = FetchState.FETCHED;
             draft.data = {
                 ...draft.data,
-                payload
+                ...payload
             };
         });
 
@@ -30,7 +30,7 @@ const userSlice = createSlice({
             draft.fetchState = FetchState.FETCHED;
             draft.data = {
                 ...draft.data,
-                payload
+                ...payload
             };
         })
     }
