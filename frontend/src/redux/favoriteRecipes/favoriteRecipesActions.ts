@@ -1,16 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getFavouriteRecipes } from '../../api/GET/getRecipes';
-import { postFavouriteRecipe } from '../../api/POST/postRecipe';
-import { TPostFavouriteRecipeParams } from '../../types/postRecipe';
+import { getFavoriteRecipes } from '../../api/GET/getRecipes';
+import { postFavoriteRecipe } from '../../api/POST/postRecipe';
+import { TPostFavoriteRecipeParams } from '../../types/postRecipe';
 
-export const fetchFavouriteRecipes = createAsyncThunk(
-    'fetchFavouriteRecipes',
+export const fetchFavoriteRecipes = createAsyncThunk(
+    'fetchFavoriteRecipes',
     async (
         userId: number,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getFavouriteRecipes(userId);
+            const retval = await getFavoriteRecipes(userId);
             if (retval && retval.data) {
                 return retval.data;
             }
@@ -20,14 +20,14 @@ export const fetchFavouriteRecipes = createAsyncThunk(
     }
 );
 
-export const updateFavourite = createAsyncThunk(
-    'markAsFavourite',
+export const updateFavorite = createAsyncThunk(
+    'updateFavorite',
     async (
-        params: TPostFavouriteRecipeParams,
+        params: TPostFavoriteRecipeParams,
         { rejectWithValue }
     ) => {
         try {
-            const retval = await postFavouriteRecipe(params);
+            const retval = await postFavoriteRecipe(params);
             if (retval && retval.status === 200) {
                 return retval.data;
             }

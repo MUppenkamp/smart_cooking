@@ -4,7 +4,7 @@ import { patchUser } from '../../api/PATCH/patchUser';
 import {
     TLoginData,
     TRegisterData,
-    TUser
+    TUpdateUser
 } from '../../types/user';
 
 export const fetchUser = createAsyncThunk(
@@ -26,11 +26,10 @@ export const fetchUser = createAsyncThunk(
     }
 );
 
-
 export const updateUser = createAsyncThunk(
     'updateUser',
     async (
-        user: TUser,
+        user: TUpdateUser,
         { rejectWithValue }
     ) => {
         try {

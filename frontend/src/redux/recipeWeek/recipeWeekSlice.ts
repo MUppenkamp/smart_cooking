@@ -20,38 +20,25 @@ const recipeWeekSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchCalendarRecipes.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING
-            };
+        builder.addCase(fetchCalendarRecipes.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(fetchCalendarRecipes.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchCalendarRecipes.fulfilled, (draft, { payload }) => {
+            console.log('fetchCalendarRecipes', payload)
             if (!payload) return;
 
-            recipeWeekAdapter.addMany(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipeWeekAdapter.addMany(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(randomizeCalendarRecipes.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING
-            };
+        builder.addCase(randomizeCalendarRecipes.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(randomizeCalendarRecipes.fulfilled, (state, { payload }) => {
+        builder.addCase(randomizeCalendarRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipeWeekAdapter.setAll(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipeWeekAdapter.setAll(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
     }
 });

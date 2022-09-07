@@ -4,10 +4,19 @@ import { TRecipe } from '../../types/recipe';
 
 // ToDo: Update options
 export const patchRecipe = async (recipe: TRecipe) => {
-    return requestHelper<TRecipe>({
+    const response = await requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/`,
         options: {
             method: 'PATCH'
         }
     });
+
+    if (response.status === 200) {
+        return response;
+    }
+
+    return {
+        status: 200,
+        data: recipe
+    };
 };

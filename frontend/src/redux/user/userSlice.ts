@@ -12,35 +12,25 @@ const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchUser.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING,
-            };
+        builder.addCase(fetchUser.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(fetchUser.fulfilled, (state, { payload }) => {
-            return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...state.data,
-                    payload
-                }
+        builder.addCase(fetchUser.fulfilled, (draft, { payload }) => {
+            draft.fetchState = FetchState.FETCHED;
+            draft.data = {
+                ...draft.data,
+                payload
             };
         });
 
-        builder.addCase(updateUser.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING,
-            };
+        builder.addCase(updateUser.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(updateUser.fulfilled, (state, { payload }) => {
-            return {
-                fetchState: FetchState.FETCHED,
-                data: {
-                    ...state.data,
-                    payload
-                }
+        builder.addCase(updateUser.fulfilled, (draft, { payload }) => {
+            draft.fetchState = FetchState.FETCHED;
+            draft.data = {
+                ...draft.data,
+                payload
             };
         })
     }

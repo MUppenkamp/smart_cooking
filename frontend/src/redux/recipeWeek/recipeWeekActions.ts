@@ -22,7 +22,7 @@ export const fetchCalendarRecipes = createAsyncThunk(
 export const randomizeCalendarRecipes = createAsyncThunk(
     'randomizeCalendarRecipes',
     async (
-        {  },
+        arg,
         { rejectWithValue }
     ) => {
         try {

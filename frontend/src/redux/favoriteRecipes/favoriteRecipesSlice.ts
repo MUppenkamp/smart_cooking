@@ -5,8 +5,8 @@ import {
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 import {
-    fetchFavouriteRecipes,
-    updateFavourite
+    fetchFavoriteRecipes,
+    updateFavorite
 } from './favoriteRecipesActions';
 
 const recipesAdapter = createEntityAdapter<TRecipe>();
@@ -21,41 +21,27 @@ const favoriteRecipesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchFavouriteRecipes.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING
-            };
+        builder.addCase(fetchFavoriteRecipes.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(fetchFavouriteRecipes.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchFavoriteRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.addMany(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipesAdapter.addMany(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(updateFavourite.pending, (state) => {
-            return {
-                ...state,
-                fetchState: FetchState.PENDING
-            };
+        builder.addCase(updateFavorite.pending, (draft) => {
+            draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(updateFavourite.fulfilled, (state, { payload }) => {
+        builder.addCase(updateFavorite.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.updateOne(state.data, {
+            recipesAdapter.updateOne(draft.data, {
                 id: payload.id,
                 changes: payload
             });
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            }
+            draft.fetchState = FetchState.FETCHED;
         });
     }
 });
