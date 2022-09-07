@@ -1,0 +1,88 @@
+@import '../../../src/constants/variables';
+
+.recipe-details-site {
+  &__image {
+    border-radius: $border-radius !important;
+    object-fit: cover;
+    width: 100%;
+    height: 55vw;
+  }
+
+  &__headline {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+
+    &__not-favorite {
+      font-size: $icon-font-size;
+      color: $smart-cooking-color;
+    }
+
+    &__favorite {
+      font-size: $icon-font-size;
+      color: $selected-icon-color;
+    }
+  }
+
+  &__infos {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      display: flex;
+
+      &__icon {
+        font-size: $icon-font-size;
+        color: $smart-cooking-color;
+        margin-right: $icon-text-margin-right;
+      }
+    }
+  }
+
+  &__nutritional-values-headline {
+    margin-top: 15px;
+  }
+
+  &__nutritional-values {
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      &__item {
+        display: flex;
+        width: 50%;
+
+        &__icon {
+          color: $smart-cooking-color;
+          width: 30px;
+          font-size: $icon-font-size;
+          margin-right: $icon-text-margin-right;
+        }
+      }
+    }
+  }
+
+  &__ingredients-headline {
+    margin-top: 15px;
+  }
+
+  &__ingredients {
+    display: flex;
+
+    &__quantity {
+      text-align: right;
+      width: 25%;
+      margin-right: 15px;
+    }
+
+    &__ingredient {
+      text-align: left;
+      width: 75%;
+    }
+  }
+
+  &__description-headline {
+    margin-top: 15px;
+  }
+}

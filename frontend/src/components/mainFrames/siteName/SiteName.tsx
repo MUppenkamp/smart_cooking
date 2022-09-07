@@ -2,7 +2,7 @@ import React from 'react';
 import './siteName.scss';
 
 type SiteNameProps = {
-    selectedNav: number
+    selectedNav: number | null
 };
 
 const SiteName: React.FunctionComponent<SiteNameProps> = ({selectedNav}) => {
