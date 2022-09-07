@@ -466,8 +466,6 @@ router.get('/:userid/shopping/list', async (req, res) => {
 router.post('/:userid/favorite', async (req, res) => {
     const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2';
 
-    console.log(req.body);
-
     if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null) {
         res.status(400).json({});
         return;
@@ -477,6 +475,21 @@ router.post('/:userid/favorite', async (req, res) => {
 
     const connection = await createPool();
     await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
+    await disconnectPool(connection);
+
+    res.status(204).json({});
+})
+
+router.post('/:userid/shopping/list', async (req, res) => {
+    if (!req.body?.id || !req.body.isChecked) { // check body
+        res.status(400).json({});
+        return;
+    }
+
+    const updateRecipeWeekDayShoppingList = "UPDATE recipe_week_day_shopping_list SET is_checked = $2 WHERE id = $1"
+
+    const connection = await createPool();
+    await pgQuery(connection, updateRecipeWeekDayShoppingList, [req.body.id, req.body.isChecked]);
     await disconnectPool(connection);
 
     res.status(204).json({});
