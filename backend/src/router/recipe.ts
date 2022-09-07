@@ -1,9 +1,10 @@
 import express from 'express'
 import { createPool, disconnectPool, pgQuery } from '../helper/pgQuery';
-import type { TIngredients, TRecipeDTO } from '../types/DTO/Recipe';
+import type { TIngredients, TRecipeDTO, TShoppingListIngredients } from '../types/DTO/Recipe';
 import type { GetAllRecipeDBO, TIngredientsDBO } from '../types/DBO/Recipe';
 import { recipeRandomise } from '../helper/recipeRandomise';
 import { TIngredientWithRecipeId } from '../types/DBO/Recipe';
+import { TShoppingListRecipeDTO } from '../types/DTO/Recipe';
 
 const router = express.Router();
 
@@ -312,6 +313,148 @@ router.get('/:userid/calendar', async (req, res) => {
                     quantityUnitId: elem.quantity_unit_id
                 } as TIngredients))
             }
+        })
+    })
+
+    res.status(200).json({
+        data: returnValue
+    });
+})
+
+router.get('/:userid/shopping/list', async (req, res) => {
+    if (!req.params.userid) {
+        res.status(400).json({});
+        return;
+    }
+
+    const selectIds = `
+            SELECT
+            rwd.id,
+            rwd.recipe_week_id,
+            rwd.day_date,
+            rwd.recipe_id,
+            u2r.user_id
+                FROM recipe_week_day rwd
+                JOIN user_2_recipe u2r on rwd.recipe_id = u2r.recipe_id
+                WHERE u2r.user_id = $1
+    `;
+
+    const selectIngredient = `
+                SELECT
+                    ri.*,
+                    rwdsl.is_checked
+                FROM recipe_week_day_shopping_list rwdsl
+                    JOIN recipe_ingredient ri on ri.id = rwdsl.recipe_ingredient
+                    JOIN recipe_week_day rwd on rwd.id = rwdsl.recipe_week_day_id
+                WHERE rwd.recipe_week_id = $1
+    `;
+
+    const selectRecipe = `SELECT r.id, 
+        r.name, 
+        r.duration, 
+        r.description, 
+        r.calorific_value,
+        r.protein, 
+        r.fat, 
+        r.carbohydrates, 
+        r.portion,
+        r.picture,
+        d.name as difficulty_name,
+        d.id as difficulty_id,
+        u2c.is_favorite,
+        u2c.is_own
+        from recipe as r
+        LEFT JOIN difficulty as d ON d.id = r.difficulty_id
+        LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id
+        WHERE r.id = $1
+        `;
+
+    const connection = createPool();
+
+    const ids = await pgQuery<{
+        id: number,
+        recipe_week_id: number,
+        day_date: Date,
+        recipe_id: number,
+        user_id: number
+    }>(connection, selectIds, [Number(req.params.userid)]);
+
+    if (!ids?.rowCount || ids.rowCount <= 0) {
+        res.status(204).json({});
+        return
+    }
+
+    const queryRecipeIds: number[] = [];
+    const queryIngredientIds: number[] = [];
+
+    ids.rows.forEach((id) => {
+        const recipeIdFindIndex = queryRecipeIds.findIndex((el) => el === id.recipe_id);
+        const ingredientIdFindIndex = queryIngredientIds.findIndex((el) => el === id.recipe_week_id);
+
+        if (recipeIdFindIndex < 0) {
+            queryRecipeIds.push(id.recipe_id);
+        }
+
+        if (ingredientIdFindIndex < 0) {
+            queryIngredientIds.push(id.recipe_week_id);
+        }
+
+    });
+
+    const recipes: GetAllRecipeDBO[] = [];
+    const ingredients: TIngredientWithRecipeId[] = [];
+
+    const recipePromise = queryRecipeIds.map(async (id) => {
+        const recipe = await pgQuery<GetAllRecipeDBO>(connection, selectRecipe, [id]);
+        if (!recipe?.rowCount || recipe.rowCount < 0) return;
+        recipes.push(recipe.rows[0]);
+    });
+
+    const ingredientPromise = queryIngredientIds.map(async (id) => {
+        const ingredient = await pgQuery<TIngredientWithRecipeId>(connection, selectIngredient, [id]);
+        if (!ingredient?.rowCount || ingredient.rowCount < 0) return;
+        ingredients.push(ingredient.rows[0]);
+    });
+
+    await Promise.all(recipePromise);
+    await Promise.all(ingredientPromise);
+
+    const returnValue: {
+        data: Date,
+        recipe: TShoppingListRecipeDTO
+    }[] = [];
+
+    ids.rows.forEach((elem) => {
+        const recipe = recipes.find((rs) => rs.id === elem.recipe_id);
+        if (!recipe) return;
+
+        const idts = ingredients.filter((elem) => elem.recipe_id === elem.recipe_id);
+
+        returnValue.push({
+            data: elem.day_date,
+            recipe: {
+                id: recipe.id,
+                name: recipe.name,
+                protein: recipe.protein,
+                portion: recipe.portion,
+                picture: recipe.picture,
+                isOwn: recipe.is_own,
+                isFavorite: recipe.is_favorite,
+                fat: recipe.fat,
+                duration: recipe.duration,
+                carbohydrates: recipe.carbohydrates,
+                description: recipe.description,
+                difficultyName: recipe.difficulty_name,
+                calorificValue: recipe.calorific_value,
+                ingredients: idts.map((elem) => ({
+                    id: elem.id,
+                    quantity: elem.quantity,
+                    name: elem.name,
+                    quantityUnitName: elem.quantity_unit_name,
+                    quantityUnitId: elem.quantity_unit_id,
+                    isChecked: elem.is_checked
+                } as TShoppingListIngredients))
+            } as TShoppingListRecipeDTO
         })
     })
 
