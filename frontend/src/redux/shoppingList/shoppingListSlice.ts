@@ -21,7 +21,7 @@ const shoppingListSlice = createSlice({
         builder.addCase(fetchShoppingList.fulfilled, (draft, { payload }) => {
             draft.data = {
                 ...draft.data,
-                payload
+                ...payload
             };
             draft.fetchState = FetchState.FETCHED;
         });
@@ -32,7 +32,7 @@ const shoppingListSlice = createSlice({
         builder.addCase(checkShoppingListItems.fulfilled, (draft, { payload }) => {
             draft.data = {
                 ...draft.data,
-                payload
+                ...payload
             };
             draft.fetchState = FetchState.FETCHED;
         });
