@@ -7,6 +7,7 @@ import RecipeItem from '../mainFrames/recipeItem/RecipeItem';
 import { TRecipe } from '../../types/recipe';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import AddRecipe from '../recipeSite/addRecipe/AddRecipe';
 
 type FavoriteSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -26,6 +27,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
         <>
             <h3>Eigene</h3>
             <div className='favorite-site'>
+                <AddRecipe />
                 {
                     favoriteRecipes.map(recipe => {
                         if (!recipe.isOwn) {
