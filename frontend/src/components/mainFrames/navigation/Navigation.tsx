@@ -4,8 +4,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUtensils, faHeart, faCalendar, faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 type NavigationProps = {
-    selectedNav: number,
-    setSelectedNav: Dispatch<SetStateAction<number>>
+    selectedNav: number | null,
+    setSelectedNav: Dispatch<SetStateAction<number | null>>
 };
 
 const Navigation: React.FunctionComponent<NavigationProps> = ({
