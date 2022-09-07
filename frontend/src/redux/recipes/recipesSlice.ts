@@ -17,58 +17,47 @@ const recipesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchRecipes.pending, (state) => {
+        builder.addCase(fetchRecipes.pending, (draft) => {
             return {
-                ...state,
+                ...draft,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(fetchRecipes.fulfilled, (state, { payload }) => {
-            if (!payload) return;
+        builder.addCase(fetchRecipes.fulfilled, (draft, { payload }) => {
+            console.log('fetchRecipes', payload);
+            if (!payload) return draft;
 
-            recipesAdapter.addMany(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipesAdapter.addMany(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(createRecipe.pending, (state) => {
+        builder.addCase(createRecipe.pending, (draft) => {
             return {
-                ...state,
+                ...draft,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(createRecipe.fulfilled, (state, { payload }) => {
+        builder.addCase(createRecipe.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.addOne(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipesAdapter.addOne(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(updateRecipe.pending, (state) => {
+        builder.addCase(updateRecipe.pending, (draft) => {
             return {
-                ...state,
+                ...draft,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(updateRecipe.fulfilled, (state, {payload }) => {
+        builder.addCase(updateRecipe.fulfilled, (draft, {payload }) => {
             if (!payload) return;
 
-            recipesAdapter.updateOne(state.data, {
+            recipesAdapter.updateOne(draft.data, {
                 id: payload.id,
                 changes: payload
             });
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            }
+            draft.fetchState = FetchState.FETCHED;
         });
     }
 });

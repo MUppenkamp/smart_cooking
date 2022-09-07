@@ -21,41 +21,33 @@ const favoriteRecipesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchFavouriteRecipes.pending, (state) => {
+        builder.addCase(fetchFavouriteRecipes.pending, (draft) => {
             return {
-                ...state,
+                ...draft,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(fetchFavouriteRecipes.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchFavouriteRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.addMany(state.data, payload);
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            };
+            recipesAdapter.addMany(draft.data, payload);
+            draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(updateFavourite.pending, (state) => {
+        builder.addCase(updateFavourite.pending, (draft) => {
             return {
-                ...state,
+                ...draft,
                 fetchState: FetchState.PENDING
             };
         });
-        builder.addCase(updateFavourite.fulfilled, (state, { payload }) => {
+        builder.addCase(updateFavourite.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.updateOne(state.data, {
+            recipesAdapter.updateOne(draft.data, {
                 id: payload.id,
                 changes: payload
             });
-
-            return {
-                ...state,
-                fetchState: FetchState.FETCHED
-            }
+            draft.fetchState = FetchState.FETCHED;
         });
     }
 });
