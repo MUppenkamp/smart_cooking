@@ -5,8 +5,8 @@ import {
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 import {
-    fetchFavouriteRecipes,
-    updateFavourite
+    fetchFavoriteRecipes,
+    updateFavorite
 } from './favoriteRecipesActions';
 
 const recipesAdapter = createEntityAdapter<TRecipe>();
@@ -21,20 +21,20 @@ const favoriteRecipesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchFavouriteRecipes.pending, (draft) => {
+        builder.addCase(fetchFavoriteRecipes.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(fetchFavouriteRecipes.fulfilled, (draft, { payload }) => {
+        builder.addCase(fetchFavoriteRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
             recipesAdapter.addMany(draft.data, payload);
             draft.fetchState = FetchState.FETCHED;
         });
 
-        builder.addCase(updateFavourite.pending, (draft) => {
+        builder.addCase(updateFavorite.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(updateFavourite.fulfilled, (draft, { payload }) => {
+        builder.addCase(updateFavorite.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
             recipesAdapter.updateOne(draft.data, {

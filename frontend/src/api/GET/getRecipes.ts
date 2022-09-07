@@ -29,7 +29,7 @@ export const getAllRecipes = async (userId: number) => {
             fat: 1,
             carbohydrates: 1,
             portion: 1,
-            isFavourite: false,
+            isFavorite: false,
             isOwn: false,
             ingredients: [{
                 id: 0,
@@ -42,7 +42,7 @@ export const getAllRecipes = async (userId: number) => {
     };
 };
 
-export const getFavouriteRecipes = async (userId: number) => {
+export const getFavoriteRecipes = async (userId: number) => {
     const response = await requestHelper<Array<TRecipe>>({
         requestUrl: `${SMART_COOKING_URL}/recipe/${userId}/favorite`,
         options: {
@@ -69,7 +69,7 @@ export const getFavouriteRecipes = async (userId: number) => {
             fat: 1,
             carbohydrates: 1,
             portion: 1,
-            isFavourite: true,
+            isFavorite: true,
             isOwn: false,
             ingredients: [{
                 id: 1,
@@ -111,7 +111,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: true,
+                isFavorite: true,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -136,7 +136,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 10,
                 carbohydrates: 10,
                 portion: 10,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 1,
@@ -161,7 +161,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -186,7 +186,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -211,7 +211,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -236,7 +236,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -261,7 +261,7 @@ export const getCalendarRecipes = async (userId: number) => {
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,

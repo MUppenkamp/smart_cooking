@@ -2,7 +2,7 @@ import requestHelper from '../../utils/requestHelper';
 import { SMART_COOKING_URL } from '../../constants/url';
 import {
     TPostCalendarRecipeParams,
-    TPostFavouriteRecipeParams,
+    TPostFavoriteRecipeParams,
 } from '../../types/postRecipe';
 import {
     TCreateRecipe,
@@ -11,7 +11,7 @@ import {
 } from '../../types/recipe';
 
 // ToDo: Update options
-export const postFavouriteRecipe = async (params: TPostFavouriteRecipeParams) => {
+export const postFavoriteRecipe = async (params: TPostFavoriteRecipeParams) => {
     const response = await requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/`,
         options: {
@@ -56,7 +56,7 @@ export const postRecipe = async (recipe: TCreateRecipe) => {
             fat: recipe.fat,
             carbohydrates: recipe.carbohydrates,
             portion: recipe.portion,
-            isFavourite: recipe.isFavourite,
+            isFavorite: recipe.isFavorite,
             isOwn: recipe.isOwn,
             ingredients: [{
                 id: 100,
@@ -98,7 +98,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: true,
+                isFavorite: true,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -123,7 +123,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 10,
                 carbohydrates: 10,
                 portion: 10,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 1,
@@ -148,7 +148,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -173,7 +173,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -198,7 +198,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -223,7 +223,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,
@@ -248,7 +248,7 @@ export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => 
                 fat: 1,
                 carbohydrates: 1,
                 portion: 1,
-                isFavourite: false,
+                isFavorite: false,
                 isOwn: false,
                 ingredients: [{
                     id: 0,

@@ -10,7 +10,7 @@ import Header from './mainFrames/header/Header';
 import { createRecipe, fetchRecipes } from "../redux/recipes/recipesActions";
 import { useAppDispatch } from "../hook";
 import { fetchUser, updateUser } from "../redux/user/userActions";
-import { fetchFavouriteRecipes, updateFavourite } from "../redux/favoriteRecipes/favoriteRecipesActions";
+import { fetchFavoriteRecipes, updateFavorite } from "../redux/favoriteRecipes/favoriteRecipesActions";
 import { fetchCalendarRecipes, randomizeCalendarRecipes } from "../redux/recipeWeek/recipeWeekActions";
 
 const App: FC<Record<string, never>> = () => {
@@ -19,10 +19,10 @@ const App: FC<Record<string, never>> = () => {
 
     useEffect(() => {
         // Favorites
-        dispatch(fetchFavouriteRecipes(2));
-        dispatch(updateFavourite({
+        dispatch(fetchFavoriteRecipes(2));
+        dispatch(updateFavorite({
             id: 1,
-            isFavourite: true
+            isFavorite: true
         }));
 
         // Recipes
@@ -38,7 +38,7 @@ const App: FC<Record<string, never>> = () => {
             fat: 87,
             carbohydrates: 44,
             portion: 42,
-            isFavourite: true,
+            isFavorite: true,
             isOwn: true,
             ingredients: [{
                 name: 'Test Ingredient',
@@ -50,6 +50,8 @@ const App: FC<Record<string, never>> = () => {
         // RecipeWeek
         dispatch(fetchCalendarRecipes(2));
         dispatch(randomizeCalendarRecipes());
+
+        // ShoppingList
 
         // User
         dispatch(fetchUser({
