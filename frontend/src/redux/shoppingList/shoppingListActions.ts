@@ -1,6 +1,6 @@
-import { getShoppingList } from "../../api/GET/getShoppingList";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { patchShoppingListItems } from "../../api/PATCH/patchShoppingListItems";
+import { getShoppingList } from '../../api/GET/getShoppingList';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { patchShoppingListItems } from '../../api/PATCH/patchShoppingListItems';
 
 export const fetchShoppingList = createAsyncThunk(
     'fetchShoppingList',

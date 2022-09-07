@@ -2,12 +2,12 @@ import {
     createEntityAdapter,
     createSlice
 } from '@reduxjs/toolkit';
-import { TRecipe } from "../../types/recipe";
-import FetchState from "../../constants/fetchState";
+import { TRecipe } from '../../types/recipe';
+import FetchState from '../../constants/fetchState';
 import {
     fetchFavouriteRecipes,
     updateFavourite
-} from "./favouriteRecipesActions";
+} from './favoriteRecipesActions';
 
 const recipesAdapter = createEntityAdapter<TRecipe>();
 
@@ -16,8 +16,8 @@ const initialState = {
     data: recipesAdapter.getInitialState(),
 };
 
-const favouriteRecipesSlice = createSlice({
-    name: 'favouriteRecipesSlice',
+const favoriteRecipesSlice = createSlice({
+    name: 'favoriteRecipesSlice',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -60,4 +60,4 @@ const favouriteRecipesSlice = createSlice({
     }
 });
 
-export default favouriteRecipesSlice.reducer;
+export default favoriteRecipesSlice.reducer;

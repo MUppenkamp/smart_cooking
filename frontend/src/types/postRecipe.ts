@@ -1,4 +1,4 @@
-import { TRecipeWeek } from "./recipe";
+import { TRecipeWeek } from './recipe';
 
 export type TPostFavouriteRecipeParams = { id: number, isFavourite: boolean };
 

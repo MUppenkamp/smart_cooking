@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchUser, updateUser } from "./userActions";
-import FetchState from "../../constants/fetchState";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchUser, updateUser } from './userActions';
+import FetchState from '../../constants/fetchState';
 
 const initialState = {
     data: {},

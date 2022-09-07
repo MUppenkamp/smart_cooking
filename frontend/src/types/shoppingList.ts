@@ -1,4 +1,4 @@
-import { TRecipe } from "./recipe";
+import { TRecipe } from './recipe';
 
 export type TShoppingListItem = {
     date: Date;
