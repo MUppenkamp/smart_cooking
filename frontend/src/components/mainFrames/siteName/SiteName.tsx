@@ -2,10 +2,10 @@ import React from 'react';
 import './siteName.scss';
 
 type SiteNameProps = {
-    selectedNav: number
+    selectedNav: number | null
 };
 
-const SiteName: React.FunctionComponent<SiteNameProps> = ({selectedNav}) => {
+const SiteName: React.FunctionComponent<SiteNameProps> = ({ selectedNav }) => {
     let siteName: string;
     switch (selectedNav) {
         case 1:
@@ -27,7 +27,7 @@ const SiteName: React.FunctionComponent<SiteNameProps> = ({selectedNav}) => {
 
     return (
         <>
-            <h4 className='site-name'>{siteName}</h4>
+            <h4 className="site-name">{siteName}</h4>
         </>
     );
 };

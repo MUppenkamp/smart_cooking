@@ -36,13 +36,13 @@ export type TRecipe = {
     difficultyId: number;
     difficultyName: string;
     description: string;
-    calorificValue: number;
-    protein: number;
-    fat: number;
-    carbohydrates: number;
+    calorificValue?: number;
+    protein?: number;
+    fat?: number;
+    carbohydrates?: number;
     portion: number;
-    isFavorite: boolean;
-    isOwn: boolean;
+    isFavorite?: boolean;
+    isOwn?: boolean;
     ingredients: Array<TIngredient>;
 };
 

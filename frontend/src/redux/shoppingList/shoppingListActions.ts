@@ -9,11 +9,12 @@ export const fetchShoppingList = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await getShoppingList(userId);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await getShoppingList(userId);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }
@@ -26,11 +27,12 @@ export const checkShoppingListItems = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await patchShoppingListItems({});
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await patchShoppingListItems({});
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return rejectWithValue(null);
     }

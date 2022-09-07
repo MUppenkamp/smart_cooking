@@ -1,11 +1,11 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './navigation.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUtensils, faHeart, faCalendar, faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar, faHeart, faShoppingCart, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 type NavigationProps = {
-    selectedNav: number,
-    setSelectedNav: Dispatch<SetStateAction<number>>
+    selectedNav: number | null,
+    setSelectedNav: Dispatch<SetStateAction<number | null>>
 };
 
 const Navigation: React.FunctionComponent<NavigationProps> = ({
@@ -14,9 +14,9 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                                                               }) => {
 
     return (
-        <div className='navigation'>
+        <div className="navigation">
             <div
-                className='navigation__item'
+                className="navigation__item"
                 onClick={() => setSelectedNav(1)}
             >
                 <FontAwesomeIcon
@@ -26,7 +26,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedNav === 1 ? 'navigation__item__text--active' : ''}`}>Rezepte</p>
             </div>
             <div
-                className='navigation__item'
+                className="navigation__item"
                 onClick={() => setSelectedNav(2)}
             >
                 <FontAwesomeIcon
@@ -36,7 +36,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedNav === 2 ? 'navigation__item__text--active' : ''}`}>Favoriten</p>
             </div>
             <div
-                className='navigation__item'
+                className="navigation__item"
                 onClick={() => setSelectedNav(3)}
             >
                 <FontAwesomeIcon
@@ -46,7 +46,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedNav === 3 ? 'navigation__item__text--active' : ''}`}>Wochenplan</p>
             </div>
             <div
-                className='navigation__item'
+                className="navigation__item"
                 onClick={() => setSelectedNav(4)}
             >
                 <FontAwesomeIcon
@@ -56,7 +56,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedNav === 4 ? 'navigation__item__text--active' : ''}`}>Einkaufliste</p>
             </div>
         </div>
-    )
+    );
 };
 
 Navigation.displayName = 'Navigation';

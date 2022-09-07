@@ -39,7 +39,7 @@ const recipesSlice = createSlice({
         builder.addCase(updateRecipe.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(updateRecipe.fulfilled, (draft, {payload }) => {
+        builder.addCase(updateRecipe.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
             recipesAdapter.updateOne(draft.data, {
