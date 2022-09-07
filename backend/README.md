@@ -13,12 +13,24 @@ GET recipe/{userId}
 
 GET recipe/{userId}/favorite
 
+GET recipe/{userid}/calendar
+
+GET recipe/{userid}/shopping/list
+
 POST recipe/{userId}/favorite
 
 Body:
 
     {
-        "Id": number,
+        "id": number,
         "isFavorite": boolean
     }
 
+POST recipe/{userid}/shopping/list
+
+Body:
+
+    {
+        "id": number,
+        "isChecked": boolean
+    }

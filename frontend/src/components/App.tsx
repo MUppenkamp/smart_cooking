@@ -10,109 +10,115 @@ import Header from './mainFrames/header/Header';
 import RecipeSite from './recipeSite/RecipeSite';
 import { TRecipe } from '../types/recipe';
 import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
-import { createRecipe, fetchRecipes } from '../redux/recipes/recipesActions';
 import { useAppDispatch } from '../hook';
-import { fetchUser, updateUser } from '../redux/user/userActions';
-import { fetchFavoriteRecipes, updateFavorite } from '../redux/favoriteRecipes/favoriteRecipesActions';
-import { fetchCalendarRecipes, randomizeCalendarRecipes } from '../redux/recipeWeek/recipeWeekActions';
+import { SelectedSite } from '../constants/selectedSite';
+import LoginSite from './loginSite/LoginSite';
 
 const App: FC<Record<string, never>> = () => {
-    const [selectedNav, setSelectedNav] = useState(1 as number | null);
+    const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
     const [selectedRecipe, setSelectedRecipe] = useState(null as TRecipe | null);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (selectedRecipe !== null) setSelectedNav(null);
+        if (selectedRecipe !== null) setSelectedSite(SelectedSite.NOTHING);
     }, [selectedRecipe]);
 
     useEffect(() => {
-        if (selectedNav && selectedNav > 0) setSelectedRecipe(null);
-    }, [selectedNav]);
+        if (selectedSite && selectedSite > 0) setSelectedRecipe(null);
+    }, [selectedSite]);
 
-    useEffect(() => {
-        // Favorites
-        dispatch(fetchFavoriteRecipes(2));
-        dispatch(updateFavorite({
-            id: 1,
-            isFavorite: true
-        }));
+    // useEffect(() => {
+    //     // Favorites
+    //     dispatch(fetchFavoriteRecipes(2));
+    //     dispatch(updateFavorite({
+    //         id: 1,
+    //         isFavorite: true
+    //     }));
+    //
+    //     // Recipes
+    //     dispatch(fetchRecipes(2));
+    //     dispatch(createRecipe({
+    //         name: 'Test',
+    //         picture: '',
+    //         duration: 30,
+    //         difficultyId: 2,
+    //         description: 'Create Test',
+    //         calorificValue: 30,
+    //         protein: 26,
+    //         fat: 87,
+    //         carbohydrates: 44,
+    //         portion: 42,
+    //         isFavorite: true,
+    //         isOwn: true,
+    //         ingredients: [{
+    //             name: 'Test Ingredient',
+    //             quantity: 10,
+    //             quantityUnitId: 1
+    //         }]
+    //     }));
+    //
+    //     // RecipeWeek
+    //     dispatch(fetchCalendarRecipes(2));
+    //     dispatch(randomizeCalendarRecipes());
+    //
+    //     // ShoppingList
+    //
+    //     // User
+    //     dispatch(fetchUser({
+    //         firstName: 'Jana',
+    //         lastName: 'Walfort',
+    //         mail: 'jana.walort@gmail.com',
+    //         password: '1234'
+    //     }));
+    //     dispatch(updateUser({
+    //         id: 2,
+    //         firstName: 'Test'
+    //     }));
+    // }, []);
 
-        // Recipes
-        dispatch(fetchRecipes(2));
-        dispatch(createRecipe({
-            name: 'Test',
-            picture: '',
-            duration: 30,
-            difficultyId: 2,
-            description: 'Create Test',
-            calorificValue: 30,
-            protein: 26,
-            fat: 87,
-            carbohydrates: 44,
-            portion: 42,
-            isFavorite: true,
-            isOwn: true,
-            ingredients: [{
-                name: 'Test Ingredient',
-                quantity: 10,
-                quantityUnitId: 1
-            }]
-        }));
-
-        // RecipeWeek
-        dispatch(fetchCalendarRecipes(2));
-        dispatch(randomizeCalendarRecipes());
-
-        // ShoppingList
-
-        // User
-        dispatch(fetchUser({
-            firstName: 'Jana',
-            lastName: 'Walfort',
-            mail: 'jana.walort@gmail.com',
-            password: '1234'
-        }));
-        dispatch(updateUser({
-            id: 2,
-            firstName: 'Test'
-        }));
-    }, []);
 
     return (
         <>
             <Container>
-                <Header/>
-                <SiteName selectedNav={selectedNav}/>
+                <Header setSelectedSite={setSelectedSite}/>
+                <SiteName selectedSite={selectedSite}/>
                 <SearchBar/>
                 <Container className="inner-container">
                     {
-                        selectedNav === 1 && (
+                        selectedSite === SelectedSite.ERROR && (
+                            <NoContent/>
+                        )
+                    }
+                    {
+                        selectedSite === SelectedSite.RECIPE_SITE && (
                             <RecipeSite
                                 setSelectedRecipe={setSelectedRecipe}
                             />
                         )
                     }
                     {
-                        selectedNav === 2 && (
+                        selectedSite === SelectedSite.FAVORITE_SITE && (
                             <>
                             </>
                         )
                     }
                     {
-                        selectedNav === 3 && (
+                        selectedSite === SelectedSite.WEEK_SITE && (
                             <>
                             </>
                         )
                     }
                     {
-                        selectedNav === 4 && (
+                        selectedSite === SelectedSite.SHOPPING_LIST_SITE && (
                             <>
                             </>
                         )
                     }
                     {
-                        selectedNav === 0 && (
-                            <NoContent/>
+                        selectedSite === SelectedSite.LOGIN_SITE && (
+                            <>
+                                <LoginSite />
+                            </>
                         )
                     }
                     {
@@ -125,8 +131,8 @@ const App: FC<Record<string, never>> = () => {
                 </Container>
             </Container>
             <Navigation
-                selectedNav={selectedNav}
-                setSelectedNav={setSelectedNav}
+                selectedSite={selectedSite}
+                setSelectedSite={setSelectedSite}
             />
         </>
     );

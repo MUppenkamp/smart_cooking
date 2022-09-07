@@ -38,3 +38,8 @@ export type TIngredientsDBO = {
     quantity_unit_id?: number;
     quantity_unit_name?: string
 }
+
+export type TIngredientWithRecipeId = {
+    recipe_id: number;
+    is_checked: boolean,
+} & TIngredientsDBO
