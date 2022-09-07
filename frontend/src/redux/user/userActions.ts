@@ -14,9 +14,9 @@ export const fetchUser = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await postUser(data);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await postUser(data);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {
             return rejectWithValue(null);
@@ -33,9 +33,9 @@ export const updateUser = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const retval = await patchUser(user);
-            if (retval && retval.status === 200) {
-                return retval.data;
+            const retVal = await patchUser(user);
+            if (retVal && retVal.status === 200) {
+                return retVal.data;
             }
         } catch (e) {
             return rejectWithValue(null);
