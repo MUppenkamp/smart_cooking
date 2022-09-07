@@ -34,3 +34,17 @@ Body:
         "id": number,
         "isChecked": boolean
     }
+PATCH user/{userid}/data
+
+Body:
+
+    {
+        // group one (Every single is independent)
+        "firstName"?: string,
+        "lastName"?: string,
+        "mail"?: string
+
+        // group two (These two must be provided if you want to change the password)
+        "oldPassword"?: string,
+        "newPassword"?: string
+    }

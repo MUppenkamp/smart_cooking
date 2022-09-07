@@ -3,7 +3,8 @@ import cors from 'cors';
 const app = express();
 
 import { pgQuery, disconnectPool, createPool } from './helper/pgQuery';
-import recipe from './router/recipe';
+import recipe from './router/recipe'
+import user from './router/user';
 import { recipeRandomise } from './helper/recipeRandomise';
 import { Pool } from 'pg';
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json())
 
 app.use('/recipe', recipe);
+app.use('/user', user);
 
 // region CreateDatabaseTable
 
