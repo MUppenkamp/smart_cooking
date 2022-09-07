@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAllRecipes } from '../../api/GET/getRecipes';
 import { postRecipe } from '../../api/POST/postRecipe';
 import { patchRecipe } from '../../api/PATCH/patchRecipe';
-import { TRecipe } from '../../types/recipe';
+import { TCreateRecipe, TRecipe } from '../../types/recipe';
 
 export const fetchRecipes = createAsyncThunk(
     'fetchRecipes',
@@ -24,7 +24,7 @@ export const fetchRecipes = createAsyncThunk(
 export const createRecipe = createAsyncThunk(
     'createRecipe',
     async (
-        recipe: TRecipe,
+        recipe: TCreateRecipe,
         { rejectWithValue }
     ) => {
         try {
