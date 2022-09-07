@@ -20,7 +20,6 @@ const App: FC<Record<string, never>> = () => {
     const [selectedNav, setSelectedNav] = useState(1 as number|null);
     const [selectedRecipe, setSelectedRecipe] = useState(null as TRecipe | null);
     const dispatch = useAppDispatch();
-    const [selectedNav, setSelectedNav] = useState(1);
 
     useEffect(() => {
         if (selectedRecipe !== null) setSelectedNav(null);
