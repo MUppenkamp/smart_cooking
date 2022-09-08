@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './loginOrRegisterSite.scss';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 
@@ -17,6 +17,14 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [passwordRepeat, setPasswordRepeat] = useState('');
+
+    useEffect(() => {
+        setMail('');
+        setPassword('');
+        setFirstName('');
+        setLastName('');
+        setPasswordRepeat('');
+    }, [login])
 
     const renderInputs = () => {
         if (login) {
