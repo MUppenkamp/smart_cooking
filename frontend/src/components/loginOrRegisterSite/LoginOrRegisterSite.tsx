@@ -1,6 +1,9 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './loginOrRegisterSite.scss';
 import { Button, Form, InputGroup } from 'react-bootstrap';
+import { useAppDispatch } from '../../hook';
+import { fetchLoginUser } from '../../redux/user/userActions';
+import { SelectedSite } from '../../constants/selectedSite';
 
 type LoginSiteProps = {
     selectedSite: number | null,
@@ -11,6 +14,8 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                                                                           selectedSite,
                                                                           setSelectedSite
                                                                       }) => {
+    const dispatch = useAppDispatch();
+
     const [login, setLogin] = useState(true);
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
@@ -48,6 +53,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                             onChange={(value) => {
                                 setPassword(value.target.value);
                             }}
+                            type='password'
                             placeholder='Passwort'
                         />
                     </InputGroup>
@@ -121,6 +127,14 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     className='btn btn-secondary'
                     onClick={() => {
                         if (!login) setLogin(true);
+                        if (mail != '' && password != '') {
+                            console.log("login user")
+                            dispatch(fetchLoginUser({
+                                mail,
+                                password
+                            }));
+                            setSelectedSite(SelectedSite.RECIPE_SITE)
+                        }
                     }}
                 >
                     Einloggen

@@ -50,6 +50,8 @@ router.patch('/:userid/data', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    console.log("body");
+    console.log(req.body)
     if (!req.body?.password || !req.body?.mail) {
         res.status(400).json({});
         return;
@@ -88,7 +90,6 @@ router.post('/login', async (req, res) => {
             password: userData?.password,
             mail: userData?.mail,
             picture: userData?.picture,
-
         }
     });
 });
@@ -107,15 +108,32 @@ router.post('/register', async (req, res) => {
 
     const createUser = "INSERT INTO app_user(first_name, last_name, password, mail) VALUES ($1, $2, $3, $4) RETURNING *";
 
-    const user = await pgQuery(connection, createUser, [req.body.firstName, req.body.lastName, req.body.password, req.body.mail]);
+    const user = await pgQuery<{
+        id: number,
+        first_name: string,
+        last_name: string,
+        password: string,
+        mail: string,
+        picture?: string
+    }>(connection, createUser, [req.body.firstName, req.body.lastName, req.body.password, req.body.mail]);
 
     if (!user?.rowCount || user.rowCount <= 0) {
         res.status(204).json({});
         return;
     }
     await disconnectPool(connection);
+    const userData = user.rows[0];
+
+
     res.status(200).json({
-        data: user.rows[0]
+        data: {
+            id: userData?.id,
+            firstName: userData?.first_name,
+            lastName: userData?.last_name,
+            password: userData?.password,
+            mail: userData?.mail,
+            picture: userData?.picture,
+        }
     });
 });
 

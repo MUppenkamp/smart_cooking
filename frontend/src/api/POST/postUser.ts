@@ -5,10 +5,13 @@ import { THelper } from '../../types/requestHelper';
 
 export const loginUser = async (data: TLoginData): Promise<THelper<TUser> | null> => {
     const response = await requestHelper<TUser>({
-        requestUrl: `${SMART_COOKING_URL}/`,
+        requestUrl: `${SMART_COOKING_URL}/user/login`,
         options: {
             method: 'POST',
             body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
     });
 

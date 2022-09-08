@@ -11,6 +11,7 @@ export const fetchLoginUser = createAsyncThunk(
     ) => {
         try {
             const retVal = await loginUser(data);
+            console.log("get retval", retVal);
             if (retVal?.status && retVal.status === 200) {
                 return retVal.data;
             }
