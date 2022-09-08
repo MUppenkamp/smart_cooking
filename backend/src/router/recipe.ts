@@ -464,7 +464,7 @@ router.get('/:userid/shopping/list', async (req, res) => {
 })
 
 router.post('/:userid/favorite', async (req, res) => {
-    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2';
+    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2 and recipe_id = $3 RETURNING *'';
 
     if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null) {
         res.status(400).json({});
@@ -474,10 +474,12 @@ router.post('/:userid/favorite', async (req, res) => {
     await recipeRandomise(Number(req.params.userid));
 
     const connection = await createPool();
-    await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
+    const response = await pgQuery(connection, query, [req.body.isFavorite, req.body.id, req.params.userid]);
     await disconnectPool(connection);
 
-    res.status(204).json({});
+    res.status(204).json({
+        data: response?.rows[0]
+    });
 })
 
 router.patch('/:userid/shopping/list', async (req, res) => {
