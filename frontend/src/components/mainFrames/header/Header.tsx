@@ -16,8 +16,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     return (
         <div
             className='header'
-            // TODO isLoggedIn ? setSelectedSite.SETTINGS_SITE : setSelectedSite.LOGIN_OR_REGISTRATION_SITE
-            onClick={() => setSelectedSite(SelectedSite.LOGIN_OR_REGISTRATION_SITE)}
         >
             {/*<Image*/}
             {/*    src='images/logo.png'*/}
@@ -25,7 +23,11 @@ const Header: React.FunctionComponent<HeaderProps> = ({
             {/*    width={50}*/}
             {/*/>*/}
             <h1>LOGO</h1>
-            <div className='header__border'>
+            <div
+                className='header__border'
+                // TODO isLoggedIn ? setSelectedSite.SETTINGS_SITE : setSelectedSite.LOGIN_OR_REGISTRATION_SITE
+                onClick={() => setSelectedSite(SelectedSite.LOGIN_OR_REGISTRATION_SITE)}
+            >
                 <FontAwesomeIcon
                     icon={faUser}
                     className='header__border__icon'
