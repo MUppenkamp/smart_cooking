@@ -1,0 +1,101 @@
+@import '../../../src/constants/variables';
+
+.login-or-register {
+  position: relative;
+
+  &__greeting {
+    margin: 50px 0 60px 0;
+
+    &__1 {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__input {
+    height: 55px;
+    border-radius: $border-radius;
+    border-color: $smart-cooking-color-light;
+  }
+
+  &__input:focus {
+    border: 1.5px solid $smart-cooking-color !important;
+    box-shadow: none;
+  }
+
+  &__password-reset {
+    color: $smart-cooking-color;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    .btn {
+      border-color: transparent;
+      background-image: linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light);
+      color: $basic-text-color;
+      border-radius: $button-border-radius;
+      width: 100%;
+      padding: 8px 12px;
+    }
+
+    .btn:focus {
+      border-color: $button-click-color;
+      box-shadow: none;
+    }
+  }
+
+  &__button-other {
+    .btn {
+      border: 2px solid transparent;
+      border-radius: $button-border-radius;
+      color: $basic-text-color;
+      width: 100%;
+      padding: 8px 12px;
+    }
+
+    .btn:focus {
+      border-color: $button-click-color;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      background-clip: padding-box, border-box;
+      background-image: linear-gradient($background-color, $background-color), linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light);
+      background-origin: border-box;
+    }
+  }
+
+  &__or {
+    display: flex;
+    align-items: baseline;
+    margin: 20px 0;
+
+    &__1 {
+      height: 2px;
+      background: linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-dark);
+      width: 40%;
+    }
+
+    &__2 {
+      width: 20%;
+      text-align: center;
+    }
+
+    &__3 {
+      height: 2px;
+      background: linear-gradient(to left, $smart-cooking-color, $smart-cooking-color-dark);
+      width: 40%;
+    }
+  }
+}
+
+#visual {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  margin-top: -220px;
+}
+
+.svg-path svg {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;
+}

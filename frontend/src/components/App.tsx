@@ -6,11 +6,11 @@ import { Container } from 'react-bootstrap';
 import SearchBar from './mainFrames/searchBar/SearchBar';
 import NoContent from './mainFrames/noContent/NoContent';
 import SiteName from './mainFrames/siteName/SiteName';
-import Header from './mainFrames/header/Header';
 import RecipeSite from './recipeSite/RecipeSite';
 import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
 import { SelectedSite } from '../constants/selectedSite';
-import LoginSite from './loginSite/LoginSite';
+import LoginOrRegisterSite from './loginOrRegisterSite/LoginOrRegisterSite';
+import Header from './mainFrames/header/Header';
 import { useAppDispatch } from '../hook';
 import { fetchUser } from '../redux/user/userActions';
 import FavoriteSite from './favoriteSite/FavoriteSite';
@@ -42,9 +42,18 @@ const App: FC<Record<string, never>> = () => {
     return (
         <>
             <Container>
-                <Header setSelectedSite={setSelectedSite}/>
+                {
+                    selectedSite !== SelectedSite.LOGIN_OR_REGISTRATION_SITE
+                    && <Header setSelectedSite={setSelectedSite}/>
+                }
                 <SiteName selectedSite={selectedSite}/>
-                <SearchBar/>
+                {
+                    selectedSite !== SelectedSite.LOGIN_OR_REGISTRATION_SITE
+                    && selectedSite !== SelectedSite.SETTINGS_SITE
+                    && selectedSite !== SelectedSite.ERROR
+                    && selectedSite !== SelectedSite.NOTHING
+                    && <SearchBar/>
+                }
                 <Container className='inner-container'>
                     {
                         selectedSite === SelectedSite.ERROR && (
@@ -79,9 +88,12 @@ const App: FC<Record<string, never>> = () => {
                         )
                     }
                     {
-                        selectedSite === SelectedSite.LOGIN_SITE && (
+                        selectedSite === SelectedSite.LOGIN_OR_REGISTRATION_SITE && (
                             <>
-                                <LoginSite />
+                                <LoginOrRegisterSite
+                                    selectedSite={selectedSite}
+                                    setSelectedSite={setSelectedSite}
+                                />
                             </>
                         )
                     }

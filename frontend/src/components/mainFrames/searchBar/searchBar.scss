@@ -4,6 +4,7 @@
   .form-control {
     border-bottom-left-radius: 0 !important;
     border-top-left-radius: 0 !important;
+    border-color: $smart-cooking-color-light;
   }
 
   .input-group-text {
@@ -14,6 +15,6 @@
 
   &__icon {
     font-size: calc(1.1rem + .9vw);
-    color: $basic-text-color;
+    color: $smart-cooking-color-dark;
   }
 }
