@@ -3,6 +3,8 @@ import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { SelectedSite } from '../../../constants/selectedSite';
+import { useAppSelector } from '../../../hook';
+import { selectUser } from '../../../redux/user/userSelectors';
 
 
 type HeaderProps = {
@@ -12,6 +14,7 @@ type HeaderProps = {
 const Header: React.FunctionComponent<HeaderProps> = ({
                                                           setSelectedSite
                                                       }) => {
+    const user = useAppSelector(selectUser);
 
     return (
         <div
@@ -25,8 +28,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
             <h1>LOGO</h1>
             <div
                 className='header__border'
-                // TODO isLoggedIn ? setSelectedSite.SETTINGS_SITE : setSelectedSite.LOGIN_OR_REGISTRATION_SITE
-                onClick={() => setSelectedSite(SelectedSite.LOGIN_OR_REGISTRATION_SITE)}
+                onClick={() => setSelectedSite(user ? SelectedSite.SETTINGS_SITE : SelectedSite.LOGIN_OR_REGISTRATION_SITE)}
             >
                 <FontAwesomeIcon
                     icon={faUser}

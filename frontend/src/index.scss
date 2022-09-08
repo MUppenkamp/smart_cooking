@@ -43,6 +43,13 @@ h4 {
 html {
   background-color: $background-color;
 }
+body {
+  background-color: $background-color;
+}
+
+#root {
+  background-color: $background-color;
+}
 
 .container {
   background-color: $background-color;
@@ -56,4 +63,18 @@ html {
 
 .form-control {
   border-radius: $border-radius !important;
+}
+
+.btn {
+  border-color: transparent !important;
+  background-image: linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light) !important;
+  color: $basic-text-color !important;
+  border-radius: $button-border-radius !important;
+  width: 100% !important;
+  padding: 8px 12px !important;
+}
+
+.btn:focus {
+  border-color: $button-click-color !important;
+  box-shadow: none !important;
 }

@@ -1,0 +1,22 @@
+@import '../../constants/variables';
+
+.settings {
+  &__picture {
+    margin-bottom: 15px;
+    text-align: center;
+    border: $smart-cooking-color solid 6px;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+
+    &__icon {
+      color: $smart-cooking-color;
+      font-size: 100px;
+      padding-top: 25px;
+    }
+  }
+
+  .btn {
+    margin-bottom: 60px;
+  }
+}
