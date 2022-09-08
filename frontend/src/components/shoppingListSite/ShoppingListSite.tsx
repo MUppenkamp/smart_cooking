@@ -2,6 +2,7 @@ import React from 'react';
 import './shoppingListSite.scss';
 import { TShoppingList } from '../../types/shoppingList';
 import { Form } from 'react-bootstrap';
+import { formatDate } from '../../utils/timeHelper';
 
 type ShoppingListSiteProps = {};
 
@@ -522,7 +523,7 @@ const ShoppingListSite: React.FunctionComponent<ShoppingListSiteProps> = () => {
                 shoppingList.map(s => {
                     return (
                         <>
-                            <h2 className='shopping-list__headline'>{s.date.toDateString()}</h2>
+                            <h2 className='shopping-list__headline'>{formatDate(s.date.toDateString())}</h2>
                             <h3>{s.recipe.name}</h3>
                             <div className='shopping-list__ingredients'>
                                 <div className='shopping-list__ingredients__quantity'>
