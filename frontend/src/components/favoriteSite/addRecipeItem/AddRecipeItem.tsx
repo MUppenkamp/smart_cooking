@@ -3,7 +3,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 
-const AddRecipe = () => {
+const AddRecipeItem = () => {
     return (
         <div className='recipe-add'>
             <FontAwesomeIcon icon={faPlus}/>
@@ -12,4 +12,4 @@ const AddRecipe = () => {
 };
 
 
-export default AddRecipe;
+export default AddRecipeItem;
