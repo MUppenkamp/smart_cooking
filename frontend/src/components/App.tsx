@@ -47,6 +47,7 @@ const App: FC<Record<string, never>> = () => {
             <Container>
                 {
                     selectedSite !== SelectedSite.LOGIN_OR_REGISTRATION_SITE
+                    && selectedSite !== SelectedSite.SETTINGS_SITE
                     && <Header setSelectedSite={setSelectedSite}/>
                 }
                 <SiteName selectedSite={selectedSite}/>
