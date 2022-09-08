@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+import { de } from 'date-fns/locale';
+
 const durationFormat = (duration: number): string => {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
@@ -8,6 +11,19 @@ const durationFormat = (duration: number): string => {
     return time;
 };
 
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+
+    const result = format(date, 'EEEE, dd. MMMM', {
+        locale: de
+    });
+
+    console.log('format date', result);
+
+    return result;
+};
+
 export {
-    durationFormat
+    durationFormat,
+    formatDate
 };
