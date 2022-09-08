@@ -16,8 +16,8 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     return (
         <div
             className='header'
-            // TODO isLoggedIn ? setSelectedSite.SETTINGS_SITE : setSelectedSite.LOGIN_SITE
-            onClick={() => setSelectedSite(SelectedSite.LOGIN_SITE)}
+            // TODO isLoggedIn ? setSelectedSite.SETTINGS_SITE : setSelectedSite.LOGIN_OR_REGISTRATION_SITE
+            onClick={() => setSelectedSite(SelectedSite.LOGIN_OR_REGISTRATION_SITE)}
         >
             {/*<Image*/}
             {/*    src='images/logo.png'*/}
