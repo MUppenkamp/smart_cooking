@@ -1,8 +1,8 @@
 # Use postgres/example user/password credentials
 version: '3.1'
 
-volumes:
-  postgres:
+#volumes:
+#  postgres:
 
 services:
   postgres:
@@ -13,8 +13,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: smart_cocking
       PGDATA: /data/postgres
-  #  volumes:
-  #     - postgres:/data/postgres
+#    volumes:
+#      - postgres:/data/postgres
     ports:
       - 5432:5432
     restart: unless-stopped
@@ -40,3 +40,8 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_URL: 'database'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'smart_cocking'
+      POSTGRES_PORT: 5432
+      CREATE_DEFAULT_DATA: 'false'
