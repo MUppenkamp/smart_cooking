@@ -5,9 +5,7 @@ import { selectUser } from '../../redux/user/userSelectors';
 import { selectFavoriteRecipes } from '../../redux/favoriteRecipes/favoriteRecipesSelectors';
 import RecipeItem from '../mainFrames/recipeItem/RecipeItem';
 import { TRecipe } from '../../types/recipe';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import AddRecipe from '../recipeSite/addRecipe/AddRecipe';
+import AddRecipeItem from './addRecipeItem/AddRecipeItem';
 
 type FavoriteSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -27,7 +25,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
         <>
             <h3>Eigene</h3>
             <div className='favorite-site'>
-                <AddRecipe />
+                <AddRecipeItem />
                 {
                     favoriteRecipes.map(recipe => {
                         if (!recipe.isOwn) {
