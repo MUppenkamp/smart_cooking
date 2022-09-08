@@ -24,39 +24,39 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                                                                             }) => {
 
     return (
-        <div className="recipe-details-site">
+        <div className='recipe-details-site'>
             <Image
                 src={recipe.picture}
                 alt={recipe.name}
                 rounded
-                className="recipe-details-site__image"
+                className='recipe-details-site__image'
             />
-            <div className="recipe-details-site__headline">
+            <div className='recipe-details-site__headline'>
                 <h3>{recipe.name}</h3>
                 <FontAwesomeIcon
                     icon={faHeart}
                     className={recipe.isFavorite ? 'recipe-details-site__headline__favorite' : 'recipe-details-site__headline__not-favorite'}
                 />
             </div>
-            <div className="recipe-details-site__infos">
-                <div className="recipe-details-site__infos__item">
+            <div className='recipe-details-site__infos'>
+                <div className='recipe-details-site__infos__item'>
                     <FontAwesomeIcon
                         icon={faClock}
-                        className="recipe-details-site__infos__item__icon"
+                        className='recipe-details-site__infos__item__icon'
                     />
                     <p>{durationFormat(recipe.duration)}</p>
                 </div>
-                <div className="recipe-details-site__infos__item">
+                <div className='recipe-details-site__infos__item'>
                     <FontAwesomeIcon
                         icon={faSignal}
-                        className="recipe-details-site__infos__item__icon"
+                        className='recipe-details-site__infos__item__icon'
                     />
                     <p>{recipe.difficultyName}</p>
                 </div>
-                <div className="recipe-details-site__infos__item">
+                <div className='recipe-details-site__infos__item'>
                     <FontAwesomeIcon
                         icon={faUsers}
-                        className="recipe-details-site__infos__item__icon"
+                        className='recipe-details-site__infos__item__icon'
                     />
                     <p>{recipe.portion === 1 ? `${recipe.portion} Person` : `${recipe.portion} Personen`}</p>
                 </div>
@@ -64,15 +64,15 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
             {
                 (recipe.calorificValue || recipe.protein || recipe.fat || recipe.carbohydrates) && (
                     <>
-                        <h3 className="recipe-details-site__nutritional-values-headline">Nährwerte pro Portion</h3>
-                        <div className="recipe-details-site__nutritional-values">
-                            <div className="recipe-details-site__nutritional-values__items">
+                        <h3 className='recipe-details-site__nutritional-values-headline'>Nährwerte pro Portion</h3>
+                        <div className='recipe-details-site__nutritional-values'>
+                            <div className='recipe-details-site__nutritional-values__items'>
                                 {
                                     recipe.calorificValue && (
-                                        <div className="recipe-details-site__nutritional-values__items__item">
+                                        <div className='recipe-details-site__nutritional-values__items__item'>
                                             <FontAwesomeIcon
                                                 icon={faFire}
-                                                className="recipe-details-site__nutritional-values__items__item__icon"
+                                                className='recipe-details-site__nutritional-values__items__item__icon'
                                             />
                                             <p>{recipe.calorificValue} kCal</p>
                                         </div>
@@ -80,10 +80,10 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                                 }
                                 {
                                     recipe.protein && (
-                                        <div className="recipe-details-site__nutritional-values__items__item">
+                                        <div className='recipe-details-site__nutritional-values__items__item'>
                                             <FontAwesomeIcon
                                                 icon={faEgg}
-                                                className="recipe-details-site__nutritional-values__items__item__icon"
+                                                className='recipe-details-site__nutritional-values__items__item__icon'
                                             />
                                             <p>{recipe.protein} g</p>
                                         </div>
@@ -91,10 +91,10 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                                 }
                                 {
                                     recipe.fat && (
-                                        <div className="recipe-details-site__nutritional-values__items__item">
+                                        <div className='recipe-details-site__nutritional-values__items__item'>
                                             <FontAwesomeIcon
                                                 icon={faFillDrip}
-                                                className="recipe-details-site__nutritional-values__items__item__icon"
+                                                className='recipe-details-site__nutritional-values__items__item__icon'
                                             />
                                             <p>{recipe.fat} g</p>
                                         </div>
@@ -102,10 +102,10 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                                 }
                                 {
                                     recipe.carbohydrates && (
-                                        <div className="recipe-details-site__nutritional-values__items__item">
+                                        <div className='recipe-details-site__nutritional-values__items__item'>
                                             <FontAwesomeIcon
                                                 icon={faBreadSlice}
-                                                className="recipe-details-site__nutritional-values__items__item__icon"
+                                                className='recipe-details-site__nutritional-values__items__item__icon'
                                             />
                                             <p>{recipe.carbohydrates} g</p>
                                         </div>
@@ -116,16 +116,16 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                     </>
                 )
             }
-            <h3 className="recipe-details-site__ingredients-headline">Zutaten</h3>
-            <div className="recipe-details-site__ingredients">
-                <div className="recipe-details-site__ingredients__quantity">
+            <h3 className='recipe-details-site__ingredients-headline'>Zutaten</h3>
+            <div className='recipe-details-site__ingredients'>
+                <div className='recipe-details-site__ingredients__quantity'>
                     {
                         recipe.ingredients.map(i => (
                             <p>{i.quantity} {i.quantityUnitName}</p>
                         ))
                     }
                 </div>
-                <div className="recipe-details-site__ingredients__name">
+                <div className='recipe-details-site__ingredients__name'>
                     {
                         recipe.ingredients.map(i => (
                             <p>{i.name}</p>
@@ -133,7 +133,7 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                     }
                 </div>
             </div>
-            <h3 className="recipe-details-site__description-headline">Zubereitung</h3>
+            <h3 className='recipe-details-site__description-headline'>Zubereitung</h3>
             <p dangerouslySetInnerHTML={{ __html: recipe.description }}/>
         </div>
     );
