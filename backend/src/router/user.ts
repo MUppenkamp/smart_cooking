@@ -62,15 +62,34 @@ router.post('/login', async (req, res) => {
             FROM app_user
             WHERE password = $1 AND mail = $2`;
 
-    const user = await pgQuery(connection, getUserViaPassword, [req.body.password, req.body.mail]);
+    const user = await pgQuery<{
+        id: number,
+        first_name: string,
+        last_name: string,
+        password: string,
+        mail: string,
+        picture?: string
+    }>(connection, getUserViaPassword, [req.body.password, req.body.mail]);
 
     if (!user?.rowCount || user.rowCount <= 0) {
         res.status(204).json({});
         return;
     }
     await disconnectPool(connection);
+
+    const userData = user.rows[0];
+
+
     res.status(200).json({
-        data: user.rows[0]
+        data: {
+            id: userData?.id,
+            firstName: userData?.first_name,
+            lastName: userData?.last_name,
+            password: userData?.password,
+            mail: userData?.mail,
+            picture: userData?.picture,
+
+        }
     });
 });
 
