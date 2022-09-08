@@ -13,7 +13,7 @@ export const postFavoriteRecipe = async ({userId, body}: TPostFavoriteRecipePara
     });
 };
 
-// ToDo: Update
+// ToDo: Do not
 export const postRecipe = async (recipe: TCreateRecipe) => {
     const response = await requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/`,
@@ -54,7 +54,7 @@ export const postRecipe = async (recipe: TCreateRecipe) => {
     };
 };
 
-// ToDo: Update
+// ToDo: Do not
 export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => {
     const response = await requestHelper<TRecipeWeek>({
         requestUrl: `${SMART_COOKING_URL}/`,

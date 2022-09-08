@@ -16,6 +16,7 @@ import { fetchUser } from '../redux/user/userActions';
 import FavoriteSite from './favoriteSite/FavoriteSite';
 import { TRecipe } from '../types/recipe';
 import ShoppingListSite from './shoppingListSite/ShoppingListSite';
+import WeekSite from './weekSite/WeekSite';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
@@ -76,9 +77,7 @@ const App: FC<Record<string, never>> = () => {
                     }
                     {
                         selectedSite === SelectedSite.WEEK_SITE && (
-                            <>
-
-                            </>
+                            <WeekSite />
                         )
                     }
                     {

@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { IS_PRODUCTION } from '../constants/environments';
 import favoriteRecipesReducer from './favoriteRecipes/favoriteRecipesSlice';
 import recipesReducer from './recipes/recipesSlice';
-import recipesWeekReducer from './recipeWeek/recipeWeekSlice';
+import recipeWeekReducer from './recipeWeek/recipeWeekSlice';
 import shoppingListReducer from './shoppingList/shoppingListSlice';
 import userReducer from './user/userSlice';
 
@@ -12,7 +12,7 @@ const createStore = () => {
         favoriteRecipes: favoriteRecipesReducer,
         user: userReducer,
         recipes: recipesReducer,
-        recipesWeek: recipesWeekReducer,
+        recipeWeek: recipeWeekReducer,
         shoppingList: shoppingListReducer
     });
 

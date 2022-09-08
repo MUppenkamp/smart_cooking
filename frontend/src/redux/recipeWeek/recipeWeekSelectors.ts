@@ -1,9 +1,13 @@
 import type { RootState } from '../store';
+import { recipeWeekAdapter } from './recipeWeekSlice';
+import { EntityId } from '@reduxjs/toolkit';
 
-export const selectRecipeWeekFetchState = (state: RootState) => state.recipesWeek.fetchState;
+const recipeWeekSelector = recipeWeekAdapter.getSelectors((state: RootState) => state.recipeWeek.data);
 
-export const selectRecipeWeekIds = (state: RootState) => state.recipesWeek.data.ids;
+export const selectRecipeWeekFetchState = (state: RootState) => state.recipeWeek.fetchState;
 
-export const selectRecipeWeekEntities = (state: RootState) => state.recipesWeek.data.entities;
+export const selectRecipeWeekIds = (state: RootState) => recipeWeekSelector.selectIds(state);
 
-export const selectRecipeWeekDay = (state: RootState, date: string) => state.recipesWeek.data.entities[date];
+export const selectRecipeWeek = (state: RootState) =>  recipeWeekSelector.selectAll(state);
+
+export const selectRecipeWeekDay = (state: RootState, id: EntityId) => recipeWeekSelector.selectById(state, id);
