@@ -7,6 +7,13 @@ export type TPostFavoriteRecipeParams = {
         isFavorite: boolean
     }
 };
+export type TPostFavoriteRecipeReturns = {
+    status: number;
+    data: {
+        id: number,
+        isFavorite: boolean
+    }
+};
 
 export type TPostCalendarRecipeParams = {};
 

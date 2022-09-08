@@ -29,7 +29,8 @@ export const updateFavorite = createAsyncThunk(
     ) => {
         try {
             const retVal = await postFavoriteRecipe(params);
-            if (retVal && retVal.status === 200) {
+            console.log('updateFavorite', retVal);
+            if (retVal && retVal.status === 204) {
                 return retVal.data;
             }
         } catch (e) {

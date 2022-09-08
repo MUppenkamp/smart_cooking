@@ -17,7 +17,6 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectUser);
     const recipes = useAppSelector(selectRecipes);
-    const ids = useAppSelector(selectRecipesIds);
 
     const date = new Date;
     let hours = date.getHours();
@@ -30,6 +29,8 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
     if (!recipes) {
         return <></>;
     }
+
+    console.log('recipes', recipes);
 
     return (
         <>

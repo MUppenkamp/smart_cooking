@@ -1,16 +1,28 @@
 import requestHelper from '../../utils/requestHelper';
 import { SMART_COOKING_URL } from '../../constants/url';
-import { TPostCalendarRecipeParams, TPostFavoriteRecipeParams, } from '../../types/postRecipe';
+import {
+    TPostCalendarRecipeParams,
+    TPostFavoriteRecipeParams,
+    TPostFavoriteRecipeReturns,
+} from '../../types/postRecipe';
 import { TCreateRecipe, TRecipe, TRecipeWeek } from '../../types/recipe';
 
-export const postFavoriteRecipe = async ({ userId, body }: TPostFavoriteRecipeParams) => {
-    return requestHelper<TRecipe>({
+export const postFavoriteRecipe = async ({ userId, body }: TPostFavoriteRecipeParams): Promise<TPostFavoriteRecipeReturns> => {
+    const response = await requestHelper<unknown>({
         requestUrl: `${SMART_COOKING_URL}/recipe/${userId}/favorite`,
         options: {
             method: 'POST',
             body
         }
     });
+
+    if (response.status !== 204) {
+        return response as TPostFavoriteRecipeReturns;
+    }
+    return {
+        status: response.status,
+        data: body
+    };
 };
 
 // ToDo: Do not
