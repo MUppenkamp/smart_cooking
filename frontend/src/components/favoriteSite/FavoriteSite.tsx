@@ -1,11 +1,12 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import './favoriteSite.scss';
-import { useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hook';
 import { selectUser } from '../../redux/user/userSelectors';
 import { selectFavoriteRecipes } from '../../redux/favoriteRecipes/favoriteRecipesSelectors';
 import RecipeItem from '../mainFrames/recipeItem/RecipeItem';
 import { TRecipe } from '../../types/recipe';
 import AddRecipeItem from './addRecipeItem/AddRecipeItem';
+import { fetchFavoriteRecipes } from '../../redux/favoriteRecipes/favoriteRecipesActions';
 
 type FavoriteSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -14,8 +15,15 @@ type FavoriteSiteProps = {
 const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
                                                                       setSelectedRecipe
                                                                   }) => {
+    const dispatch = useAppDispatch();
     const user = useAppSelector(selectUser);
     const favoriteRecipes = useAppSelector(selectFavoriteRecipes);
+
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchFavoriteRecipes(user.id));
+        }
+    }, [user]);
 
     if (!user || !favoriteRecipes) {
         return <></>;

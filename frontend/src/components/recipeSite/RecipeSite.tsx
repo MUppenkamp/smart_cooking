@@ -1,10 +1,11 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import './recipeSite.scss';
 import { TRecipe } from '../../types/recipe';
 import RecipeItem from '../mainFrames/recipeItem/RecipeItem';
-import { useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hook';
 import { selectUser } from '../../redux/user/userSelectors';
-import { selectRecipes } from '../../redux/recipes/recipesSelectors';
+import { selectRecipes, selectRecipesIds } from '../../redux/recipes/recipesSelectors';
+import { fetchRecipes } from '../../redux/recipes/recipesActions';
 
 type RecipeSiteProps = {
     setSelectedRecipe: Dispatch<SetStateAction<TRecipe | null>>
@@ -13,12 +14,20 @@ type RecipeSiteProps = {
 const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
                                                                   setSelectedRecipe
                                                               }) => {
+    const dispatch = useAppDispatch();
     const user = useAppSelector(selectUser);
     const recipes = useAppSelector(selectRecipes);
+    const ids = useAppSelector(selectRecipesIds);
 
     const date = new Date;
     let hours = date.getHours();
     let greeting = (hours < 12) ? 'Guten Morgen' : ((hours <= 18 && hours >= 12) ? 'Guten Mittag' : 'Guten Abend');
+
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchRecipes(user.id));
+        }
+    }, [user]);
 
     if (!user || !recipes) {
         return <></>;

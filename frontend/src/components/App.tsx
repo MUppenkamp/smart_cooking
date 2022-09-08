@@ -11,18 +11,15 @@ import RecipeSite from './recipeSite/RecipeSite';
 import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
 import { SelectedSite } from '../constants/selectedSite';
 import LoginSite from './loginSite/LoginSite';
-import { useAppDispatch, useAppSelector } from '../hook';
+import { useAppDispatch } from '../hook';
 import { fetchUser } from '../redux/user/userActions';
 import FavoriteSite from './favoriteSite/FavoriteSite';
 import { TRecipe } from '../types/recipe';
-import { fetchFavoriteRecipes } from '../redux/favoriteRecipes/favoriteRecipesActions';
-import { selectUser } from '../redux/user/userSelectors';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
     const [selectedRecipe, setSelectedRecipe] = useState(null as TRecipe | null);
     const dispatch = useAppDispatch();
-    const user = useAppSelector(selectUser);
 
     useEffect(() => {
         if (selectedRecipe !== null) setSelectedSite(SelectedSite.NOTHING);
@@ -40,12 +37,6 @@ const App: FC<Record<string, never>> = () => {
             password: '1234'
         }));
     }, []);
-
-    useEffect(() => {
-        if (user) {
-            dispatch(fetchFavoriteRecipes(user.id));
-        }
-    }, [user]);
 
     return (
         <>

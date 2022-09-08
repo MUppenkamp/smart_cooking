@@ -2,7 +2,7 @@ import type { RootState } from '../store';
 import { recipesAdapter } from './recipesSlice';
 import { EntityId } from '@reduxjs/toolkit';
 
-const recipesSelector = recipesAdapter.getSelectors((state: RootState) => state.favoriteRecipes.data);
+const recipesSelector = recipesAdapter.getSelectors((state: RootState) => state.recipes.data);
 
 export const selectRecipesFetchState = (state: RootState) => state.recipes.fetchState;
 
