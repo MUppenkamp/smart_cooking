@@ -24,7 +24,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
         setFirstName('');
         setLastName('');
         setPasswordRepeat('');
-    }, [login])
+    }, [login]);
 
     const renderInputs = () => {
         if (login) {
@@ -150,7 +150,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                 <path
                     className='svg-path'
                     d='M0 357L30 354.7C60 352.3 120 347.7 180 349.2C240 350.7 300 358.3 360 340.8C420 323.3 480 280.7 540 280.5C600 280.3 660 322.7 720 332.7C780 342.7 840 320.3 870 309.2L900 298L900 0L870 0C840 0 780 0 720 0C660 0 600 0 540 0C480 0 420 0 360 0C300 0 240 0 180 0C120 0 60 0 30 0L0 0Z'
-                    fill='#ace08b' stroke-linecap='round' stroke-linejoin='miter'
+                    fill='#ace08b' strokeLinecap='round' strokeLinejoin='miter'
                 >
                 </path>
             </svg>
