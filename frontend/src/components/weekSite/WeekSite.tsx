@@ -5,6 +5,7 @@ import { Image } from 'react-bootstrap';
 import { selectUser } from '../../redux/user/userSelectors';
 import { fetchCalendarRecipes } from '../../redux/recipeWeek/recipeWeekActions';
 import './weekSite.scss';
+import { formatDate } from '../../utils/timeHelper';
 
 const WeekSite: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ const WeekSite: React.FunctionComponent = () => {
                     return (
                         <div className='week-site__item'>
                             <h2 className='week-site__item__date'>
-                                {recipeDay.date}
+                                {formatDate(recipeDay.date)}
                             </h2>
                             <Image
                                 src={recipeDay.recipe.picture}

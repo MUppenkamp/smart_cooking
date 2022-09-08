@@ -3,13 +3,14 @@
 .week-site {
 
   &__item {
+    margin-bottom: 15px;
 
     &__date {}
 
     &__image {
       border-radius: $border-radius !important;
       object-fit: cover;
-      width: 90%;
+      width: 100%;
       height: 40vw;
     }
 
