@@ -18,7 +18,7 @@ const favoriteRecipesSlice = createSlice({
         builder.addCase(fetchFavoriteRecipes.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(fetchFavoriteRecipes.fulfilled, (draft, { payload }) => {
+        builder.addCase(fetchFavoriteRecipes.fulfilled, (draft, {payload}) => {
             if (!payload) return;
 
             favoriteRecipesAdapter.addMany(draft.data, payload);
@@ -28,7 +28,7 @@ const favoriteRecipesSlice = createSlice({
         builder.addCase(updateFavorite.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
         });
-        builder.addCase(updateFavorite.fulfilled, (draft, { payload }) => {
+        builder.addCase(updateFavorite.fulfilled, (draft, {payload}) => {
             if (!payload) return;
 
             favoriteRecipesAdapter.updateOne(draft.data, {
@@ -37,6 +37,7 @@ const favoriteRecipesSlice = createSlice({
                     isFavorite: payload.isFavorite
                 }
             });
+
             draft.fetchState = FetchState.FETCHED;
         });
     }
