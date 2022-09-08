@@ -22,16 +22,16 @@ POST recipe/{userId}/favorite
 Body:
 
     {
-        "id": number,
+        "id": number
         "isFavorite": boolean
     }
 
-POST recipe/{userid}/shopping/list
+PATCH recipe/{userid}/shopping/list
 
 Body:
 
     {
-        "id": number,
+        "id": number
         "isChecked": boolean
     }
 PATCH user/{userid}/data
@@ -40,11 +40,32 @@ Body:
 
     {
         // group one (Every single is independent)
-        "firstName"?: string,
-        "lastName"?: string,
+        "firstName"?: string
+        "lastName"?: string
         "mail"?: string
 
         // group two (These two must be provided if you want to change the password)
-        "oldPassword"?: string,
+        "oldPassword"?: string
         "newPassword"?: string
     }
+
+POST user/login
+
+Body:
+
+    {
+        "mail": string
+        "password": string
+    }
+
+POST user/register
+
+Body:
+
+    {
+        "mail": string
+        "password": string
+        "firstName": string
+        "lastName": string
+    }
+
