@@ -8,10 +8,7 @@ export const loginUser = async (data: TLoginData): Promise<THelper<TUser> | null
         requestUrl: `${SMART_COOKING_URL}/user/login`,
         options: {
             method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: data
         }
     });
 

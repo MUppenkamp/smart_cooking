@@ -33,7 +33,9 @@ const favoriteRecipesSlice = createSlice({
 
             favoriteRecipesAdapter.updateOne(draft.data, {
                 id: payload.id,
-                changes: payload
+                changes: {
+                    isFavorite: payload.isFavorite
+                }
             });
             draft.fetchState = FetchState.FETCHED;
         });

@@ -14,6 +14,9 @@ import {
     faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import { durationFormat } from '../../utils/timeHelper';
+import { updateFavorite } from '../../redux/favoriteRecipes/favoriteRecipesActions';
+import { useAppDispatch, useAppSelector } from '../../hook';
+import { selectUser } from '../../redux/user/userSelectors';
 
 type RecipeDetailsSiteProps = {
     recipe: TRecipe
@@ -22,6 +25,8 @@ type RecipeDetailsSiteProps = {
 const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                                                                                 recipe
                                                                             }) => {
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(selectUser);
 
     return (
         <div className='recipe-details-site'>
@@ -31,7 +36,22 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                 rounded
                 className='recipe-details-site__image'
             />
-            <div className='recipe-details-site__headline'>
+            <div
+                className='recipe-details-site__headline'
+                onClick={() => {
+                    if (!user) {
+                        return;
+                    }
+
+                    dispatch(updateFavorite({
+                        userId: user.id,
+                        body: {
+                            id: recipe.id,
+                            isFavorite: !recipe.isFavorite
+                        }
+                    }));
+                }}
+            >
                 <h3>{recipe.name}</h3>
                 <FontAwesomeIcon
                     icon={faHeart}
@@ -134,7 +154,7 @@ const RecipeDetailsSite: React.FunctionComponent<RecipeDetailsSiteProps> = ({
                 </div>
             </div>
             <h3 className='recipe-details-site__description-headline'>Zubereitung</h3>
-            <p dangerouslySetInnerHTML={{ __html: recipe.description }}/>
+            <p dangerouslySetInnerHTML={{__html: recipe.description}}/>
         </div>
     );
 };
