@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './shoppingListSite.scss';
-import { TShoppingList } from '../../types/shoppingList';
 import { Form } from 'react-bootstrap';
 import { formatDate } from '../../utils/timeHelper';
 import { useAppDispatch, useAppSelector } from '../../hook';

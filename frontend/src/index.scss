@@ -78,3 +78,14 @@ body {
   border-color: $button-click-color !important;
   box-shadow: none !important;
 }
+
+.input {
+  height: 55px;
+  border-radius: $border-radius;
+  border-color: $smart-cooking-color-light;
+}
+
+.input:focus {
+  border: 1.5px solid $smart-cooking-color !important;
+  box-shadow: none;
+}

@@ -18,8 +18,6 @@ const formatDate = (dateString: string) => {
         locale: de
     });
 
-    console.log('format date', result);
-
     return result;
 };
 

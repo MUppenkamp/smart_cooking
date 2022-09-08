@@ -11,17 +11,6 @@
     }
   }
 
-  &__input {
-    height: 55px;
-    border-radius: $border-radius;
-    border-color: $smart-cooking-color-light;
-  }
-
-  &__input:focus {
-    border: 1.5px solid $smart-cooking-color !important;
-    box-shadow: none;
-  }
-
   &__password-reset {
     color: $smart-cooking-color;
     font-weight: bold;

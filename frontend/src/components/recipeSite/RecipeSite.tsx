@@ -30,8 +30,6 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
         return <></>;
     }
 
-    console.log('recipes', recipes);
-
     return (
         <>
             <h1>{greeting}{user?.firstName?.length || 0 > 0 ? `, ${user?.firstName}` : ''}!</h1>

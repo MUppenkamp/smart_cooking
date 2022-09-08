@@ -38,7 +38,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     <p>Login</p>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={mail}
                             onChange={(value) => {
                                 setMail(value.target.value);
@@ -48,7 +48,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     </InputGroup>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={password}
                             onChange={(value) => {
                                 setPassword(value.target.value);
@@ -66,7 +66,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     <p>Registrieren</p>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={firstName}
                             onChange={(value) => {
                                 setFirstName(value.target.value);
@@ -76,7 +76,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     </InputGroup>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={lastName}
                             onChange={(value) => {
                                 setLastName(value.target.value);
@@ -86,7 +86,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     </InputGroup>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={mail}
                             onChange={(value) => {
                                 setMail(value.target.value);
@@ -96,7 +96,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     </InputGroup>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={password}
                             onChange={(value) => {
                                 setPassword(value.target.value);
@@ -107,7 +107,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     </InputGroup>
                     <InputGroup className='mb-3'>
                         <Form.Control
-                            className='login-or-register__input'
+                            className='login-or-register__input input'
                             value={passwordRepeat}
                             onChange={(value) => {
                                 setPasswordRepeat(value.target.value);
@@ -129,7 +129,6 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     onClick={() => {
                         if (!login) setLogin(true);
                         if (mail != '' && password != '') {
-                            console.log('login user');
                             dispatch(fetchLoginUser({
                                 mail,
                                 password
@@ -153,7 +152,6 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                         if (login) setLogin(false);
 
                         if (mail != '' && password != '' && lastName != '' && firstName != '') {
-                            console.log('login user');
                             dispatch(fetchRegisterUser({
                                 mail,
                                 password,
