@@ -81,11 +81,15 @@ body {
 
 .input {
   height: 55px;
-  border-radius: $border-radius;
-  border-color: $smart-cooking-color-light;
+  border-radius: $border-radius !important;
+  border-color: $smart-cooking-color-light !important;
 }
 
 .input:focus {
   border: 1.5px solid $smart-cooking-color !important;
-  box-shadow: none;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
 }
