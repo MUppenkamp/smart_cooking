@@ -1,6 +1,12 @@
 import { TRecipeWeek } from './recipe';
 
-export type TPostFavoriteRecipeParams = { id: number, isFavorite: boolean };
+export type TPostFavoriteRecipeParams = {
+    userId: number,
+    body: {
+        id: number,
+        isFavorite: boolean
+    }
+};
 
 export type TPostCalendarRecipeParams = {};
 

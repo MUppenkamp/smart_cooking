@@ -1,0 +1,26 @@
+@import '../../../constants/variables';
+
+.recipe-add {
+  position: relative;
+  width: 33.33%;
+  margin-bottom: 15px;
+
+  &__item {
+    border: $smart-cooking-color 4px solid;
+    border-radius: $border-radius !important;
+    width: 90%;
+    height: 40vw;
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      height: 100%;
+      width: 100%;
+      font-size: 70px;
+      border-radius: 50%;
+      color: $smart-cooking-color;
+    }
+  }
+}
