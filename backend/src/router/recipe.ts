@@ -464,7 +464,7 @@ router.get('/:userid/shopping/list', async (req, res) => {
 })
 
 router.post('/:userid/favorite', async (req, res) => {
-    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2 and recipe_id = $3 RETURNING *'';
+    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2 and recipe_id = $3 RETURNING *';
 
     if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null) {
         res.status(400).json({});
