@@ -129,7 +129,6 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     onClick={() => {
                         if (!login) setLogin(true);
                         if (mail != '' && password != '') {
-                            console.log('login user');
                             dispatch(fetchLoginUser({
                                 mail,
                                 password
@@ -153,7 +152,6 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                         if (login) setLogin(false);
 
                         if (mail != '' && password != '' && lastName != '' && firstName != '') {
-                            console.log('login user');
                             dispatch(fetchRegisterUser({
                                 mail,
                                 password,
