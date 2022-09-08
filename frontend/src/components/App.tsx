@@ -20,6 +20,7 @@ import { getLocalstorage } from '../utils/localstorageHelper';
 import { USER_DATA_KEY } from '../constants/localstorage';
 import { TUser } from '../types/user';
 import { setUser } from '../redux/user/userSlice';
+import SettingsSite from './settingsSite/SettingsSits';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
@@ -88,12 +89,15 @@ const App: FC<Record<string, never>> = () => {
                     }
                     {
                         selectedSite === SelectedSite.LOGIN_OR_REGISTRATION_SITE && (
-                            <>
-                                <LoginOrRegisterSite
-                                    selectedSite={selectedSite}
-                                    setSelectedSite={setSelectedSite}
-                                />
-                            </>
+                            <LoginOrRegisterSite
+                                selectedSite={selectedSite}
+                                setSelectedSite={setSelectedSite}
+                            />
+                        )
+                    }
+                    {
+                        selectedSite === SelectedSite.SETTINGS_SITE && (
+                            <SettingsSite />
                         )
                     }
                     {
