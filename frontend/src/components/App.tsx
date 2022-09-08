@@ -15,6 +15,7 @@ import { useAppDispatch } from '../hook';
 import { fetchUser } from '../redux/user/userActions';
 import FavoriteSite from './favoriteSite/FavoriteSite';
 import { TRecipe } from '../types/recipe';
+import ShoppingListSite from './shoppingListSite/ShoppingListSite';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
@@ -68,23 +69,21 @@ const App: FC<Record<string, never>> = () => {
                     }
                     {
                         selectedSite === SelectedSite.FAVORITE_SITE && (
-                            <>
-                                <FavoriteSite
-                                    setSelectedRecipe={setSelectedRecipe}
-                                />
-                            </>
+                            <FavoriteSite
+                                setSelectedRecipe={setSelectedRecipe}
+                            />
                         )
                     }
                     {
                         selectedSite === SelectedSite.WEEK_SITE && (
                             <>
+
                             </>
                         )
                     }
                     {
                         selectedSite === SelectedSite.SHOPPING_LIST_SITE && (
-                            <>
-                            </>
+                            <ShoppingListSite />
                         )
                     }
                     {
