@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchLoginUser, fetchUser, updateUser } from './userActions';
+import { fetchLoginUser, fetchRegisterUser, updateUser } from './userActions';
 import FetchState from '../../constants/fetchState';
 import { TUser } from '../../types/user';
 import { saveLocalstorage } from '../../utils/localstorageHelper';
@@ -32,16 +32,13 @@ const userSlice = createSlice({
             saveLocalstorage(USER_DATA_KEY, payload);
         });
 
-
-        builder.addCase(fetchUser.pending, (draft) => {
+        builder.addCase(fetchRegisterUser.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;
-        });
-        builder.addCase(fetchUser.fulfilled, (draft, { payload }) => {
-            if (!payload) return;
-
-            draft.fetchState = FetchState.FETCHED;
+        })
+        builder.addCase(fetchRegisterUser.fulfilled, (draft, { payload }) => {
             draft.data = payload;
-        });
+            saveLocalstorage(USER_DATA_KEY, payload);
+        })
 
         builder.addCase(updateUser.pending, (draft) => {
             draft.fetchState = FetchState.PENDING;

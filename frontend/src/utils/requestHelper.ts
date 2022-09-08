@@ -12,8 +12,6 @@ const requestHelper = async <T>({ requestUrl, options }: THelperParams): Promise
 
     const result = await response.json();
 
-    console.log('Request response:', requestUrl, result);
-
     return {
         status: response.status,
         data: result.data
