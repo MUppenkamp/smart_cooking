@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginUser, postUser } from '../../api/POST/postUser';
+import { loginUser, registerUser } from '../../api/POST/postUser';
 import { patchUser } from '../../api/PATCH/patchUser';
 import { TLoginData, TRegisterData, TUpdateUser } from '../../types/user';
 
@@ -11,7 +11,6 @@ export const fetchLoginUser = createAsyncThunk(
     ) => {
         try {
             const retVal = await loginUser(data);
-            console.log('get retval', retVal);
             if (retVal?.status && retVal.status === 200) {
                 return retVal.data;
             }
@@ -23,15 +22,15 @@ export const fetchLoginUser = createAsyncThunk(
     }
 );
 
-export const fetchUser = createAsyncThunk(
-    'fetchUser',
+export const fetchRegisterUser = createAsyncThunk(
+    'registerUser',
     async (
-        data: TLoginData | TRegisterData,
+        data: TRegisterData,
         { rejectWithValue }
     ) => {
         try {
-            const retVal = await postUser(data);
-            if (retVal && retVal.status === 200) {
+            const retVal = await registerUser(data);
+            if (retVal?.status && retVal.status === 200) {
                 return retVal.data;
             }
         } catch (e) {
@@ -40,7 +39,7 @@ export const fetchUser = createAsyncThunk(
 
         return rejectWithValue(null);
     }
-);
+)
 
 export const updateUser = createAsyncThunk(
     'updateUser',
