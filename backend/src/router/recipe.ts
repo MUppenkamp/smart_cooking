@@ -477,7 +477,7 @@ router.post('/:userid/favorite', async (req, res) => {
     await recipeRandomise(Number(req.params.userid));
 
     const connection = await createPool();
-    const response = await pgQuery(connection, query, [req.body.isFavorite, req.body.id, req.params.userid]);
+    const response = await pgQuery(connection, query, [req.body.isFavorite, req.params.userid, req.body.id]);
 
     if (!response?.rowCount || response.rowCount <= 0) {
         const create = await pgQuery(connection, createUser2Receipt, [req.params.userid, req.body.id, req.body.isFavorite, false]);
