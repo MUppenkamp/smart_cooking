@@ -19,6 +19,31 @@ export const recipeRandomise = async (userid: number) => {
     const nowRecipeWeekCheck = await pgQuery(connection, checkNextRecipeWeek, [userid, today]);
     const recipeWeekCheck = await pgQuery(connection, checkNextRecipeWeek, [userid, nextWeek]);
 
+    const getRecipe = `SELECT r.id, 
+        r.name, 
+        r.duration, 
+        r.description, 
+        r.calorific_value,
+        r.protein, 
+        r.fat, 
+        r.carbohydrates, 
+        r.portion,
+        r.picture,
+        d.name as difficulty_name,
+        d.id as difficulty_id,
+        u2c.is_favorite,
+        u2c.is_own
+        from recipe as r
+        LEFT JOIN difficulty as d ON d.id = r.difficulty_id
+        LEFT JOIN user_2_recipe as u2c ON u2c.recipe_id = r.id AND u2c.user_id = $1
+        WHERE u2c.user_id IS NOT NULL AND (u2c.is_favorite IS true OR u2c.is_own IS true)`;
+
+    const result = await pgQuery<GetAllRecipeDBO>(connection, getRecipe, [userid]);
+
+    if (!result?.rowCount || result.rowCount <= 0) {
+        return null;
+    }
+
     const createRecipeWeek = `INSERT INTO recipe_week(user_id, start_date, end_date) VALUES($1, $2, $3) RETURNING *`;
 
 
