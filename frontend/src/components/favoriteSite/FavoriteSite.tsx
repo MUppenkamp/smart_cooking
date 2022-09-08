@@ -33,7 +33,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
         <>
             <h3>Eigene</h3>
             <div className='favorite-site'>
-                <AddRecipeItem />
+                <AddRecipeItem/>
                 {
                     favoriteRecipes.map(recipe => {
                         if (!recipe.isOwn) {

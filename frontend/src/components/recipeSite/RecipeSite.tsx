@@ -34,7 +34,7 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
     return (
         <>
             <h1>{greeting}{user?.firstName?.length || 0 > 0 ? `, ${user?.firstName}` : ''}!</h1>
-            <div className="recipe-site">
+            <div className='recipe-site'>
                 {
                     recipes.map(recipe => {
                         return (

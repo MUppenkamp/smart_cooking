@@ -3,7 +3,7 @@ import './recipeItem.scss';
 import { TRecipe } from '../../../types/recipe';
 import { Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 type RecipeSiteItemProps = {
     recipe: TRecipe,

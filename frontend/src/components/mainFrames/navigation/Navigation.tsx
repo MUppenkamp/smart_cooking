@@ -15,9 +15,9 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                                                               }) => {
 
     return (
-        <div className="navigation">
+        <div className='navigation'>
             <div
-                className="navigation__item"
+                className='navigation__item'
                 onClick={() => setSelectedSite(SelectedSite.RECIPE_SITE)}
             >
                 <FontAwesomeIcon
@@ -27,7 +27,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedSite === 1 ? 'navigation__item__text--active' : ''}`}>Rezepte</p>
             </div>
             <div
-                className="navigation__item"
+                className='navigation__item'
                 onClick={() => setSelectedSite(SelectedSite.FAVORITE_SITE)}
             >
                 <FontAwesomeIcon
@@ -37,7 +37,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedSite === 2 ? 'navigation__item__text--active' : ''}`}>Favoriten</p>
             </div>
             <div
-                className="navigation__item"
+                className='navigation__item'
                 onClick={() => setSelectedSite(SelectedSite.WEEK_SITE)}
             >
                 <FontAwesomeIcon
@@ -47,7 +47,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
                 <p className={`navigation__item__text ${selectedSite === 3 ? 'navigation__item__text--active' : ''}`}>Wochenplan</p>
             </div>
             <div
-                className="navigation__item"
+                className='navigation__item'
                 onClick={() => setSelectedSite(SelectedSite.SHOPPING_LIST_SITE)}
             >
                 <FontAwesomeIcon

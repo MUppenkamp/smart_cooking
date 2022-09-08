@@ -1,6 +1,6 @@
 import type { RootState } from '../store';
-import { favoriteRecipesAdapter } from "./favoriteRecipesSlice";
-import { EntityId } from "@reduxjs/toolkit";
+import { favoriteRecipesAdapter } from './favoriteRecipesSlice';
+import { EntityId } from '@reduxjs/toolkit';
 
 const favoriteRecipesSelector = favoriteRecipesAdapter.getSelectors((state: RootState) => state.favoriteRecipes.data);
 

@@ -7,11 +7,11 @@ export const fetchLoginUser = createAsyncThunk(
     'loginUser',
     async (
         data: TLoginData,
-           { rejectWithValue }
+        { rejectWithValue }
     ) => {
         try {
             const retVal = await loginUser(data);
-            console.log("get retval", retVal);
+            console.log('get retval', retVal);
             if (retVal?.status && retVal.status === 200) {
                 return retVal.data;
             }
@@ -21,7 +21,7 @@ export const fetchLoginUser = createAsyncThunk(
 
         return rejectWithValue(null);
     }
-)
+);
 
 export const fetchUser = createAsyncThunk(
     'fetchUser',
