@@ -50,23 +50,30 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
                     })
                 }
             </div>
-            <h3>Favoriten</h3>
-            <div className='favorite-site'>
-                {
-                    favoriteRecipes.map(recipe => {
-                        if (recipe.isOwn) {
-                            return <></>;
-                        }
-                        return (
-                            <RecipeItem
-                                key={recipe.id}
-                                recipe={recipe}
-                                setSelectedRecipe={setSelectedRecipe}
-                            />
-                        );
-                    })
-                }
-            </div>
+            {
+                favoriteRecipes.find((recipe) => recipe.isOwn === false)
+                && (
+                    <>
+                        <h3>Favoriten</h3>
+                        <div className='favorite-site'>
+                            {
+                                favoriteRecipes.map(recipe => {
+                                    if (recipe.isOwn) {
+                                        return <></>;
+                                    }
+                                    return (
+                                        <RecipeItem
+                                            key={recipe.id}
+                                            recipe={recipe}
+                                            setSelectedRecipe={setSelectedRecipe}
+                                        />
+                                    );
+                                })
+                            }
+                        </div>
+                    </>
+                )
+            }
         </>
     );
 };
