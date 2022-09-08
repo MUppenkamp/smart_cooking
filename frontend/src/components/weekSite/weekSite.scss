@@ -1,0 +1,21 @@
+@import '../../constants/variables';
+
+.week-site {
+
+  &__item {
+
+    &__date {}
+
+    &__image {
+      border-radius: $border-radius !important;
+      object-fit: cover;
+      width: 90%;
+      height: 40vw;
+    }
+
+    &__text {
+
+      &__name {}
+    }
+  }
+}
