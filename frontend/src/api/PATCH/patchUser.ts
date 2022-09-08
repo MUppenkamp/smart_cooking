@@ -4,6 +4,7 @@ import { TUpdateUser, TUser } from '../../types/user';
 
 // ToDo: Update options
 export const patchUser = async (user: TUpdateUser) => {
+
     const response = await requestHelper<TUser>({
         requestUrl: `${SMART_COOKING_URL}/`,
         options: {

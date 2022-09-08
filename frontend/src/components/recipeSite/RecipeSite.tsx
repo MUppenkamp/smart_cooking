@@ -24,19 +24,17 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
     let greeting = (hours < 12) ? 'Guten Morgen' : ((hours <= 18 && hours >= 12) ? 'Guten Mittag' : 'Guten Abend');
 
     useEffect(() => {
-        if (user) {
-            dispatch(fetchRecipes(user.id));
-        }
+        dispatch(fetchRecipes(user?.id || 0));
     }, [user]);
 
-    if (!user || !recipes) {
+    if (!recipes) {
         return <></>;
     }
 
     return (
         <>
-            <h1>{greeting}{user.firstName.length > 0 ? `, ${user.firstName}` : ''}!</h1>
-            <div className='recipe-site'>
+            <h1>{greeting}{user?.firstName?.length || 0 > 0 ? `, ${user?.firstName}` : ''}!</h1>
+            <div className="recipe-site">
                 {
                     recipes.map(recipe => {
                         return (

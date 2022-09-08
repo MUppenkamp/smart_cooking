@@ -3,7 +3,9 @@ import { createRecipe, fetchRecipes, updateRecipe } from './recipesActions';
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 
-export const recipesAdapter = createEntityAdapter<TRecipe>();
+export const recipesAdapter = createEntityAdapter<TRecipe>({
+    sortComparer: (data) => data.id
+});
 
 const initialState = {
     fetchState: FetchState.INITIAL,
@@ -19,10 +21,9 @@ const recipesSlice = createSlice({
             draft.fetchState = FetchState.PENDING;
         });
         builder.addCase(fetchRecipes.fulfilled, (draft, { payload }) => {
-            console.log('fetchRecipes', payload);
             if (!payload) return draft;
 
-            recipesAdapter.addMany(draft.data, payload);
+            recipesAdapter.setAll(draft.data, payload);
             draft.fetchState = FetchState.FETCHED;
         });
 

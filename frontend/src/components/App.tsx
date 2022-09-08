@@ -12,11 +12,14 @@ import { SelectedSite } from '../constants/selectedSite';
 import LoginOrRegisterSite from './loginOrRegisterSite/LoginOrRegisterSite';
 import Header from './mainFrames/header/Header';
 import { useAppDispatch } from '../hook';
-import { fetchUser } from '../redux/user/userActions';
 import FavoriteSite from './favoriteSite/FavoriteSite';
 import { TRecipe } from '../types/recipe';
 import ShoppingListSite from './shoppingListSite/ShoppingListSite';
 import WeekSite from './weekSite/WeekSite';
+import { getLocalstorage } from '../utils/localstorageHelper';
+import { USER_DATA_KEY } from '../constants/localstorage';
+import { TUser } from '../types/user';
+import { setUser } from '../redux/user/userSlice';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
@@ -32,12 +35,10 @@ const App: FC<Record<string, never>> = () => {
     }, [selectedSite]);
 
     useEffect(() => {
-        dispatch(fetchUser({
-            firstName: 'Jana',
-            lastName: 'Walfort',
-            mail: 'jana.walort@gmail.com',
-            password: '1234'
-        }));
+        const user = getLocalstorage<TUser>(USER_DATA_KEY);
+        if (user) {
+            dispatch(setUser(user));
+        }
     }, []);
 
     return (
