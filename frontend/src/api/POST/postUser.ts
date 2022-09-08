@@ -22,12 +22,15 @@ export const loginUser = async (data: TLoginData): Promise<THelper<TUser> | null
     return null;
 };
 
-// ToDo: Update options
-export const postUser = async (data: TLoginData | TRegisterData) => {
+export const registerUser = async (data: TRegisterData): Promise<THelper<TUser> | null> => {
     const response = await requestHelper<TUser>({
-        requestUrl: `${SMART_COOKING_URL}/`,
+        requestUrl: `${SMART_COOKING_URL}/user/register`,
         options: {
-            method: 'POST'
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
     });
 
@@ -35,15 +38,5 @@ export const postUser = async (data: TLoginData | TRegisterData) => {
         return response;
     }
 
-    return {
-        status: 200,
-        data: {
-            id: 2,
-            firstName: 'Jana',
-            lastName: 'Walfort',
-            password: '1234',
-            mail: 'jana.walfort@gmail.com',
-            picture: ''
-        }
-    };
-};
+    return null;
+}

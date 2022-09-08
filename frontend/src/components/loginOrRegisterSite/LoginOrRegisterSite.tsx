@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './loginOrRegisterSite.scss';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useAppDispatch } from '../../hook';
-import { fetchLoginUser } from '../../redux/user/userActions';
+import { fetchLoginUser, fetchRegisterUser } from '../../redux/user/userActions';
 import { SelectedSite } from '../../constants/selectedSite';
 
 type LoginSiteProps = {
@@ -101,6 +101,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                             onChange={(value) => {
                                 setPassword(value.target.value);
                             }}
+                            type='password'
                             placeholder='Passwort'
                         />
                     </InputGroup>
@@ -111,10 +112,10 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                             onChange={(value) => {
                                 setPasswordRepeat(value.target.value);
                             }}
+                            type='password'
                             placeholder='Passwort wiederholen'
                         />
                     </InputGroup>
-                    <p className='login-or-register__password-reset'>Passwort vergessen</p>
                 </>
             );
         }
@@ -150,6 +151,17 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     className='btn btn-secondary'
                     onClick={() => {
                         if (login) setLogin(false);
+
+                        if (mail != '' && password != '' && lastName != '' && firstName != '') {
+                            console.log('login user');
+                            dispatch(fetchRegisterUser({
+                                mail,
+                                password,
+                                lastName,
+                                firstName
+                            }));
+                            setSelectedSite(SelectedSite.RECIPE_SITE);
+                        }
                     }}
                 >
                     Registrieren
