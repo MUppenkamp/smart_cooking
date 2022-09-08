@@ -1,10 +1,17 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { isBefore } from 'date-fns';
 import FetchState from '../../constants/fetchState';
 import { fetchCalendarRecipes, randomizeCalendarRecipes } from './recipeWeekActions';
 import { TRecipeWeekDay } from '../../types/recipe';
 
 export const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
-    selectId: (model) => model.date
+    selectId: (model) => model.date,
+    sortComparer: (a, b) => {
+        if (isBefore(new Date(a.date), new Date(b.date))) {
+            return -1;
+        }
+        return 1;
+    }
 });
 
 const initialState = {
