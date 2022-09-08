@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './recipeItem.scss';
 import { TRecipe } from '../../../types/recipe';
 import { Image } from 'react-bootstrap';
@@ -16,10 +16,6 @@ const RecipeItem: React.FunctionComponent<RecipeSiteItemProps> = ({
                                                                       setSelectedRecipe,
                                                                       showGear = false
                                                                   }) => {
-    useEffect(() => {
-        console.log('PARAMS', showGear);
-    }, []);
-
     return (
         <div
             className='recipe-item__recipe'

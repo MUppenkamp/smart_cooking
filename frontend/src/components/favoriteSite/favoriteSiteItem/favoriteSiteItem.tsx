@@ -1,17 +1,17 @@
 import React from 'react';
 import './favoriteSiteItem.scss';
-import {TRecipe} from "../../../types/recipe";
-import {Image} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import { TRecipe } from '../../../types/recipe';
+import { Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 type RecipeSiteItemProps = {
     recipe: TRecipe
 };
 
 const FavoriteSiteItem: React.FunctionComponent<RecipeSiteItemProps> = ({
-                                                                          recipe
-                                                                      }) => {
+                                                                            recipe
+                                                                        }) => {
 
     return (
         <div className='recipe-site-item__recipe'>
