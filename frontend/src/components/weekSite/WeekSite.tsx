@@ -39,7 +39,7 @@ const WeekSite: React.FunctionComponent = () => {
                                 </h4>
                             </div>
                         </div>
-                    )
+                    );
                 })
             }
         </div>

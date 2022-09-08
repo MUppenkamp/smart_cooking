@@ -27,7 +27,7 @@ const SiteName: React.FunctionComponent<SiteNameProps> = ({ selectedSite }) => {
 
     return (
         <>
-            <h4 className="site-name">{siteName}</h4>
+            <h4 className='site-name'>{siteName}</h4>
         </>
     );
 };

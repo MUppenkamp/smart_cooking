@@ -10,12 +10,12 @@ type SearchBarProps = {};
 const SearchBar: React.FunctionComponent<SearchBarProps> = () => {
 
     return (
-        <div className="search-bar">
+        <div className='search-bar'>
             <InputGroup>
                 <InputGroup.Text>
                     <FontAwesomeIcon
                         icon={faSearch}
-                        className="search-bar__icon"
+                        className='search-bar__icon'
                     />
                 </InputGroup.Text>
                 <Form.Control

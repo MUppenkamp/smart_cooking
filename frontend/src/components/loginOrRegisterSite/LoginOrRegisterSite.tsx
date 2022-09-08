@@ -128,12 +128,12 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                     onClick={() => {
                         if (!login) setLogin(true);
                         if (mail != '' && password != '') {
-                            console.log("login user")
+                            console.log('login user');
                             dispatch(fetchLoginUser({
                                 mail,
                                 password
                             }));
-                            setSelectedSite(SelectedSite.RECIPE_SITE)
+                            setSelectedSite(SelectedSite.RECIPE_SITE);
                         }
                     }}
                 >

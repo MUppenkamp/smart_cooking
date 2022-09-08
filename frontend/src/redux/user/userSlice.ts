@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchLoginUser, fetchUser, updateUser } from './userActions';
 import FetchState from '../../constants/fetchState';
-import { TUser } from "../../types/user";
+import { TUser } from '../../types/user';
 import { saveLocalstorage } from '../../utils/localstorageHelper';
 import { USER_DATA_KEY } from '../../constants/localstorage';
 
@@ -49,12 +49,12 @@ const userSlice = createSlice({
         builder.addCase(updateUser.fulfilled, (draft, { payload }) => {
             draft.fetchState = FetchState.FETCHED;
             draft.data = payload;
-        })
+        });
     }
 });
 
 export const {
     setUser
-} = userSlice.actions
+} = userSlice.actions;
 
 export default userSlice.reducer;

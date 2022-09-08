@@ -3,7 +3,7 @@ import { SMART_COOKING_URL } from '../../constants/url';
 import { TPostCalendarRecipeParams, TPostFavoriteRecipeParams, } from '../../types/postRecipe';
 import { TCreateRecipe, TRecipe, TRecipeWeek } from '../../types/recipe';
 
-export const postFavoriteRecipe = async ({userId, body}: TPostFavoriteRecipeParams) => {
+export const postFavoriteRecipe = async ({ userId, body }: TPostFavoriteRecipeParams) => {
     return requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/recipe/${userId}/favorite`,
         options: {

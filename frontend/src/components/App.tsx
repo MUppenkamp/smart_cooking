@@ -78,12 +78,12 @@ const App: FC<Record<string, never>> = () => {
                     }
                     {
                         selectedSite === SelectedSite.WEEK_SITE && (
-                            <WeekSite />
+                            <WeekSite/>
                         )
                     }
                     {
                         selectedSite === SelectedSite.SHOPPING_LIST_SITE && (
-                            <ShoppingListSite />
+                            <ShoppingListSite/>
                         )
                     }
                     {
