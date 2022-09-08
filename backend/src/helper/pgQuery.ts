@@ -2,11 +2,11 @@ import { Pool, QueryResult } from 'pg'
 
 export const createPool = (): Pool => {
     return new Pool({
-        user: 'postgres',
-        password: 'postgres',
+        user: process.env?.POSTGRES_USER || 'postgres',
+        password: process.env?.POSTGRES_PASSWORD || 'postgres',
         host: process.env?.POSTGRES_URL || 'localhost',
-        database: 'smart_cocking',
-        port: 5432
+        database: process.env?.POSTGRES_DB || 'smart_cocking',
+        port: Number(process.env?.POSTGRES_PORT) != 0 ? Number(process.env?.POSTGRES_PORT) : 5432
     });
 }
 
