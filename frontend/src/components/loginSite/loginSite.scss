@@ -11,4 +11,26 @@
     border: 1.5px solid $smart-cooking-color !important;
     box-shadow: none;
   }
+
+  &__password-reset {
+    color: $smart-cooking-color;
+    font-weight: bold;
+  }
+
+  &__button {
+    .btn {
+      border-color: transparent;
+      background-image: linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light);
+      color: $basic-text-color;
+      border-radius: $button-border-radius;
+      width: 100%;
+      margin-top: 20px;
+      padding: 8px 12px;
+    }
+
+    .btn:focus {
+      border-color: $button-click-color;
+      box-shadow: none;
+    }
+  }
 }

@@ -9,11 +9,10 @@ const LoginSite: React.FunctionComponent<LoginSiteProps> = () => {
     const [password, setPassword] = useState('');
 
     return (
-        <>
+        <div className='login'>
             <p>Login</p>
             <InputGroup className="mb-3">
                 <Form.Control
-                    id='loginEmail'
                     className='login__input'
                     value={mail}
                     onChange={(value) => {
@@ -32,7 +31,15 @@ const LoginSite: React.FunctionComponent<LoginSiteProps> = () => {
                     placeholder='Passwort'
                 />
             </InputGroup>
-        </>
+            <p className='login__password-reset'>Passwort vergessen</p>
+            <div className='login__button'>
+                <Button
+                    onClick={() => console.log('Click')}
+                >
+                    Einloggen
+                </Button>
+            </div>
+        </div>
     );
 };
 
