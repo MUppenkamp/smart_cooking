@@ -3,7 +3,7 @@ import FetchState from '../../constants/fetchState';
 import { fetchCalendarRecipes, randomizeCalendarRecipes } from './recipeWeekActions';
 import { TRecipeWeekDay } from '../../types/recipe';
 
-const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
+export const recipeWeekAdapter = createEntityAdapter<TRecipeWeekDay>({
     selectId: (model) => model.date
 });
 
