@@ -420,7 +420,7 @@ router.get('/:userid/shopping/list', async (req, res) => {
     await Promise.all(ingredientPromise);
 
     const returnValue: {
-        data: Date,
+        date: Date,
         recipe: TShoppingListRecipeDTO
     }[] = [];
 
@@ -431,7 +431,7 @@ router.get('/:userid/shopping/list', async (req, res) => {
         const idts = ingredients.filter((elem) => elem.recipe_id === elem.recipe_id);
 
         returnValue.push({
-            data: elem.day_date,
+            date: elem.day_date,
             recipe: {
                 id: recipe.id,
                 name: recipe.name,
