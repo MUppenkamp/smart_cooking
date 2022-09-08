@@ -3,7 +3,7 @@ import { createRecipe, fetchRecipes, updateRecipe } from './recipesActions';
 import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 
-const recipesAdapter = createEntityAdapter<TRecipe>();
+export const recipesAdapter = createEntityAdapter<TRecipe>();
 
 const initialState = {
     fetchState: FetchState.INITIAL,

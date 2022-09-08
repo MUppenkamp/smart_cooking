@@ -3,25 +3,17 @@ import { SMART_COOKING_URL } from '../../constants/url';
 import { TPostCalendarRecipeParams, TPostFavoriteRecipeParams, } from '../../types/postRecipe';
 import { TCreateRecipe, TRecipe, TRecipeWeek } from '../../types/recipe';
 
-// ToDo: Update options
-export const postFavoriteRecipe = async (params: TPostFavoriteRecipeParams) => {
-    const response = await requestHelper<TRecipe>({
-        requestUrl: `${SMART_COOKING_URL}/`,
+export const postFavoriteRecipe = async ({userId, body}: TPostFavoriteRecipeParams) => {
+    return requestHelper<TRecipe>({
+        requestUrl: `${SMART_COOKING_URL}/recipe/${userId}/favorite`,
         options: {
-            method: 'POST'
+            method: 'POST',
+            body
         }
     });
-
-    if (response.status === 200) {
-        return response;
-    }
-
-    return {
-        status: 200,
-        data: null
-    };
 };
 
+// ToDo: Update
 export const postRecipe = async (recipe: TCreateRecipe) => {
     const response = await requestHelper<TRecipe>({
         requestUrl: `${SMART_COOKING_URL}/`,
@@ -62,6 +54,7 @@ export const postRecipe = async (recipe: TCreateRecipe) => {
     };
 };
 
+// ToDo: Update
 export const postCalendarRecipes = async (params: TPostCalendarRecipeParams) => {
     const response = await requestHelper<TRecipeWeek>({
         requestUrl: `${SMART_COOKING_URL}/`,

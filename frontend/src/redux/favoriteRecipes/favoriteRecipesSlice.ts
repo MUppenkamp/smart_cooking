@@ -3,11 +3,11 @@ import { TRecipe } from '../../types/recipe';
 import FetchState from '../../constants/fetchState';
 import { fetchFavoriteRecipes, updateFavorite } from './favoriteRecipesActions';
 
-const recipesAdapter = createEntityAdapter<TRecipe>();
+export const favoriteRecipesAdapter = createEntityAdapter<TRecipe>();
 
 const initialState = {
     fetchState: FetchState.INITIAL,
-    data: recipesAdapter.getInitialState(),
+    data: favoriteRecipesAdapter.getInitialState(),
 };
 
 const favoriteRecipesSlice = createSlice({
@@ -21,7 +21,7 @@ const favoriteRecipesSlice = createSlice({
         builder.addCase(fetchFavoriteRecipes.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.addMany(draft.data, payload);
+            favoriteRecipesAdapter.addMany(draft.data, payload);
             draft.fetchState = FetchState.FETCHED;
         });
 
@@ -31,7 +31,7 @@ const favoriteRecipesSlice = createSlice({
         builder.addCase(updateFavorite.fulfilled, (draft, { payload }) => {
             if (!payload) return;
 
-            recipesAdapter.updateOne(draft.data, {
+            favoriteRecipesAdapter.updateOne(draft.data, {
                 id: payload.id,
                 changes: payload
             });
