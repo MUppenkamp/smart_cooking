@@ -480,7 +480,7 @@ router.post('/:userid/favorite', async (req, res) => {
     res.status(204).json({});
 })
 
-router.post('/:userid/shopping/list', async (req, res) => {
+router.patch('/:userid/shopping/list', async (req, res) => {
     if (!req.body?.id || !req.body.isChecked) { // check body
         res.status(400).json({});
         return;
