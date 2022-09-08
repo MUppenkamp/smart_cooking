@@ -4,6 +4,9 @@ import { TRecipe } from '../../../types/recipe';
 import { Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useAppDispatch, useAppSelector } from '../../../hook';
+import { updateFavorite } from '../../../redux/favoriteRecipes/favoriteRecipesActions';
+import { selectUser } from '../../../redux/user/userSelectors';
 
 type RecipeSiteItemProps = {
     recipe: TRecipe,
@@ -16,12 +19,29 @@ const RecipeItem: React.FunctionComponent<RecipeSiteItemProps> = ({
                                                                       setSelectedRecipe,
                                                                       showGear = false
                                                                   }) => {
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(selectUser);
+
     return (
         <div
             className='recipe-item__recipe'
-            onClick={() => setSelectedRecipe(recipe)}
         >
-            <div className='recipe-item'>
+            <div
+                className='recipe-item'
+                onClick={() => {
+                    if (!user) {
+                        return;
+                    }
+
+                    dispatch(updateFavorite({
+                        userId: user.id,
+                        body: {
+                            id: recipe.id,
+                            isFavorite: !recipe.isFavorite
+                        }
+                    }));
+                }}
+            >
                 <div className='recipe-item__icon'>
                     <FontAwesomeIcon
                         icon={recipe.isOwn && showGear ? faGear : faHeart}
@@ -31,13 +51,17 @@ const RecipeItem: React.FunctionComponent<RecipeSiteItemProps> = ({
                     />
                 </div>
             </div>
-            <Image
-                src={recipe.picture}
-                alt={recipe.name}
-                rounded
-                className='recipe-item__recipe__image'
-            />
-            <p className='recipe-item__recipe__text'>{recipe.name}</p>
+            <div
+                onClick={() => setSelectedRecipe(recipe)}
+            >
+                <Image
+                    src={recipe.picture}
+                    alt={recipe.name}
+                    rounded
+                    className='recipe-item__recipe__image'
+                />
+                <p className='recipe-item__recipe__text'>{recipe.name}</p>
+            </div>
         </div>
     );
 };
