@@ -10,6 +10,7 @@ export type TIngredient = {
     quantity: number;
     quantityUnitId: number;
     quantityUnitName: string;
+    isChecked?: boolean
 };
 
 export type TCreateRecipe = {
