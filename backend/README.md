@@ -26,7 +26,7 @@ Body:
         "isFavorite": boolean
     }
 
-POST recipe/{userid}/shopping/list
+PATCH recipe/{userid}/shopping/list
 
 Body:
 
