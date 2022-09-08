@@ -464,7 +464,8 @@ router.get('/:userid/shopping/list', async (req, res) => {
 })
 
 router.post('/:userid/favorite', async (req, res) => {
-    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2';
+    const query = 'UPDATE user_2_recipe SET is_favorite = $1 WHERE user_id = $2 and recipe_id = $3 RETURNING *';
+    const createUser2Receipt = 'INSERT INTO user_2_recipe (user_id, recipe_id, is_favorite, is_own) VALUES ($1, $2, $3, $4) RETURNING *';
 
     if (!req.body?.id || req.body?.isFavorite === undefined || req.body?.isFavorite === null) {
         res.status(400).json({});
@@ -474,10 +475,24 @@ router.post('/:userid/favorite', async (req, res) => {
     await recipeRandomise(Number(req.params.userid));
 
     const connection = await createPool();
-    await pgQuery(connection, query, [req.body.isFavorite, req.body.id]);
+    const response = await pgQuery(connection, query, [req.body.isFavorite, req.body.id, req.params.userid]);
+
+    if (!response?.rowCount || response.rowCount <= 0) {
+        const create = await pgQuery(connection, createUser2Receipt, [req.params.userid, req.body.id, req.body.isFavorite, false]);
+        await disconnectPool(connection);
+
+        res.status(204).json({
+            data: create?.rows[0]
+        });
+        return;
+    }
+
+
     await disconnectPool(connection);
 
-    res.status(204).json({});
+    res.status(204).json({
+        data: response?.rows[0]
+    });
 })
 
 router.patch('/:userid/shopping/list', async (req, res) => {
