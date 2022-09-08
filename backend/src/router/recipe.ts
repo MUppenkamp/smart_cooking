@@ -342,10 +342,12 @@ router.get('/:userid/shopping/list', async (req, res) => {
     const selectIngredient = `
                 SELECT
                     ri.*,
+                    qu.name as quantity_unit_name,
                     rwdsl.is_checked
                 FROM recipe_week_day_shopping_list rwdsl
                     JOIN recipe_ingredient ri on ri.id = rwdsl.recipe_ingredient
                     JOIN recipe_week_day rwd on rwd.id = rwdsl.recipe_week_day_id
+                    JOIN quantity_unit qu on qu.id = ri.quantity_unit_id
                 WHERE rwd.recipe_week_id = $1
     `;
 
