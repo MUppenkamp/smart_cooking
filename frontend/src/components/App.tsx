@@ -11,6 +11,10 @@ import RecipeDetailsSite from './recipeDetailsSite/RecipeDetailsSite';
 import { SelectedSite } from '../constants/selectedSite';
 import LoginOrRegisterSite from './loginOrRegisterSite/LoginOrRegisterSite';
 import Header from './mainFrames/header/Header';
+import { useAppDispatch } from '../hook';
+import { fetchUser } from '../redux/user/userActions';
+import FavoriteSite from './favoriteSite/FavoriteSite';
+import { TRecipe } from '../types/recipe';
 
 const App: FC<Record<string, never>> = () => {
     const [selectedSite, setSelectedSite] = useState(SelectedSite.RECIPE_SITE as SelectedSite | null);
@@ -49,7 +53,7 @@ const App: FC<Record<string, never>> = () => {
                     && selectedSite !== SelectedSite.NOTHING
                     && <SearchBar/>
                 }
-                <Container className="inner-container">
+                <Container className='inner-container'>
                     {
                         selectedSite === SelectedSite.ERROR && (
                             <NoContent/>
