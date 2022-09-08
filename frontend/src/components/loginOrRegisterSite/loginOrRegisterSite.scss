@@ -1,6 +1,16 @@
 @import '../../../src/constants/variables';
 
 .login-or-register {
+  position: relative;
+
+  &__greeting {
+    margin: 50px 0 60px 0;
+
+    &__1 {
+      margin-bottom: 5px;
+    }
+  }
+
   &__input {
     height: 55px;
     border-radius: $border-radius;
@@ -77,4 +87,15 @@
       width: 40%;
     }
   }
+}
+
+#visual {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  margin-top: -220px;
+}
+
+.svg-path svg {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;
 }
