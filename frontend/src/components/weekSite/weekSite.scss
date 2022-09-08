@@ -5,7 +5,8 @@
   &__item {
     margin-bottom: 15px;
 
-    &__date {}
+    &__date {
+    }
 
     &__image {
       border-radius: $border-radius !important;
@@ -16,7 +17,8 @@
 
     &__text {
 
-      &__name {}
+      &__name {
+      }
     }
   }
 }

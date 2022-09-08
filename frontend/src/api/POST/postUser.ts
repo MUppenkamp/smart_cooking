@@ -20,7 +20,7 @@ export const loginUser = async (data: TLoginData): Promise<THelper<TUser> | null
     }
 
     return null;
-}
+};
 
 // ToDo: Update options
 export const postUser = async (data: TLoginData | TRegisterData) => {

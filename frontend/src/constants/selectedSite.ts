@@ -11,4 +11,4 @@ enum SelectedSite {
 
 export {
     SelectedSite
-}
+};
