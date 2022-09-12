@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: smart_cocking
+      POSTGRES_DB: smart_cooking
       PGDATA: /data/postgres
 #    volumes:
 #      - postgres:/data/postgres
@@ -42,6 +42,6 @@ services:
       POSTGRES_URL: 'database'
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'
-      POSTGRES_DB: 'smart_cocking'
+      POSTGRES_DB: 'smart_cooking'
       POSTGRES_PORT: 5432
       CREATE_DEFAULT_DATA: 'false'
