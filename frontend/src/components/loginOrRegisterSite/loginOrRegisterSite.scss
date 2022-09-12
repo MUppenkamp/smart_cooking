@@ -17,14 +17,11 @@
     margin-bottom: 40px;
   }
 
-  &__button {
-  }
-
   &__button-other {
     .btn-secondary {
-      background-clip: padding-box, border-box;
-      background-image: linear-gradient($background-color, $background-color), linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light);
-      background-origin: border-box;
+      background-clip: padding-box, border-box !important;
+      background-image: linear-gradient($background-color, $background-color), linear-gradient(to right, $smart-cooking-color, $smart-cooking-color-light) !important;
+      background-origin: border-box !important;
     }
   }
 
