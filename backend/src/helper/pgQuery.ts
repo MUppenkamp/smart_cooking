@@ -5,7 +5,7 @@ export const createPool = (): Pool => {
         user: process.env?.POSTGRES_USER || 'postgres',
         password: process.env?.POSTGRES_PASSWORD || 'postgres',
         host: process.env?.POSTGRES_URL || 'localhost',
-        database: process.env?.POSTGRES_DB || 'smart_cocking',
+        database: process.env?.POSTGRES_DB || 'smart_cooking',
         port: Number(process.env?.POSTGRES_PORT) != 0 ? Number(process.env?.POSTGRES_PORT) : 5432
     });
 }
