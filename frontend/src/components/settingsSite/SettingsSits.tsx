@@ -3,14 +3,19 @@ import './settingsSite.scss';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAppSelector } from "../../hook";
+import {selectUser} from "../../redux/user/userSelectors";
+import {removeLocalStorage} from "../../utils/localstorageHelper";
+import {USER_DATA_KEY} from "../../constants/localstorage";
 
 type SettingsSiteProps = {};
 
 const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
-    const [mail, setMail] = useState('');
+    const user = useAppSelector(selectUser);
+    const [firstName, setFirstName] = useState(user?.firstName ?? '');
+    const [lastName, setLastName] = useState(user?.lastName ?? '');
+    const [mail, setMail] = useState(user?.mail ?? '');
     const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [passwordRepeat, setPasswordRepeat] = useState('');
     const [passwordOld, setPasswordOld] = useState('');
 
@@ -54,7 +59,7 @@ const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
                 />
             </InputGroup>
             <Button
-                className='btn'
+                className='btn save'
                 onClick={() => {
                 }}
             >
@@ -91,11 +96,20 @@ const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
                 />
             </InputGroup>
             <Button
-                className='btn'
+                className='btn save'
                 onClick={() => {
                 }}
             >
                 Speichern
+            </Button>
+            <Button
+                className='btn btn-secondary'
+                onClick={() => {
+                    removeLocalStorage(USER_DATA_KEY);
+                    window.location.reload();
+                }}
+            >
+                Abmelden
             </Button>
         </div>
     );
