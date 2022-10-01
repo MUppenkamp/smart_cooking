@@ -20,7 +20,7 @@ const RecipeSite: React.FunctionComponent<RecipeSiteProps> = ({
 
     const date = new Date;
     let hours = date.getHours();
-    let greeting = (hours < 12) ? 'Guten Morgen' : ((hours <= 18 && hours >= 12) ? 'Guten Mittag' : 'Guten Abend');
+    let greeting = (hours < 12) ? 'Guten Morgen' : ((hours <= 17 && hours >= 12) ? 'Guten Mittag' : 'Guten Abend');
 
     useEffect(() => {
         dispatch(fetchRecipes(user?.id || 0));
