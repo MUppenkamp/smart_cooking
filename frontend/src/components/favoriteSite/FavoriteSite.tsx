@@ -26,7 +26,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
     }, [user]);
 
     if (!user || !favoriteRecipes) {
-        return <></>;
+        return null;
     }
 
     return (
@@ -37,7 +37,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
                 {
                     favoriteRecipes.map(recipe => {
                         if (!recipe.isOwn) {
-                            return <></>;
+                            return null;
                         }
                         return (
                             <RecipeItem
@@ -59,7 +59,7 @@ const FavoriteSite: React.FunctionComponent<FavoriteSiteProps> = ({
                             {
                                 favoriteRecipes.map(recipe => {
                                     if (recipe.isOwn) {
-                                        return <></>;
+                                        return null;
                                     }
                                     return (
                                         <RecipeItem
