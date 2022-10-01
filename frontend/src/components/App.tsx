@@ -16,7 +16,7 @@ import FavoriteSite from './favoriteSite/FavoriteSite';
 import { TRecipe } from '../types/recipe';
 import ShoppingListSite from './shoppingListSite/ShoppingListSite';
 import WeekSite from './weekSite/WeekSite';
-import { getLocalstorage } from '../utils/localstorageHelper';
+import { getLocalStorage } from '../utils/localstorageHelper';
 import { USER_DATA_KEY } from '../constants/localstorage';
 import { TUser } from '../types/user';
 import { setUser } from '../redux/user/userSlice';
@@ -36,7 +36,7 @@ const App: FC<Record<string, never>> = () => {
     }, [selectedSite]);
 
     useEffect(() => {
-        const user = getLocalstorage<TUser>(USER_DATA_KEY);
+        const user = getLocalStorage<TUser>(USER_DATA_KEY);
         if (user) {
             dispatch(setUser(user));
         }
