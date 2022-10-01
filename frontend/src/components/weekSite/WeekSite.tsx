@@ -23,7 +23,10 @@ const WeekSite: React.FunctionComponent = () => {
             {
                 recipeWeek.map(recipeDay => {
                     return (
-                        <div className='week-site__item'>
+                        <div
+                            key={recipeDay.date}
+                            className='week-site__item'
+                        >
                             <h2 className='week-site__item__date'>
                                 {formatDate(recipeDay.date)}
                             </h2>

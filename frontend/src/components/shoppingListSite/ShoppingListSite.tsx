@@ -20,12 +20,14 @@ const ShoppingListSite: React.FunctionComponent<ShoppingListSiteProps> = () => {
         dispatch(fetchShoppingList(user.id));
     }, [user])
 
+    console.log(shoppingList)
+
     return (
         <div className='shopping-list'>
             {
                 shoppingList.map(s => {
                     return (
-                        <>
+                        <div key={s.date.toString()}>
                             <h2 className='shopping-list__headline'>{formatDate(new Date(s.date).toDateString())}</h2>
                             <h3>{s.recipe.name}</h3>
                             <div className='shopping-list__ingredients'>
@@ -58,7 +60,7 @@ const ShoppingListSite: React.FunctionComponent<ShoppingListSiteProps> = () => {
                                     }
                                 </div>
                             </div>
-                        </>
+                        </div>
                     );
                 })
             }
