@@ -2,21 +2,26 @@
 
 .settings {
   &__picture {
-    margin-bottom: 15px;
-    text-align: center;
-    border: $smart-cooking-color solid 6px;
-    border-radius: 50%;
     width: 160px;
     height: 160px;
+    margin: 0 auto 25px;
 
-    &__icon {
-      color: $smart-cooking-color;
-      font-size: 100px;
-      padding-top: 25px;
+    &__wrapper {
+      border: $smart-cooking-color solid 6px;
+      border-radius: 50%;
+      text-align: center;
+      width: 160px;
+      height: 160px;
+
+      &__icon {
+        color: $smart-cooking-color;
+        font-size: 100px;
+        padding-top: 25px;
+      }
     }
   }
 
-  .btn {
+  .save {
     margin-bottom: 60px;
   }
 }

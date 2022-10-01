@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchLoginUser, fetchRegisterUser, updateUser } from './userActions';
 import FetchState from '../../constants/fetchState';
 import { TUser } from '../../types/user';
-import { saveLocalstorage } from '../../utils/localstorageHelper';
+import { saveLocalStorage } from '../../utils/localstorageHelper';
 import { USER_DATA_KEY } from '../../constants/localstorage';
 
 type TInitialState = {
@@ -29,7 +29,7 @@ const userSlice = createSlice({
         });
         builder.addCase(fetchLoginUser.fulfilled, (draft, { payload }) => {
             draft.data = payload;
-            saveLocalstorage(USER_DATA_KEY, payload);
+            saveLocalStorage(USER_DATA_KEY, payload);
         });
 
         builder.addCase(fetchRegisterUser.pending, (draft) => {
@@ -37,7 +37,7 @@ const userSlice = createSlice({
         })
         builder.addCase(fetchRegisterUser.fulfilled, (draft, { payload }) => {
             draft.data = payload;
-            saveLocalstorage(USER_DATA_KEY, payload);
+            saveLocalStorage(USER_DATA_KEY, payload);
         })
 
         builder.addCase(updateUser.pending, (draft) => {

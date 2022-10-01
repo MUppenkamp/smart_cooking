@@ -123,9 +123,9 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
 
     const renderButtonLogin = () => {
         return (
-            <div className={!login ? 'login-or-register__button-other' : 'login-or-register__button'}>
+            <>
                 <Button
-                    className='btn btn-secondary'
+                    className={!login ? 'btn btn-secondary' : 'btn'}
                     onClick={() => {
                         if (!login) setLogin(true);
                         if (mail != '' && password != '') {
@@ -137,17 +137,17 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                         }
                     }}
                 >
-                    Einloggen
+                    Anmelden
                 </Button>
-            </div>
+            </>
         );
     };
 
     const renderButtonRegister = () => {
         return (
-            <div className={login ? 'login-or-register__button-other' : 'login-or-register__button'}>
+            <>
                 <Button
-                    className='btn btn-secondary'
+                    className={login ? 'btn btn-secondary' : 'btn'}
                     onClick={() => {
                         if (login) setLogin(false);
 
@@ -164,7 +164,7 @@ const LoginOrRegisterSite: React.FunctionComponent<LoginSiteProps> = ({
                 >
                     Registrieren
                 </Button>
-            </div>
+            </>
         );
     };
 
