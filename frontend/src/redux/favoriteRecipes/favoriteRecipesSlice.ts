@@ -31,12 +31,14 @@ const favoriteRecipesSlice = createSlice({
         builder.addCase(updateFavorite.fulfilled, (draft, {payload}) => {
             if (!payload) return;
 
-            favoriteRecipesAdapter.updateOne(draft.data, {
-                id: payload.id,
-                changes: {
-                    isFavorite: payload.isFavorite
-                }
-            });
+            // favoriteRecipesAdapter.updateOne(draft.data, {
+            //     id: payload.id,
+            //     changes: {
+            //         isFavorite: payload.isFavorite
+            //     }
+            // });
+
+            favoriteRecipesAdapter.removeOne(draft.data, payload.id);
 
             draft.fetchState = FetchState.FETCHED;
         });
