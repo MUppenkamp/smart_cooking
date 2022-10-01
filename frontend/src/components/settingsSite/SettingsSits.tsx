@@ -7,7 +7,6 @@ import { useAppSelector } from "../../hook";
 import {selectUser} from "../../redux/user/userSelectors";
 import {removeLocalStorage} from "../../utils/localstorageHelper";
 import { USER_DATA_KEY } from "../../constants/localstorage";
-import { hidePassword, saveHiddenPassword } from "../../utils/passwordHelper";
 
 type SettingsSiteProps = {};
 
@@ -70,9 +69,10 @@ const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
             <InputGroup className='mb-3'>
                 <Form.Control
                     className='settings__input input'
-                    value={hidePassword(passwordOld)}
+                    type='password'
+                    value={passwordOld}
                     onChange={(value) => {
-                        setPasswordOld(saveHiddenPassword(passwordOld, value.target.value));
+                        setPasswordOld(value.target.value);
                     }}
                     placeholder='Altes Passwort'
                 />
@@ -80,9 +80,10 @@ const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
             <InputGroup className='mb-3'>
                 <Form.Control
                     className='settings__input input'
-                    value={hidePassword(password)}
+                    type='password'
+                    value={password}
                     onChange={(value) => {
-                        setPassword(saveHiddenPassword(password, value.target.value));
+                        setPassword(value.target.value);
                     }}
                     placeholder='Passwort'
                 />
@@ -90,9 +91,10 @@ const SettingsSite: React.FunctionComponent<SettingsSiteProps> = () => {
             <InputGroup className='mb-3'>
                 <Form.Control
                     className='settings__input input'
-                    value={hidePassword(passwordRepeat)}
+                    type='password'
+                    value={passwordRepeat}
                     onChange={(value) => {
-                        setPasswordRepeat(saveHiddenPassword(passwordRepeat, value.target.value));
+                        setPasswordRepeat(value.target.value);
                     }}
                     placeholder='Passwort wiederholen'
                 />
