@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "database_development",
+    "database": "smart_cooking",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "smart_cooking",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "smart_cooking",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
