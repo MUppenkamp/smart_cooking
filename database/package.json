@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "create:migration": "sequelize migration:create --name [migration_name]",
-    "migrate": "sequelize db:migrate"
+    "migrate": "sequelize db:migrate",
+    "create:seed": "npx sequelize-cli seed:generate --name <seed-name>"
   },
   "author": "",
   "license": "ISC",
