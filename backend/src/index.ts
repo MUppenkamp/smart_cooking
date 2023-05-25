@@ -3,7 +3,7 @@ import cors from 'cors';
 
 const app = express();
 
-import { pgQuery, disconnectPool, createPool } from '. helper pgQuery';
+import { pgQuery, disconnectPool, createPool } from './helper/pgQuery';
 import recipe from './router/recipe'
 import user from './router/user';
 import { recipeRandomise } from './helper/recipeRandomise';

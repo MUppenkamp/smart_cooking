@@ -16,8 +16,11 @@ If the Project have breaking changes: Delete all Volumes
 To create a new migration run the command in the script `migration:create` and set the variable
 
 
-TODO:
+TODO (Refactoring):
+- [ ] Add seeds
+- [ ] Change backend to Controller / Handler / Repository
 
+TODO:
 - [ ] Fix error in building the frontend
 - [ ] Test migrate
 - [ ] Add default data via database project
